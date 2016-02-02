@@ -190,7 +190,7 @@ void get_on_the_network() {
   delay(blinkrate);
   Serial.println("Sent AT+Join");
   delay(wait_time_to_join_network); //wait to join the network
-  mDotString = mDotSerial.readString(); // read string from mDot
+  while(mDotSerial.available() > 0){ mDotString = mDotSerial.readString();} // read string from mDot
   delay(10);
   Serial.print("mDot response: ");
   Serial.println(mDotString); // print mDot data
