@@ -11,8 +11,9 @@ The sketch gathers sensor data to demonstrate *LoRa* by indicating activities in
 
 To reduce the dynamic memory of this sketch, reduce or remove the text in the Serial.print() statements.  
 
-by Mike Vladimer & Anna Aflalo
-at the [Orange IoT Studio](http://orangeiotstudio.com), part of [Orange Silicon Valley](http://www.orangesv.com/)
-February 2016
+by Mike Vladimer & Anna Aflalo at the [Orange IoT Studio](http://orangeiotstudio.com), part of [Orange Silicon Valley](http://www.orangesv.com/) 
+
 We welcome feedback via twitter: [@mikevladimer](https://twitter.com/mikevladimer) & [@anna_aflalo](https://twitter.com/anna_aflalo)
+
+February 2016 
 
