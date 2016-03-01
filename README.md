@@ -12,8 +12,8 @@ The .bin file is for the Multitech mDot LoRa node.
   To reduce the dynamic memory of this sketch, reduce or remove the text in the Serial.print() statements.  
     
   by Mike Vladimer & Anna Aflalo
-  at the Orange IoT Studio http://orangeiotstudio.com, part of Orange Silicon Valley http://www.orangesv.com/
+  at the [Orange IoT Studio](http://orangeiotstudio.com), part of [Orange Silicon Valley](http://www.orangesv.com/)
   February 2016
   
-  We welcome feedback via twitter: @mikevladimer @anna_aflalo
+  We welcome feedback via twitter: [@mikevladimer](https://twitter.com/mikevladimer) & [@anna_aflalo](https://twitter.com/anna_aflalo)
 
