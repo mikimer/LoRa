@@ -1,3 +1,4 @@
+
 /*  
  * This sketch gathers sensor data to demonstrate *LoRa* by indicating activities in the kitchen:
  *   1. Click. Users can choose to push a button.
@@ -5,11 +6,13 @@
  *   3. Light. The light sensor shows when the lights come on, i.e., working hours.  
  *   
  * To reduce the dynamic memory of this sketch, reduce or remove the text in the Serial.print() statements.  
- *   
+ * 
+ * Thanks to: Dave Kjendal & Shaun Nelson @ Senet, Joe Knapp @ Semtech
+ * 
  * by Mike Vladimer & Anna Aflalo
  * at Orange Silicon Valley http://www.orangesv.com/
- * February 2016
- * 
+ * March 2016
+ *  
  * We welcome feedback via twitter: @mikevladimer @anna_aflalo
  */
 
@@ -24,7 +27,8 @@
 // *** Select the current mDot **
 // Update the mDot data below to reflect your mDot name, network key, and network identifier 
 // You can adjust the comments in the code to select the mDot you're currently using
-/* AAA with ID ending in 11:22 */    const String mDot_name = "AAA"; const String Network_key =  "11:22:33:44:55:11:22:33:44:55:11:22:33:44:11:22"; const String Network_ID = "11:22:33:44:55"; 
+/* GRAPE with ID ending in A3:20 */   const String mDot_name = "GRAPE"; const String Network_key = "9B:77:EE:F7:F7:A8:51:91:8C:00:A1:40:62:C6:52:A5"; const String Network_ID = "00:25:0C:00:00:01:00:01"; 
+/* AAA with ID ending in 11:22 */   // const String mDot_name = "AAA"; const String Network_key =  "11:22:33:44:55:11:22:33:44:55:11:22:33:44:11:22"; const String Network_ID = "11:22:33:44:55"; 
 /* BBB with ID ending in 33:44 */    // const String mDot_name = "BBB"; const String Network_key = "11:22:33:44:55:11:22:33:44:55:11:22:33:44:33:44"; const String Network_ID = "11:22:33:44:55"; 
 /* CCC with ID ending in 55:66 */    // const String mDot_name = "CCC"; const String Network_key = "11:22:33:44:55:11:22:33:44:55:11:22:33:44:55:66"; const String Network_ID = "11:22:33:44:55"; 
 
@@ -41,27 +45,25 @@ const int sound_sensor = A2;        // sound sensor , digital (binary) values
 const int light_sensor = A3;        // light sensor, analog (0-1023) values  
 
 // Declare variables
+#define time_threshold 900     // if count = 900 seconds = 15mins, then send data
+#define click_threshold 10     // if click = 10 clicks, then send data
+#define lora_join_threshold 6  // max number of tries to join the lora network
 int click_value = 0;           // current push button value
 int sound_value = 0;           // current sound value
 int light_value = 0;           // current light value
 int stored_click_value = 0;    // stored push-button for sending
 int stored_sound_value = 0;    // stored sound button for sending  
 int stored_light_value = 0;    // stored light button for sending  
-int light_variation = 0;       // biggest light variation within 1s
-#define total_tenths_of_a_second 10
-int light_values_array[total_tenths_of_a_second];    // array to store light values during 1s = 10 samples x 100ms/sample
-int min_light_value = 1500;    // min light value
-int max_light_value = 0;       // max light value
-int light_treshold = 100;      // light values comparaison treshhold
+int light_values_array[10];    // array to store light values during 1s = 10 samples x 100ms/sample
+int sum_light_value = 0;       // sum light values
 unsigned int i;                // counter variable 
 unsigned int x;                // temp variable
 String mDotString;             // variable to hold mDot response
-unsigned int count = 0;        // count (in seconds) how many times we've read the input
+unsigned int count;            // count (in seconds) how many times we've read the input
 unsigned int count_tenths = 0; // tenths of a second on the count (we need this since we sample every 0.1sec and count is an integer)
-bool threshold_exceeded;       // track whether one of the sensors exceed a threshold, which triggers the Arduino to send data
-String current_reading;        // the LoRa data payload. In the Senet portal, this appears as the PDU (Packet Data Unit).
-#define count_start_exp 0      // start sending data when count = 2 ^ count_start_exp; 2^5 = 32 seconds
-#define count_reset_exp 12     // when count = 2 ^ count_reset_exp, then reset count = 0; 2^12 = 4,096 seconds ~ 3,600 seconds = 1 hour
+String LoRa_payload = "";      // the LoRa data payload. In the Senet portal, this appears as the PDU (Packet Data Unit). Limited to 50 ascii characters
+int last_click_value = 0;      // store the last state of the clicker to ensure the button toggled on and off
+int last_sound_value = 0;      // store the last state of the sound to ensure the sound toggled on and off
 
 // AT commands to stop echo, set transmit power to 20 (maximum), and set the public network
 #define GenericATcommand_count 4
@@ -83,9 +85,9 @@ void setup() {
   Serial.println("");
    
   delay(500);  // allow for the rails to power up so that the mDot is running properly 
-  Serial.print("This sketch works with mDot named '");
+  Serial.print("This sketch is for mDot '");
   Serial.print(mDot_name);
-  Serial.println("' on the Senet LoRa network. If your mDot or network different, please edit the Arduino sketch");
+  Serial.println("' on the Senet LoRa network. If your device or network are different, please edit the sketch");
   Serial.println("Arduino is trying to communicate with the mDot LoRa node...");
   // reset the mDot 
   pinMode(mDotResetPin, OUTPUT);
@@ -139,26 +141,26 @@ void setup() {
     delay(100);
     while (mDotSerial.available()) { mDotString = mDotSerial.readString(); }; // get the mDot's response
     if ( Validate (mDotString) ) {  // validate the mDot's response
-      Serial.println("."); // Print a single '.' to show that this is working 
+      Serial.print("."); // Print a single '.' to show that this is working 
     }
     
     // try to join the network three times
     successful_attempt = 1;  // use this as a counter and a flag
-    while (successful_attempt < 4) {
+    while ( (successful_attempt < lora_join_threshold) && (successful_attempt != 100) ) {
       mDotSerial.println("AT+JOIN"); 
       delay(1000 * successful_attempt); // make the delay longer with each attempt to join network  
       while (mDotSerial.available()) { mDotString = mDotSerial.readString(); }; // get the mDot's response
       if ( Validate (mDotString) ) {  // validate the mDot's response
-        successful_attempt = 10;  // set a flag for successfully joining the network
+        successful_attempt = 100;  // set a flag for successfully joining the network
         Serial.print("."); // Print a single '.' to show that this is working   
       }
       else {
         successful_attempt++;  // if unsuccessful, increment the counter
       }        
-    }
+    }// end while 
   //update user on program status
   Serial.println("");
-  if (successful_attempt == 10){
+  if (successful_attempt == 100){
     Serial.println("Successfully joined the LoRa network.");
   }
   else {
@@ -166,67 +168,50 @@ void setup() {
   }
   Serial.println("Arduino is beginning to read the sensors and send data...");
 
+  count = time_threshold - 20; // set count to just before the time threshold so that Arduino quickly sends a data payload
+
 } // end setup()
 
 
 // The loop() function is designed to read the input sensor continuously (every 100ms), 
-// but only send data via LoRa every 2^x seconds, starting at 32 sec (32 sec, 64, sec, 128 sec...). 
-// This is important because LoRa is built for low data rates. 
-// The loop() function resets after about an hour (60 mins x 60 sec = 3,600 sec ~ 4,096 sec = 2^12 sec)
-// unless there is a significant change in the input value (+/- threshold value from last_reading).
+// but only send data after exceeding a critical threshold, which is important because LoRa requires low data rates. 
 void loop() {
   // log the last reading, get a new sensor reading every 0.1 sec (100 ms) and increment the count and count_tenths
-  delay(100);  
-  threshold_exceeded = sensor_input_value(); // read the sensors, load the payload into current_reading, and return whether threshold exceeded 
-  count_tenths++;  // every loop increment count_tenths to track each 0.1 sec
+  delay(100);              // 0.1sec delay
+  sensor_input_value();    // read the sensors & load the payload into LoRa_payload 
+  count_tenths++;          // every loop increment count_tenths to track each 0.1 sec
   if (count_tenths > 9) {  // after 10 increments of count_tenths (1.0 sec), increment count and reset count_tenths
     count_tenths = 0;
     count++;
   }
   
-  // send current_reading to the internet via LoRa when the count is 2^n (32 sec, 64 sec...)
-  // check 2^n from 2^5 = 32sec (count_start_exp) to 2^12 = 4,096sec (count_reset_exp)
-  for (i = count_start_exp; i <= count_reset_exp; i++) {
-    x = 0.5 + pow(2,i); // x = 2^i; the 0.5 fixes the problem between int and float, from: http://forum.arduino.cc/index.php?topic=2392.0
-    if ( (count == x && count_tenths == 0) ) {            // look at count only at 2.0^n seconds
-      if ( (threshold_exceeded == false) && i < 5 ){      // wait until 2^5 to send data if no change
-        Serial.print("No change detected after ");       
-        Serial.print(count); 
-        Serial.println(" seconds. "); 
-      } 
-      if ( i >= 5 || ( threshold_exceeded && i < 5 ) ){
-        mDotSerial.print("AT+SEND ");    
-        mDotSerial.println(current_reading);  // current_reading is loaded in sensor_input_value()
-        stored_click_value = 0;               // reset to 0, no click yet
-        stored_sound_value = 0;               // reset to 0, no sound yet
-        stored_light_value = light_value;     // reset to current value 
-        delay(100);
-        while (mDotSerial.available()) { mDotString = mDotSerial.readString(); }; // get the mDot's response
-        if ( Validate (mDotString) ) {  // validate the mDot's response
-          Serial.print("SENDING sensor values: ");
-          Serial.print(current_reading);
-          Serial.print(" after ");
-          Serial.print(count); 
-          Serial.println(" seconds. "); 
-       } else {
-        Serial.println("  Error: Couldn't send current reading via LoRa. That's all we know.");    
-       }
-     }
-   }
- } // end for() to SEND LoRa data
+  // send LoRa_payload to the internet via LoRa when we exceed the time_threshold (15mins=900sec) or click_threshold = 20 clicks 
+  if ( (count >= time_threshold) || ( stored_click_value >= click_threshold) ) {            
+    // send payload
+    mDotSerial.print("AT+SEND ");    
+    mDotSerial.println(LoRa_payload);  // LoRa_payload is loaded in sensor_input_value() 
+    delay(100);
+    while (mDotSerial.available()) { mDotString = mDotSerial.readString(); }; // get the mDot's response
+    if ( Validate (mDotString) ) {  // validate the mDot's response
+      Serial.print("SENDING sensor values: ");
+      Serial.println(LoRa_payload);
+    } 
+    else {
+      Serial.print("  Error: Couldn't send current reading via your node ");
+      Serial.print(mDot_name);
+      Serial.println(". That's all we know.");    
+    }
 
-  // reset the count to 900 seconds, if it's at the value 2^count_reset_exp. In this quickstart project that's ~1hr where count_reset_exp = 12 
-  x = 0.5 + pow( 2, count_reset_exp ); // add 0.5 per: http://forum.arduino.cc/index.php?topic=2392.0
-  if (count >= x) {
-    count = 900;
-    Serial.println("Counter timed out at 1 hour. Restarting counter.");
-  }
+  //reset values and counters
+  count = 0;
+  count_tenths = 0;
+  stored_click_value = 0;                
+  stored_sound_value = 0;                
+  stored_light_value = 0;       
+  Serial.println("reset values & counters");    
+       
+  } // end send payload
 
-   // reset count to 30sec if the change in reading exceeds threshold_percent AND it's been more than 65 seconds since last reset
-   if ( threshold_exceeded && (count > 65) ) { // evaluated in sensor_input_value()   
-   Serial.println("  Resetting timer: threshold exceed and >1min");
-   count = 30;
-   }
  
 } // end loop()
    
@@ -252,66 +237,53 @@ bool Contains(String target, String search) {
     return false;  // otherwise return false
 } // end Contains()
 
-// This function is for reading the input value(s) from the sensor and determining significant changes. 
+// This function is for reading the input values from the sensors 
 // Adjust this however you need to make your sensor(s) work.
 // The function needs to return whether there was a signficant change (true) or not (false) in input values.
-bool sensor_input_value() {
+void sensor_input_value() {
   // get new values
   click_value = digitalRead(click_sensor); 
   sound_value = digitalRead(sound_sensor);   
   light_value = analogRead(light_sensor);   
 
-  // look for a click
-  if ( click_value > 0 ) {
+  // look for a click. We need to ensure that it clicks on and then off, otherwise holding the button breaks the algorithm
+  if ( click_value == 1 && last_click_value == 0) {  // if click = 1 and last_click = 0, then count the click
     Serial.println(" CLICK detected.");
-    stored_click_value =  click_value;
+    stored_click_value++;
+    last_click_value = 1;
   }
+  else if ( click_value == 0) { last_click_value = 0; }; // if click is 0, then store it in last_click; otherwise leave last_click at 1
   
   // look for a sound
-  if ( sound_value > 0 ) {
+  if ( sound_value > 0 && last_sound_value == 0 ) { //ensure that the sound detection has settled back down to 0
     Serial.println(" SOUND detected.");
-    stored_sound_value =  sound_value;
+    stored_sound_value++;
+    last_sound_value = 1;
   }
+  else if ( sound_value == 0) { last_sound_value = 0; }; // if sound is 0, then store it in last_sound_value; otherwise leave last_sound_value at 1
+  
 
-// get the current light value 
- light_values_array[count_tenths] = light_value;
+  // get the current light value 
+  light_values_array[count_tenths] = light_value;
 
- // look for a light variation after 1sec (at 0.9ms)  
- if( count_tenths == 9 ){
-   min_light_value = light_values_array[0]; // initialize the array min value 
-   max_light_value = light_values_array[0]; // initialize the array max value
-
-   // search for the min and max values within the array 
-   for( int i = 1; i < total_tenths_of_a_second; i++ ){  
-     if ( light_values_array[i] < min_light_value){
-       min_light_value = light_values_array[i];
-     }
-     if ( light_values_array[i] > max_light_value){
-       max_light_value = light_values_array[i];
-     }
-   }
-   
-   light_variation = max_light_value - min_light_value;  // check if during the past 1sec a big light variation happenned  
-   if ( light_variation > light_treshold ) {
-   Serial.print( light_variation );
-   Serial.println(" LIGHT change detected.");
-   stored_light_value = light_value;      // if there was a big variation, send the latest value
-   }
- }
+  // store average light after 1sec  
+  if( count_tenths == 9 ){
+    // sum the light values 
+    sum_light_value = 0;
+    for( int i = 0; i < 10; i++ ){  // sum the light values     
+      sum_light_value += light_values_array[i];
+    }
+    
+   stored_light_value = sum_light_value / 10;
+  } // end light value storage
   
   // creating a string with the data payload, per https://www.arduino.cc/en/Tutorial/StringAdditionOperator
-  String stringone = "click";
-  String stringtwo = ";sound";
-  String stringthree = ";light";
-  String stringfour = ";";
-  current_reading = stringone + stored_click_value + stringtwo + stored_sound_value + stringthree + stored_light_value + stringfour;
-
-  if ( stored_click_value || stored_sound_value || light_variation > 100 ){
-    return true;
-  }
-
-  return false; // if we've reached this line, then the new readings didn't exceed the threshold.  
+  // we're wrapping the data in (), [], and {} to use the REGEXEXTRACT() function in gdocs.
+  String stringone = "clicks(";
+  String stringtwo = ")sounds[";
+  String stringthree = "]avg_light{";
+  String stringfour = "}";
+  LoRa_payload = stringone + stored_click_value + stringtwo + stored_sound_value + stringthree + stored_light_value + stringfour;
 
 } // end sensor_input_value()
-
 
