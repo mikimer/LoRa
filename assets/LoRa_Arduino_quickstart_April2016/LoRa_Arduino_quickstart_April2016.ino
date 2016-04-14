@@ -18,17 +18,16 @@
 
 // How to prepare the mDot LoRa node
 /* The mDot default baud rate is 115200 but the Arduino & mDot have trouble communicating so quickly
- * so you need to ensure that the mDot baud rate is 9600. Here's the firmware .bin file: 
- * https://github.com/mikimer/LoRa/blob/master/mDot_for_Arduino9600_MTS_MDOT_F411RE.bin  
+ * so you need to ensure that the mDot baud rate is 9600: 
+ * https://github.com/mikimer/LoRa/ 
  * To upload the firmware, you'll need the MultiTech Micro Developer Kit (MTMDK) to change the mDot firmware: 
  * http://www.multitech.com/models/94558020LF
 */
 
 // *** Select the current mDot **
-// Update the mDot data below to reflect your mDot name, network key, and network identifier 
-// You can adjust the comments in the code to select the mDot you're currently using
-/* GRAPE with ID ending in A3:20 */   const String mDot_name = "GRAPE"; const String Network_key = "9B:77:EE:F7:F7:A8:51:91:8C:00:A1:40:62:C6:52:A5"; const String Network_ID = "00:25:0C:00:00:01:00:01"; 
-/* AAA with ID ending in 11:22 */   // const String mDot_name = "AAA"; const String Network_key =  "11:22:33:44:55:11:22:33:44:55:11:22:33:44:11:22"; const String Network_ID = "11:22:33:44:55"; 
+// Update the mDot data below to reflect the name, network key, and network identifier your mDot(s) 
+// You need to adjust the comments in the code to select the mDot you're currently using
+/* AAA with ID ending in 11:22 */     const String mDot_name = "AAA"; const String Network_key =  "11:22:33:44:55:11:22:33:44:55:11:22:33:44:11:22"; const String Network_ID = "11:22:33:44:55"; 
 /* BBB with ID ending in 33:44 */    // const String mDot_name = "BBB"; const String Network_key = "11:22:33:44:55:11:22:33:44:55:11:22:33:44:33:44"; const String Network_ID = "11:22:33:44:55"; 
 /* CCC with ID ending in 55:66 */    // const String mDot_name = "CCC"; const String Network_key = "11:22:33:44:55:11:22:33:44:55:11:22:33:44:55:66"; const String Network_ID = "11:22:33:44:55"; 
 
@@ -36,10 +35,9 @@
 //from: https://www.arduino.cc/en/Tutorial/SoftwareSerialExample
 #include <SoftwareSerial.h>         // Include software serial to communicate with mDot
 SoftwareSerial mDotSerial(10, 11);  // The Arduino receive (Rx) is on pin 10; transmit (tx) is on pin 11. 
-#include <math.h>                   // For exponent, pow(), and absolute value, abs().
 
 // Declare pins
-const int mDotResetPin = A0;        // Important: Ensure Arduino A0 is connected to mDot pin 5!
+const int mDotResetPin = A0;        // Important: Ensure Arduino A0 is connected to mDot pin 5
 const int click_sensor = A1;        // push-button sensor, digital (binary) values  
 const int sound_sensor = A2;        // sound sensor , digital (binary) values
 const int light_sensor = A3;        // light sensor, analog (0-1023) values  
@@ -122,7 +120,7 @@ void setup() {
 
   //update user on program status
   Serial.println("");
-  if (successful_attempt = 0){
+  if (successful_attempt == 0){
     Serial.println("  Error: The Arduino couldn't send AT commands to the mDot. That's all we know.");
   }
 
@@ -279,6 +277,8 @@ void sensor_input_value() {
   
   // creating a string with the data payload, per https://www.arduino.cc/en/Tutorial/StringAdditionOperator
   // we're wrapping the data in (), [], and {} to use the REGEXEXTRACT() function in gdocs.
+  // Note that if your LoRa signal is weak, then your payload size might be limited to 11 bytes, the minimal payload.
+  // http://www.multitech.net/developer/software/lora/introduction-to-lora/
   String stringone = "clicks(";
   String stringtwo = ")sounds[";
   String stringthree = "]avg_light{";
