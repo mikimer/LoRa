@@ -27,30 +27,30 @@ LoRa is a new technology and this project is in alpha, so it could break. If you
 ## Get the hardware
 You'll need to either purchase the equipment yourself or apply for a hardware kit from the IoT studio. 
 
+### Apply for support from the IoT Studio
+The IoT Studio is [supporting the developer community](http://orangeiotstudio.com/) to encourage use of LoRa.  You can apply to borrow a hardware kit containing the bill of materials, below. If you work for a company with a compelling use case, you can also apply for funded co-development.  
+
+
+
 ### Bill of Materials (BOM)
-Basic equipment  
+####Basic equipment  
+
 Device | Count  | Price    
------- | ------ | -----     
-Arduino Uno   | 1    | $25       
-XBee shield   | 1    |   $10    
+------ | :------: | -----:     
+[Multitech mDot](http://www.digikey.com/product-search/en?mpart=MTDOT-915-X1P-SMA-1&v=591&v=881) | 1 | $57 
+[Arduino Uno](https://www.sparkfun.com/products/11021)   | 1    | $25       
+[XBee shield](http://www.robotmesh.com/xbee-shield-v2-0)    | 1    |   $10   
 	
- Semtech NorAm mote network tester  
-[XBee shield](http://www.robotmesh.com/xbee-shield-v2-0) 
+ 
 
-**LittleBits sensors** are easier to use, but more expensive.  
 
-* sdf sdaf  
+####LittleBits sensors are easier to use, but more expensive.  
 
-**Sparkfun sensors** require more work, but are more affordable. 
+ 
 
-### Get support from the IoT Studio
-The IoT Studio is [engaging with the developer community](http://orangeiotstudio.com/) to encourage use of LoRa.  You can apply to borrow a hardware kit containing the BOM. If you work for a company with a compelling use case, you can also apply for funded co-development.  
+####Sparkfun sensors require more work, but are more affordable. 
 
-https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#tables 
 
-### Apply to borrow a kit from the IoT Studio
-
-[Apply](http://orangeiotstudio.com/)
 
 
 
