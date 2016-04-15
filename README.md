@@ -1,6 +1,6 @@
 # LoRa-Arduino quickstart project
 
-_(Anna to insert cool image of sending data via LoRa here)_
+![](schema-LoRa-Arduino-1.png)
 
 # Overview
 ###This project allows you to quickly try LoRa communications. 
