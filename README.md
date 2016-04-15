@@ -29,13 +29,13 @@ You'll need to either purchase the equipment yourself or apply for a hardware ki
 
 ### Bill of Materials (BOM)
 Basic equipment  
-| Device        | Count     | Price    |   
-| ------------- |:---------:| -----|   
-| [Arduino Uno](https://www.sparkfun.com/products/11021)   | 1    | $25   |   
-| [XBee shield](http://www.robotmesh.com/xbee-shield-v2-0)   | 1    |   $10 |   
+Device | Count  | Price    
+------ | ------ | -----     
+Arduino Uno   | 1    | $25       
+XBee shield   | 1    |   $10    
 	
  Semtech NorAm mote network tester  
-
+[XBee shield](http://www.robotmesh.com/xbee-shield-v2-0) 
 
 **LittleBits sensors** are easier to use, but more expensive.  
 
