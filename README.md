@@ -1,6 +1,6 @@
 # LoRa-Arduino quickstart project
 
-![](schema-LoRa-Arduino-1.png)
+![](assets/schema-LoRa-Arduino-1.png)
 
 # Overview
 ###This project allows you to quickly try LoRa communications. 
