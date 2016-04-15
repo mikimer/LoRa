@@ -89,6 +89,7 @@ You so you can use a NorAm mote to determine whether you have coverage in your a
 If you don't have a Google account, wow ;) You'll need [Google Spreadsheets](https://docs.google.com/spreadsheets/u/0/) to view and analyze your data in this project.
 
 ### mDot firmware
+[Create button](assets/https://github.com/mikimer/LoRa/blob/master/assets/mDot_9600_baud.bin?raw=true)  
 By default, the Multitech mDot is configured to communicate with AT commands at a 115200 baud rate. However, we found that errors happened between the mDot and the Arduino, so we slowed the rate down to 9600 baud, which works much better.  
 
 ### Arduino sketch
