@@ -39,7 +39,7 @@ The IoT Studio is [supporting the developer community](http://orangeiotstudio.co
 
 
 ### Bill of Materials (BOM)
-You'll need one (1) of each item below, unless otherwise noted. The prices are estimates.
+You need the basic equipment for the project and a set of sensors, either by LittleBits or by Sparkfun.  You'll need one (1) of each item below, unless otherwise noted. The prices are estimates.  
 
 ####Basic equipment  
 
@@ -52,7 +52,9 @@ You'll need one (1) of each item below, unless otherwise noted. The prices are e
 * [Wires](https://www.adafruit.com/products/1956), $2 (you'll need 6 male-male wires)
 * [Semtech NorAm mote LoRa network tester](http://www.semtech.com/images/datasheet/NorAmMote_User_Guide_3v0.2.pdf), _??get link with price!_	
 
-####LittleBits sensors are easier to use, but more expensive.  
+####LittleBits sensors 
+LittleBits sensors are easier to use, but more expensive.  If you prefer the something more affordable use the Adafruit sensors.
+
 * [LittleBits Proto](https://littlebits.cc/bits/proto), $50 (you'll need 4 Protos at $12/piece)
 * [LittleBits Fork](https://littlebits.cc/bits/fork), $12
 * [LittleBits Sound trigger](http://littlebits.cc/bits/sound-trigger), $12
@@ -61,7 +63,8 @@ You'll need one (1) of each item below, unless otherwise noted. The prices are e
 * [LittleBits LED](http://littlebits.cc/bits/led), $8
  
 
-####Sparkfun sensors require more work, but are more affordable. 
+#### Adafruit sensors 
+Adafruit sensors require more work, but are more affordable. If you prefer something easier, use the LittleBits sensors.  
 _Mike & Anna need to try this!!_
 
 * [Breadboard](https://www.adafruit.com/products/64), $5
@@ -77,12 +80,19 @@ You'll need to create accounts with the following websites to get this project t
 
 ### Senet
 [Senet](https://app.senetco.com/senetdev/login.aspx) provides a public LoRa network in North America. They're contining to increase coverage around the United States, but there's a chance you might not have coverage at your workbench. 
-You so you can use a NorAm mote to determine whether you have coverage in your area.
+You so you can use a NorAm mote to determine whether you have coverage in your area.  
+
 ### Zapier
-[Zapier](https://zapier.com) automates the flow of data between Senet and Google Docs. 
+[Zapier](https://zapier.com) automates the flow of data between Senet and Google Docs. For this project, Zapier provides a webhook
+
 ### Google Drive
 If you don't have a Google account, wow ;) You'll need [Google Spreadsheets](https://docs.google.com/spreadsheets/u/0/) to view and analyze your data in this project.
 
+### mDot firmware
+By default, the Multitech mDot is configured to communicate with AT commands at a 115200 baud rate. However, we found that errors happened between the mDot and the Arduino, so we slowed the rate down to 9600 baud, which works much better.  
+
+### Arduino sketch
+This sketch was developed for an Arduino Uno on a MacBook to allow the Arduino to send data to the Multitech mDot using [AT commands](https://en.wikipedia.org/wiki/Hayes_command_set). 
 
 ## Verify LoRa coverage 
 [Senet](https://app.senetco.com/senetdev/login.aspx) provides a public LoRa network in North America. There's a chance you might not have coverage at your workbench, but that you do have coverage nearby. 
