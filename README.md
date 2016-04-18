@@ -92,8 +92,8 @@ You'll use [Google Spreadsheets](https://docs.google.com/spreadsheets/u/0/) to v
 By default, the Multitech mDot is configured to communicate with AT commands at a 115200 baud rate. However, we found that errors happened between the mDot and the Arduino when they tried to communitacte that fast, so here's firmware with a slower 9600 baud rate, which works much better.  
 
 ### Arduino sketch
-[ ![](assets/button_LoRa_Arduino_sketch.png) ](https://github.com/mikimer/LoRa/blob/master/assets/LoRa_Arduino_quickstart_April2016/LoRa_Arduino_quickstart_April2016.ino?raw=true)  
-This sketch was developed for an Arduino Uno on a MacBook to allow the Arduino to send data to the Multitech mDot using [AT commands](https://en.wikipedia.org/wiki/Hayes_command_set). 
+[ ![](assets/button_LoRa_Arduino_sketch.png) ](assets/LoRa_Arduino_quickstart_April2016/LoRa_Arduino_quickstart_April2016.ino?raw=true)  
+This sketch was developed for an Arduino Uno on a MacBook to allow the Arduino to send data to the Multitech mDot using [AT commands](https://en.wikipedia.org/wiki/Hayes_command_set).  You'll need the [Arduino IDE](https://www.arduino.cc/en/Main/Software) to configure your code.
 
 ## Verify LoRa coverage 
 [Senet](https://app.senetco.com/senetdev/login.aspx) provides a public LoRa network in North America. There's a chance you might not have coverage at your workbench, but that you do have coverage nearby. 
