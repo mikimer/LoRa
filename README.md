@@ -6,14 +6,14 @@
 ###This project allows you to quickly try LoRa communications. 
 **LoRa** is an exciting new technology for communicating at **Lo**ng **Ra**nge, low power, and low cost.  This project sends data from an Arduino Uno and a [Multitech mDot LoRa node](http://www.multitech.com/models/94557148LF) to the [Senet LoRa network](https://app.senetco.com/senetdev/login.aspx). Senet's JSON data payloads are converted by [Zapier](https://zapier.com) into data rows in a Google Spreadsheet. 
 
-This project was developed by the [Orange IoT Studio](http://orangeiotstudio.com/) to promote the consideration and adoption of LoRa. To that end, the IoT Studio is [supporting companies](http://orangeiotstudio.com/) interested in LoRa by lending out hardware kits and by funding co-development.  
-
 This project should take about an hour to complete, once you have the hardware.
+
+This project was developed by the [Orange IoT Studio](http://orangeiotstudio.com/) to promote the consideration and adoption of LoRa. To that end, the IoT Studio is [supporting companies](http://orangeiotstudio.com/) interested in LoRa by giving out hardware kits and by funding co-development.  
 
 ![](assets/data_com_img2.png)
 
 ### LoRa is great for IoT
-LoRa is an ideal communications technology for many internet-of-things (IoT) devices because **internet connectivity** is a key feature of IoT but also one of IoT devices' the biggest burdens.  Specifically, pairing devices with WiFi or Bluetooth is tedious; cellular connectivity is easy to implement and can transmit megabytes (MB) of data, but its often not affordable for simple IoT devices.  For simple IoT devices that only need to send kilobytes (KB) of data or less, LoRa is an ideal solution.  
+LoRa is an ideal communications technology for many internet-of-things (IoT) devices because **internet connectivity** is a key feature of IoT while also one of IoT devices' the biggest burdens.  Specifically, pairing devices with WiFi or Bluetooth is tedious; cellular connectivity is easy to implement and can transmit megabytes (MB) of data, but it's often not affordable for simple IoT devices. That's where LoRa comes in. For simple IoT devices that only need to send kilobytes (KB) of data or less, LoRa is an ideal solution.  
 
 Public LoRa networks are being deployed world wide, including by [Orange in France](http://www.orange.com/en/Press-and-medias/press-releases-2016/press-releases-2015/Orange-deploys-a-network-for-the-Internet-of-Things). This project uses the [Senet LoRa network](https://app.senetco.com/senetdev/login.aspx) in North America since it was developed by the [Orange IoT Studio](http://orangeiotstudio.com/), part of [Orange Silicon Valley](http://orangesv.com/) in San Francisco. 
 
@@ -34,8 +34,7 @@ _LoRa is a new technology and this project is in alpha, so it could break. If yo
 You'll need to either purchase the equipment yourself or apply for a hardware kit from the IoT studio. 
 
 ### Apply for support from the IoT Studio
-The IoT Studio is [supporting the developer community](http://orangeiotstudio.com/) to encourage use of LoRa.  You can apply to borrow a hardware kit containing the bill of materials, below. If you work for a company with a compelling use case, you can also apply for funded co-development.  
-
+The IoT Studio is [supporting the developer community](http://orangeiotstudio.com/) to encourage use of LoRa.  You can apply for a free hardware kit containing the bill of materials, below. If you work for a company with a compelling use case, you can also apply for funded co-development.  The IoT Studio will be showcasing prototypes that demonstrate compelling LoRa use cases.
 
 
 ### Bill of Materials (BOM)
@@ -80,19 +79,20 @@ You'll need to create accounts with the following websites to get this project t
 
 ### Senet
 [Senet](https://app.senetco.com/senetdev/login.aspx) provides a public LoRa network in North America. They're contining to increase coverage around the United States, but there's a chance you might not have coverage at your workbench. 
-You so you can use a NorAm mote to determine whether you have coverage in your area.  
+You so you can use a NorAm mote to determine whether you have coverage in your area.  In some cases, there might only be LoRa coverage in certain parts of your building. 
 
 ### Zapier
-[Zapier](https://zapier.com) automates the flow of data between Senet and Google Docs. For this project, Zapier provides a webhook
+[Zapier](https://zapier.com) automates the flow of data between Senet and Google Docs. For this project, we'll have Senet do an HTTP Post to a Zapier webhook. Zapier then puts the contents of Senet's JSON payload into a row in a Google Spreadsheet (gDocs). 
 
 ### Google Drive
-If you don't have a Google account, wow ;) You'll need [Google Spreadsheets](https://docs.google.com/spreadsheets/u/0/) to view and analyze your data in this project.
+You'll use [Google Spreadsheets](https://docs.google.com/spreadsheets/u/0/) to view and analyze your data in this project.
 
 ### mDot firmware
-[Create button](assets/https://github.com/mikimer/LoRa/blob/master/assets/mDot_9600_baud.bin?raw=true)  
-By default, the Multitech mDot is configured to communicate with AT commands at a 115200 baud rate. However, we found that errors happened between the mDot and the Arduino, so we slowed the rate down to 9600 baud, which works much better.  
+[ ![](assets/button_mDot_firmware.png) ](assets/https://github.com/mikimer/LoRa/blob/master/assets/mDot_9600_baud.bin?raw=true)  
+By default, the Multitech mDot is configured to communicate with AT commands at a 115200 baud rate. However, we found that errors happened between the mDot and the Arduino when they tried to communitacte that fast, so here's firmware with a slower 9600 baud rate, which works much better.  
 
 ### Arduino sketch
+[ ![](assets/button_LoRa_Arduino_sketch.png) ](https://github.com/mikimer/LoRa/blob/master/assets/LoRa_Arduino_quickstart_April2016/LoRa_Arduino_quickstart_April2016.ino?raw=true)  
 This sketch was developed for an Arduino Uno on a MacBook to allow the Arduino to send data to the Multitech mDot using [AT commands](https://en.wikipedia.org/wiki/Hayes_command_set). 
 
 ## Verify LoRa coverage 
