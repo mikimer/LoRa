@@ -1,6 +1,6 @@
 # LoRa-Arduino quickstart project
 
-![](assets/schema-LoRa-Arduino-1.png)
+![](assets/intro_img.png)
 
 # Overview
 ###This project allows you to quickly try LoRa communications. 
@@ -10,7 +10,7 @@ This project was developed by the [Orange IoT Studio](http://orangeiotstudio.com
 
 This project should take about an hour to complete, once you have the hardware.
 
-![](assets/Kit_schema-02.png)
+![](assets/data_com_img2.png)
 
 ### LoRa is great for IoT
 LoRa is an ideal communications technology for many internet-of-things (IoT) devices because **internet connectivity** is a key feature of IoT but also one of IoT devices' the biggest burdens.  Specifically, pairing devices with WiFi or Bluetooth is tedious; cellular connectivity is easy to implement and can transmit megabytes (MB) of data, but its often not affordable for simple IoT devices.  For simple IoT devices that only need to send kilobytes (KB) of data or less, LoRa is an ideal solution.  
