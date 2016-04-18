@@ -93,12 +93,15 @@ By default, the Multitech mDot is configured to communicate with AT commands at 
 
 ### Arduino sketch
 [![](assets/button_LoRa_Arduino_sketch.png)](assets/LoRa_Arduino_quickstart_April2016.ino?raw=true)  
-This sketch was developed for an Arduino Uno on a MacBook to allow the Arduino to send data to the Multitech mDot using [AT commands](https://en.wikipedia.org/wiki/Hayes_command_set).  You'll need the [Arduino IDE](https://www.arduino.cc/en/Main/Software) to configure your code.
+ You'll need the [Arduino IDE](https://www.arduino.cc/en/Main/Software) to configure your code.  This sketch was developed for an Arduino Uno on a MacBook to allow the Arduino to send data to the Multitech mDot using [AT commands](https://en.wikipedia.org/wiki/Hayes_command_set).  If you're using a different type of computer and have trouble getting the project to work, please [let us know](http://orangeiotstudio.com/). 
 
 ## Verify LoRa coverage 
-[Senet](https://app.senetco.com/senetdev/login.aspx) provides a public LoRa network in North America. There's a chance you might not have coverage at your workbench, but that you do have coverage nearby. 
+[Senet](https://app.senetco.com/senetdev/login.aspx) provides a public LoRa network in North America. There's a chance you might not have coverage at your workbench, but that there's LoRa coverage in another part of your building or nearby. You can use Semtech's NorAm mote to determine where you have coverage.
 
-You can use a NorAm mote to determine where you have coverage.  In some cases
+![NorAm mote GPS tester by Semtech](assets/NorAm_mote.jpg)
+
+When you get your NorAm 
+  In some cases
 
 
   
