@@ -19,7 +19,7 @@ Public LoRa networks are being deployed world wide, including by [Orange in Fran
 
 ### Project overview  
 1. Get the hardware 
-2. Get the software
+2. Create your accounts
 3. Verify LoRa coverage
 4. Configure the software
 5. Assemble the hardware 
@@ -72,9 +72,7 @@ _Mike & Anna need to try this!!_
 * [Tactile Button switch ](https://www.adafruit.com/products/367), $2.5
 * [LED](https://www.adafruit.com/products/299), $4
 
-## Get the software
-
-### Create your accounts
+## Create your accounts
 You'll need to create accounts with the following websites to get this project to work.  
 
 ### Senet
@@ -88,35 +86,27 @@ You'll need to create accounts with the following websites to get this project t
 [ ![Zapier home](assets/Zapier_home.png) ](https://zapier.com/)
 
 ### Google Drive
-You'll use [Google Spreadsheets](https://docs.google.com/spreadsheets/u/0/) to view and analyze your data in this project.
-
-### mDot firmware
-[ ![](assets/button_mDot_firmware.png) ](assets/mDot_9600_baud.bin?raw=true)  
-By default, the Multitech mDot is configured to communicate with AT commands at a 115200 baud rate. However, we found that errors happened between the mDot and the Arduino when they tried to communitacte that fast, so [here's firmware](assets/mDot_9600_baud.bin?raw=true)   with a slower 9600 baud rate, which works much better.  
-
-### Arduino sketch
-[![](assets/button_LoRa_Arduino_sketch.png)](assets/LoRa_Arduino_quickstart_April2016.ino?raw=true)  
- You'll need the [Arduino IDE](https://www.arduino.cc/en/Main/Software) to configure your code.  [This sketch](assets/LoRa_Arduino_quickstart_April2016.ino?raw=true) was developed for an Arduino Uno on a MacBook to allow the Arduino to send data to the Multitech mDot using [AT commands](https://en.wikipedia.org/wiki/Hayes_command_set).  If you're using a different type of computer and have trouble getting the project to work, please [let us know](http://orangeiotstudio.com/). 
+You'll use [Google Spreadsheets](https://docs.google.com/spreadsheets/u/0/) to view and analyze your data in this project. If you don't already have a Google Drive account, wow.  ;)
 
 ## Verify LoRa coverage 
 [Senet](https://app.senetco.com/senetdev/login.aspx) provides a public LoRa network in North America and you'll need to verify where you have coverage. Specifically, there's a chance that you might not have coverage at your workbench, but that there's LoRa coverage in another part of your building or nearby. You can use [Semtech's NorAm LoRa Mote](http://www.semtech.com/images/datasheet/NorAmMote_User_Guide_3v0.2.pdf) to determine where you have coverage.  
   
-In this quickstart project, the North American (NorAm) mote receives a GPS signal and sends it to Senet as a hexadecimal string.  We convert that string into latitude and longitude to view the exact location on a map. Senet refers to the data payload as a "packet data unit" (PDU). 
-
-![NorAm mote GPS tester by Semtech](assets/NorAm_mote.jpg)
+In this quickstart project, the North American (NorAm) mote receives a GPS signal and sends it to Senet as a hexadecimal data payload.  We convert that string into latitude and longitude (lat-long) data to view the exact location on a map. Senet refers to the data payload as a "packet data unit" (PDU). 
 
 ### Example
 >Hexadecimal PDU payload from the NorAm mote: `010235C107A8F6CCFFFA14`  
->The latitude (lat) is hex encoded as: `35C107`  
->The longitude (long) is hex encoded as: `A8F6CC`  
+>The latitude is hex encoded as: `35C107`  
+>The longitude is hex encoded as: `A8F6CC`  
 >This converts to decimal lat, long: `37.79579494`, `-122.3943043` which is the [Ferry Building in San Francisco](https://www.google.com/maps/place/Ferry+Building/@37.7940467,-122.3962511,17z/data=!4m2!3m1!1s0x0000000000000000:0x6cf7a313d6a53ec7).     
-  	 
+  	   	 
+![NorAm mote GPS tester by Semtech](assets/NorAm_mote.jpg)
+
 ### Send GPS data to Senet
 Once you have the Semtech NorAm mote and a Senet account, you'll need to register the device with Senet so they know to send you its data.  To do this, you'll need to input the hexadecimal device ID (e.g., `00:25:0C:01:00:00:12:34`) and create a nickname for the device (e.g., `Boutargue`).  If you're using a NorAm mote from the IoT Studio, then it will come pre-loaded with the device ID and firmware to operate on the Senet network. If you purchased a NorAm mote, then you will need to [contact Senet](http://www.senetco.com/) to get firmware and a device ID.
 
-The NorAm mote contains a battery so begin by charging it using a micro-USB cable in the `USB1` port.  The `CHG` light is red while the mote is charging and green when fully charged.  
+The NorAm mote contains a battery so begin by charging it using a micro-USB cable in the `USB1` port.  The `CHG` light is red while the mote is charging and green when fully charged. The `USR` light blinks green while the mote is searching for GPS and is solid green when it has locked the GPS signal.  The lights for `1` `2` and `3`
 
-Next, operate the NorAm mote turning the `ON/OFF` switch to `ON`. When the mote is `ON` it (1) searches for a GPS signal to determine its location and (2) tries to send the signal to the nearest Senet gateway.  While there's no GPS signal, the mote transmits a null packet `010200000000000000001E` which translates to lat, long: `0, 0`, which is the [Gulf of Guinea](https://www.google.com/maps/place/0%C2%B000'00.0%22N+0%C2%B000'00.0%22E/@6.1567252,-4.3467511,4.41z/data=!4m2!3m1!1s0x0:0x0).  If you receive any packet, **good news!**, you've got coverage!  If you receive a packet with data, even better, you can identify where exactly you have coverage.  
+Next, operate the NorAm mote turning the `ON/OFF` switch to `ON`. When the mote is `ON` it (1) searches for a GPS signal to determine its location and (2) tries to send the signal to the nearest Senet gateway.  While there's no GPS signal, the mote transmits a null packet `010200000000000000001E` which translates to lat, long: `0, 0`, which is the [Gulf of Guinea](https://www.google.com/maps/place/0%C2%B000'00.0%22N+0%C2%B000'00.0%22E/@6.1567252,-4.3467511,4.41z/data=!4m2!3m1!1s0x0:0x0).  If you receive any null packets, **good news!**, you've got coverage.  If you receive a packet with data, even better, you can identify exactly where you have coverage.  
 
 ### Extract lat-long data
 
@@ -168,11 +158,26 @@ The file with just lat-long data should look like:
 ## Configure the software
 
 ### mDot 
+
+
+### mDot firmware
+[ ![](assets/button_mDot_firmware.png) ](assets/mDot_9600_baud.bin?raw=true)  
+By default, the Multitech mDot is configured to communicate with AT commands at a 115200 baud rate. However, we found that errors happened between the mDot and the Arduino when they tried to communitacte that fast, so [here's firmware](assets/mDot_9600_baud.bin?raw=true)   with a slower 9600 baud rate, which works much better.  
+ 
+_add image(s) of mDot w/ USB in computer_
+
+
 AT commands  
 9600 baud  
 Drag & Drop in MacBook. If Windows is different, please let us know how you loaded the mDot firmware and we'll update the instructions here. 
 
 ### Adruino Uno
+
+
+### Arduino sketch
+[![](assets/button_LoRa_Arduino_sketch.png)](assets/LoRa_Arduino_quickstart_April2016.ino?raw=true)  
+ You'll need the [Arduino IDE](https://www.arduino.cc/en/Main/Software) to configure your code.  [This sketch](assets/LoRa_Arduino_quickstart_April2016.ino?raw=true) was developed for an Arduino Uno on a MacBook to allow the Arduino to send data to the Multitech mDot using [AT commands](https://en.wikipedia.org/wiki/Hayes_command_set).  If you're using a different type of computer and have trouble getting the project to work, please [let us know](http://orangeiotstudio.com/). 
+
 You'll need the Arduino IDE. 
 
 **You must customize your Arduino code so that it works with your mDot**
