@@ -174,7 +174,14 @@ Mount the mDot on the mDot USB developer board and then plug it into the USB por
 _add image(s) of mDot w/ USB in computer_
 
 ### Register the mDot with Senet and get identifiers
-You'll need to register the mDot with Senet to get identifiers that you'll use in the Arduino sketch.  First, go to the [Senet portal](https://app.senetco.com/senetdev/main.aspx) and register your device by providing the device ID number and what you want to name it (similar to what you did with the mote previously). 
+You'll need to register the mDot with Senet to get identifiers for the Arduino sketch.  First, go to the [Senet portal](https://app.senetco.com/senetdev/main.aspx) and register your device by providing the device ID and nicknamen (similar to what you did with the NorAm mote). Next, click on the mDot name to open a webpage with the mDot's information and then follow these steps: 
+
+1. Click on the gear to open the menu.
+2. Click on `Device Edit` to reveal the `Device Setup/Edit` sub-menu.
+3. Record `mDot_name`, the nickname you gave the mDot
+4. Record `XXXX`, the last 4 digits of the ID number on the mDot
+5. Record the Senet `App Key`, which is referred to as the `Network_key` in the Arduino sketch.
+6. Record the Senet `Application` number, which is referred to as the `Network_ID` in the Arduino sketch. 
 
 ![](assets/Senet_register_mDot12.png)
 
@@ -184,7 +191,16 @@ You'll need to register the mDot with Senet to get identifiers that you'll use i
 ### Arduino sketch
 [![](assets/button_LoRa_Arduino_sketch.png)](assets/LoRa_Arduino_quickstart_April2016.ino?raw=true)  
 
-**You must customize your Arduino code so that it works with your mDot**.  You'll need the [Arduino IDE](https://www.arduino.cc/en/Main/Software) to configure [the LoRa-Arduino sketch](assets/LoRa_Arduino_quickstart_April2016.ino?raw=true).  
+**You must customize your Arduino code so that it works with your mDot**.  You'll need the [Arduino IDE](https://www.arduino.cc/en/Main/Software) to configure [the LoRa-Arduino sketch](assets/LoRa_Arduino_quickstart_April2016.ino?raw=true).  Line 27 of the sketch identifies where to modify the code: `// *** Select the current mDot **`.  The code in this section is a template for you to modify: 
+
+```Arduino
+// *** Select the current mDot **
+// Update the mDot data below to reflect the name, network key, and network identifier your mDot(s) 
+// You need to adjust the comments in the code to select the mDot you're currently using
+/* AAA with ID ending in 11:22 */     const String mDot_name = "AAA"; const String Network_key =  "11:22:33:44:55:11:22:33:44:55:11:22:33:44:11:22"; const String Network_ID = "11:22:33:44:55"; 
+/* BBB with ID ending in 33:44 */    // const String mDot_name = "BBB"; const String Network_key = "11:22:33:44:55:11:22:33:44:55:11:22:33:44:33:44"; const String Network_ID = "11:22:33:44:55"; 
+/* CCC with ID ending in 55:66 */    // const String mDot_name = "CCC"; const String Network_key = "11:22:33:44:55:11:22:33:44:55:11:22:33:44:55:66"; const String Network_ID = "11:22:33:44:55"; 
+```
 
 
 `/* AAA with ID ending in 11:22 */`     
