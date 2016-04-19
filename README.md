@@ -25,6 +25,11 @@ Public LoRa networks are being deployed world wide, including by [Orange in Fran
 5. Assemble the hardware 
 6. Test drive LoRa
 7. Build on LoRa & promote your vision
+
+### Skills you need
+
+* Basic programming experience
+* Familiarity with Arduino
  
 ### _Disclaimer_
 _LoRa is a new technology and this project is in alpha, so it could break. If you're cool trying new things that aren't 100% reliable, proceed and have fun._   
@@ -191,7 +196,7 @@ You'll need to register the mDot with Senet to get identifiers for the Arduino s
 ### Arduino sketch
 [![](assets/button_LoRa_Arduino_sketch.png)](assets/LoRa_Arduino_quickstart_April2016.ino?raw=true)  
 
-**You must customize your Arduino code so that it works with your mDot**.  You'll need the [Arduino IDE](https://www.arduino.cc/en/Main/Software) to configure [the LoRa-Arduino sketch](assets/LoRa_Arduino_quickstart_April2016.ino?raw=true).  Line 27 of the sketch identifies where to modify the code: `// *** Select the current mDot **`.  The code in this section is a template for you to modify: 
+**You must customize your Arduino code so that it works with your mDot**.  You'll need the [Arduino IDE](https://www.arduino.cc/en/Main/Software) to configure [the LoRa-Arduino sketch](assets/LoRa_Arduino_quickstart_April2016.ino?raw=true).  Line 27 of the sketch identifies where to modify the code: **`// *** Select the current mDot **`**.  The code in this section is a template for you to modify: 
 
 ```Arduino
 // *** Select the current mDot **
@@ -204,14 +209,16 @@ You'll need to register the mDot with Senet to get identifiers for the Arduino s
 
 Replace `AAA` with your mDot nickname, `11:22` with the last 4 digits of your mDot ID number, as well as the `Network_key` and `Network_ID` with your unique values from Senet.  Note that Senet provides the ID in the format `0x11,0x22,0x33,...` which you'll need to change to `11:22:33:...`.
 
-This template assumes that you have mDots (you're ambitious!) named `AAA`, `BBB` and `CCC` with ID numbers ending in `11:22`, `33:44` and `55:66`, respectively.  If you've only got one mDot, then simply delete the lines for `BBB` and `CCC`. If you've got multiple mDots, then you can update `BBB` and `CCC` accordingly. When you run the sketch, you'll need to ensure that the code is commented with `//` so that only one mDot is selected.
+This template assumes that you have three mDots (you're ambitious!) named `AAA`, `BBB` and `CCC` with ID numbers ending in `11:22`, `33:44` and `55:66`, respectively.  If you've only got one mDot, then simply delete the lines for `BBB` and `CCC`. If you've got multiple mDots, then you can update `BBB` and `CCC` with your mDot information. When you run the sketch, you'll need to ensure that the code is commented with `//` so that only one mDot is selected at a time.
 
 *show cassis and how we labeled the mDot and tied the device # to the name*
 
-These two files allow an Arduino to communicate via LoRa.  To reduce the dynamic memory of this sketch, reduce or remove the text in the Serial.print() statements.  The .ino file is for the Arduino.  The .bin file is for the Multitech mDot LoRa node. The sketch gathers sensor data to demonstrate *LoRa* by indicating activities in the kitchen: 
+We've commented the .ino file extensively so that you can understand how the code works.  In brief, in `setup()` the device sends AT commands to join the LoRa network and in `loop()` the device samples the sensors every 100ms and sends a LoRa data payload every 15 minutes.  The sketch gathers sensor data to demonstrate *LoRa* by monitoring activities: 
  1. Click. Count how many times users click a button. 
  2. Sound. Count how many times there's a loud noise.  
  3. Light. Meausre the average light level. 
+
+# Mike left off here Tue Apr 19th
 
 ## Assemble the hardware 
 Plug stuff in to match the photo
