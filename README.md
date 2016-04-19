@@ -4,7 +4,7 @@
 
 # Overview
 ###This project allows you to quickly try LoRa communications. 
-**LoRa** is an exciting new technology for communicating at **Lo**ng **Ra**nge, low power, and low cost.  This project sends data from an Arduino Uno and a [Multitech mDot LoRa node](http://www.multitech.com/models/94557148LF) to the [Senet LoRa network](https://app.senetco.com/senetdev/login.aspx). Senet's JSON data payloads are converted by [Zapier](https://zapier.com) into data rows in a Google Spreadsheet. 
+**LoRa** is an exciting new technology for communicating at **Lo**ng **Ra**nge, low power, and low cost.  This project uses an Arduino Uno and a [Multitech mDot LoRa node](http://www.multitech.com/models/94557148LF) to send data to the [Senet LoRa network](https://app.senetco.com/senetdev/login.aspx).  Senet provides the gateways to receive the LoRa signal; [Zapier](https://zapier.com) and  Google Spreadsheets provide the rest of the software. 
 
 This project should take about an hour to complete, once you have the hardware.
 
@@ -46,7 +46,7 @@ You need the basic equipment for the project and a set of sensors, either by Lit
 * [Arduino Uno](https://www.sparkfun.com/products/11021),  $25 
 * [XBee shield](http://www.robotmesh.com/xbee-shield-v2-0),  $10   
 * [Antenna for mDot](http://www.digikey.com/product-detail/en/multi-tech-systems/AN868-915A-10HRA/881-1242-ND/5246371), $10
-* [USB Type-A cable](https://www.adafruit.com/products/62), $4
+* [USB A-B cable](https://www.adafruit.com/products/62), $4
 * [mDOT USB developer board](http://www.multitech.com/brands/micro-mdot-devkit), _??get link with price!_
 * [Wires](https://www.adafruit.com/products/1956), $2 (you'll need 6 male-male wires)
 * [Semtech NorAm mote LoRa network tester](http://www.semtech.com/images/datasheet/NorAmMote_User_Guide_3v0.2.pdf), _??get link with price!_	
@@ -91,7 +91,7 @@ You'll use [Google Spreadsheets](https://docs.google.com/spreadsheets/u/0/) to v
 ## Verify LoRa coverage 
 [Senet](https://app.senetco.com/senetdev/login.aspx) provides a public LoRa network in North America and you'll need to verify where you have coverage. Specifically, there's a chance that you might not have coverage at your workbench, but that there's LoRa coverage in another part of your building or nearby. You can use [Semtech's NorAm LoRa Mote](http://www.semtech.com/images/datasheet/NorAmMote_User_Guide_3v0.2.pdf) to determine where you have coverage.  
   
-In this quickstart project, the North American (NorAm) mote receives a GPS signal and sends it to Senet as a hexadecimal data payload.  We convert that string into latitude and longitude (lat-long) data to view the exact location on a map. Senet refers to the data payload as a "packet data unit" (PDU). 
+In this quickstart project, the North American (NorAm) mote receives a GPS signal and sends its location to Senet as a hexadecimal data payload.  We convert that string into latitude and longitude (lat-long) data to view the exact location on a map. Senet refers to the data payload as a "packet data unit" (PDU). 
 
 ### Example
 >Hexadecimal PDU payload from the NorAm mote: `010235C107A8F6CCFFFA14`  
@@ -101,10 +101,17 @@ In this quickstart project, the North American (NorAm) mote receives a GPS signa
   	   	 
 ![NorAm mote GPS tester by Semtech](assets/NorAm_mote.jpg)
 
-### Send GPS data to Senet
-Once you have the Semtech NorAm mote and a Senet account, you'll need to register the device with Senet so they know to send you its data.  To do this, you'll need to input the hexadecimal device ID (e.g., `00:25:0C:01:00:00:12:34`) and create a nickname for the device (e.g., `Boutargue`).  If you're using a NorAm mote from the IoT Studio, then it will come pre-loaded with the device ID and firmware to operate on the Senet network. If you purchased a NorAm mote, then you will need to [contact Senet](http://www.senetco.com/) to get firmware and a device ID.
 
-The NorAm mote contains a battery so begin by charging it using a micro-USB cable in the `USB1` port.  The `CHG` light is red while the mote is charging and green when fully charged. The `USR` light blinks green while the mote is searching for GPS and is solid green when it has locked the GPS signal.  The lights for `1` `2` and `3`
+
+### Send GPS data to Senet
+Once you have the Semtech NorAm mote and a Senet account, you'll need to register the device with Senet so they know to send you its data.  After you're logged into your Senet account, click on `REGISTER NEW DEVICE`. Next input the hexadecimal device ID (e.g., `00:25:0C:01:00:00:12:34`) and create a nickname for the device (e.g., `Boutargue`).  If you're using a NorAm mote from the IoT Studio, then it will come pre-loaded with the device ID and firmware to operate on the Senet network. If you purchased a NorAm mote, then you will need to [contact Senet](http://www.senetco.com/) to get firmware and a device ID.
+
+![](assets/Senet_register_device.png)
+
+![](assets/Senet_new_node.png)
+
+
+The NorAm mote contains a battery so begin by charging it using a micro-USB cable in the `USB1` port.  The `CHG` light is red while the mote is charging and green when fully charged. The `USR` light blinks green while the mote is searching for GPS and is solid green when it has locked the GPS signal.  You don't need to worry about lights `1` `2` and `3` nor the `USB2` port which a port for updating the mote's firmware. 
 
 Next, operate the NorAm mote turning the `ON/OFF` switch to `ON`. When the mote is `ON` it (1) searches for a GPS signal to determine its location and (2) tries to send the signal to the nearest Senet gateway.  While there's no GPS signal, the mote transmits a null packet `010200000000000000001E` which translates to lat, long: `0, 0`, which is the [Gulf of Guinea](https://www.google.com/maps/place/0%C2%B000'00.0%22N+0%C2%B000'00.0%22E/@6.1567252,-4.3467511,4.41z/data=!4m2!3m1!1s0x0:0x0).  If you receive any null packets, **good news!**, you've got coverage.  If you receive a packet with data, even better, you can identify exactly where you have coverage.  
 
@@ -159,25 +166,31 @@ The file with just lat-long data should look like:
 
 ### mDot 
 [ ![](assets/button_mDot_firmware.png) ](assets/mDot_9600_baud.bin?raw=true)  
+
 By default, the Multitech mDot is configured to communicate with AT commands at a 115200 baud rate. However, we found that errors happened between the mDot and the Arduino when they tried to communitacte that fast, so [here's firmware](assets/mDot_9600_baud.bin?raw=true) with a slower 9600 baud rate, which works much better.  
 
 Mount the mDot on the mDot USB developer board and then plug it into the USB port on your computer.  On a MacBook it's simple to load the firmware: you drag & drop the .bin file into the mDot's disk image. _(We haven't done this on a Windows PC. If Windows is different, please let us know how you loaded the mDot firmware and we'll update the instructions here.)_ 
  
 _add image(s) of mDot w/ USB in computer_
 
+### Register the mDot with Senet and get identifiers
+You'll need to register the mDot with Senet to get identifiers that you'll use in the Arduino sketch.  First, go to the [Senet portal](https://app.senetco.com/senetdev/main.aspx) and register your device by providing the device ID number and what you want to name it (similar to what you did with the mote previously). 
 
-### Adruino Uno
+![](assets/Senet_register_mDot12.png)
+
+![](assets/Senet_register_mDot3456.png)
 
 
 ### Arduino sketch
 [![](assets/button_LoRa_Arduino_sketch.png)](assets/LoRa_Arduino_quickstart_April2016.ino?raw=true)  
- You'll need the [Arduino IDE](https://www.arduino.cc/en/Main/Software) to configure your code.  [This sketch](assets/LoRa_Arduino_quickstart_April2016.ino?raw=true) was developed for an Arduino Uno on a MacBook to allow the Arduino to send data to the Multitech mDot using [AT commands](https://en.wikipedia.org/wiki/Hayes_command_set).  If you're using a different type of computer and have trouble getting the project to work, please [let us know](http://orangeiotstudio.com/). 
 
-You'll need the Arduino IDE. 
+**You must customize your Arduino code so that it works with your mDot**.  You'll need the [Arduino IDE](https://www.arduino.cc/en/Main/Software) to configure [the LoRa-Arduino sketch](assets/LoRa_Arduino_quickstart_April2016.ino?raw=true).  
 
-**You must customize your Arduino code so that it works with your mDot**
 
-`/* AAA with ID ending in 11:22 */     const String mDot_name = "AAA"; const String Network_key =  "11:22:33:44:55:11:22:33:44:55:11:22:33:44:11:22"; const String Network_ID = "11:22:33:44:55";` 
+`/* AAA with ID ending in 11:22 */`     
+`const String mDot_name = "AAA";`   
+`const String Network_key =  "11:22:33:44:55:11:22:33:44:55:11:22:33:44:11:22";` 
+`const String Network_ID = "11:22:33:44:55";` 
 
 *show cassis and how we labeled the mDot and tied the device # to the name*
 
