@@ -81,8 +81,12 @@ You'll need to create accounts with the following websites to get this project t
 [Senet](https://app.senetco.com/senetdev/login.aspx) provides a public LoRa network in North America. They're contining to increase coverage around the United States, but there's a chance you might not have coverage at your workbench. 
 You so you can use a NorAm mote to determine whether you have coverage in your area.  In some cases, there might only be LoRa coverage in certain parts of your building. 
 
+[ ![Senet portal](assets/Senet_Development_Portal.png) ](https://app.senetco.com/senetdev/login.aspx)  
+
 ### Zapier
 [Zapier](https://zapier.com) automates the flow of data between Senet and Google Docs. For this project, we'll have Senet do an HTTP Post to a Zapier webhook. Zapier then puts the contents of Senet's JSON payload into a row in a Google Spreadsheet (gDocs). 
+
+[ ![Zapier home](assets/Zapier_home.png) ](https://zapier.com/)
 
 ### Google Drive
 You'll use [Google Spreadsheets](https://docs.google.com/spreadsheets/u/0/) to view and analyze your data in this project.
@@ -96,14 +100,26 @@ By default, the Multitech mDot is configured to communicate with AT commands at 
  You'll need the [Arduino IDE](https://www.arduino.cc/en/Main/Software) to configure your code.  This sketch was developed for an Arduino Uno on a MacBook to allow the Arduino to send data to the Multitech mDot using [AT commands](https://en.wikipedia.org/wiki/Hayes_command_set).  If you're using a different type of computer and have trouble getting the project to work, please [let us know](http://orangeiotstudio.com/). 
 
 ## Verify LoRa coverage 
-[Senet](https://app.senetco.com/senetdev/login.aspx) provides a public LoRa network in North America. There's a chance you might not have coverage at your workbench, but that there's LoRa coverage in another part of your building or nearby. You can use Semtech's NorAm mote to determine where you have coverage.
+[Senet](https://app.senetco.com/senetdev/login.aspx) provides a public LoRa network in North America. There's a chance you might not have coverage at your workbench, but that there's LoRa coverage in another part of your building or nearby. You can use [Semtech's NorAm LoRa Mote](http://www.semtech.com/images/datasheet/NorAmMote_User_Guide_3v0.2.pdf) to determine where you have coverage.  
+  
+In this quickstart project, the North American (NorAm) mote receives a GPS signal and sends it to Senet as a hexadecimal string.  We convert that string into latitude and longitude to view the exact location on a map. Senet refers to the data payload as a "packet data unit" (PDU). 
+
 
 ![NorAm mote GPS tester by Semtech](assets/NorAm_mote.jpg)
 
-When you get your NorAm 
-  In some cases
 
+### Example
+PDU payload from the NorAm mote: `010235C107A8F6CCFFFA14`  
+The latitude is hex encoded as: `35C107`  
+The longitude is hex encoded as: `A8F6CC`  
+This converts to decimal lat, long: `37.79579494`, `-122.3943043` which is the [Ferry Building in San Francisco](https://www.google.com/maps/place/Ferry+Building/@37.7940467,-122.3962511,17z/data=!4m2!3m1!1s0x0000000000000000:0x6cf7a313d6a53ec7).     
+  	  
+### Impementation
+Once you have the Semtech NorAm mote, you'll need to register the device with Senet so they know to send you its data.  To do this, you'll need to input the hexadecimal device ID (e.g., `00:25:0C:01:00:00:12:34`) and create a nickname for the device.  If you're using a NorAm mote from the IoT Studio, then it will come pre-loaded with firmware to operate on the Senet network. If you purchased a NorAm mote, then you will need to [contact Senet](http://www.senetco.com/) to get firmware.
 
+The NorAm mote contains a battery. You need to charge it using a micro-USB cable in the `USB1` port.  The `CHG` light is red while the mote is charging and green when fully charged.  
+
+To operate the NorAm mote turn the `ON/OFF` switch to `ON`. 
   
 *Anna to make graphic of NorAm mote with GPS coming in and LoRa going out .*
 
