@@ -158,18 +158,13 @@ The file with just lat-long data should look like:
 ## Configure the software
 
 ### mDot 
-
-
-### mDot firmware
 [ ![](assets/button_mDot_firmware.png) ](assets/mDot_9600_baud.bin?raw=true)  
-By default, the Multitech mDot is configured to communicate with AT commands at a 115200 baud rate. However, we found that errors happened between the mDot and the Arduino when they tried to communitacte that fast, so [here's firmware](assets/mDot_9600_baud.bin?raw=true)   with a slower 9600 baud rate, which works much better.  
+By default, the Multitech mDot is configured to communicate with AT commands at a 115200 baud rate. However, we found that errors happened between the mDot and the Arduino when they tried to communitacte that fast, so [here's firmware](assets/mDot_9600_baud.bin?raw=true) with a slower 9600 baud rate, which works much better.  
+
+Mount the mDot on the mDot USB developer board and then plug it into the USB port on your computer.  On a MacBook it's simple to load the firmware: you drag & drop the .bin file into the mDot's disk image. _(We haven't done this on a Windows PC. If Windows is different, please let us know how you loaded the mDot firmware and we'll update the instructions here.)_ 
  
 _add image(s) of mDot w/ USB in computer_
 
-
-AT commands  
-9600 baud  
-Drag & Drop in MacBook. If Windows is different, please let us know how you loaded the mDot firmware and we'll update the instructions here. 
 
 ### Adruino Uno
 
