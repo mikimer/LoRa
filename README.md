@@ -45,12 +45,13 @@ The IoT Studio is [supporting the developer community](http://orangeiotstudio.co
 ### Bill of Materials (BOM)
 You need the basic equipment for the project and a set of sensors, either by LittleBits or by Sparkfun.  You'll need one (1) of each item below, unless otherwise noted. The prices are estimates.  _Note that the XBee shield is only used as a physical interface between the mDot and the Arduino. This project does not use XBee communications._
 
+![](assets/BOM.jpg)
 
 ####Basic equipment  
 
 * [Multitech mDot](http://www.digikey.com/product-search/en?mpart=MTDOT-915-X1P-SMA-1&v=591&v=881),  $60 
 * [Arduino Uno](https://www.sparkfun.com/products/11021),  $25 
-* [XBee shield](http://www.robotmesh.com/xbee-shield-v2-0),  $10   
+* [XBee shield v2.0](http://www.robotmesh.com/xbee-shield-v2-0),  $10 (There are a few versions so be sure to get the [Seeed Studio version](http://www.seeedstudio.com/wiki/XBee_Shield_V2.0))  
 * [Antenna for mDot](http://www.digikey.com/product-detail/en/multi-tech-systems/AN868-915A-10HRA/881-1242-ND/5246371), $10
 * [USB A-B cable](https://www.adafruit.com/products/62), $4
 * [mDOT USB developer board](http://www.multitech.com/brands/micro-mdot-devkit), _??get link with price!_
@@ -151,7 +152,7 @@ By default, the Multitech mDot is configured to communicate with AT commands at 
 
 Mount the mDot on the mDot USB developer board and then plug it into the USB port on your computer.  On a MacBook it's simple to load the firmware: you drag & drop the .bin file into the mDot's disk image. _(We haven't done this on a Windows PC. If Windows is different, please let us know how you loaded the mDot firmware and we'll update the instructions here.)_ 
  
-![](assets/dev_board.png)  
+![](assets/mDot_dev_board.jpg)  
   
 ### Register the mDot with Senet and get identifiers
 You'll need to register the mDot with Senet to get identifiers for the Arduino sketch.  First, go to the [Senet portal](https://app.senetco.com/senetdev/main.aspx) and register your device by providing the device ID and nicknamen (similar to what you did with the NorAm mote). Next, click on the mDot name to open a webpage with the mDot's information and then follow these steps: 
@@ -210,22 +211,23 @@ Assemble the hardware to match the diagram and photo below:
 ![](assets/arduino_pinout_img4.png)  
   
 ![](assets/LittleBits_Sensors_LoRa.png)  
-  
-![](assets/)  
-  
-![](assets/)  
-  
-![](assets/)  
-  
-  
 
 ## Test drive LoRa
-Power up and run it!
-Let us know that it worked
+Connect the USB Type A-B cable 
+
+
+Let us know how it went via [@OrangeIoTstudio](https://twitter.com/orangeiotstudio)
 
 ## Build on LoRa, Promote your vision
 We hope that you'll use this project 
 Share your experience -- we're featuring the most interesting projects on our website.
+
+![](assets/)  
+  
+![](assets/)  
+  
+![](assets/)  
+
 
 ## Acknolwedgements
 
