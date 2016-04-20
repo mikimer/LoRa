@@ -43,7 +43,8 @@ The IoT Studio is [supporting the developer community](http://orangeiotstudio.co
 
 
 ### Bill of Materials (BOM)
-You need the basic equipment for the project and a set of sensors, either by LittleBits or by Sparkfun.  You'll need one (1) of each item below, unless otherwise noted. The prices are estimates.  
+You need the basic equipment for the project and a set of sensors, either by LittleBits or by Sparkfun.  You'll need one (1) of each item below, unless otherwise noted. The prices are estimates.  _Note that the XBee shield is only used as a physical interface between the mDot and the Arduino. This project does not use XBee communications._
+
 
 ####Basic equipment  
 
@@ -106,7 +107,7 @@ In this quickstart project, the North American (NorAm) mote receives a GPS signa
   	   	 
 ![NorAm mote GPS tester by Semtech](assets/NorAm_mote.jpg)
 
-
+![](assets/norammote_img5.png)
 
 ### Send GPS data to Senet
 Once you have the Semtech NorAm mote and a Senet account, you'll need to register the device with Senet so they know to send you its data.  After you're logged into your Senet account, click on `REGISTER NEW DEVICE`. Next input the hexadecimal device ID (e.g., `00:25:0C:01:00:00:12:34`) and create a nickname for the device (e.g., `Boutargue`).  If you're using a NorAm mote from the IoT Studio, then it will come pre-loaded with the device ID and firmware to operate on the Senet network. If you purchased a NorAm mote, then you will need to [contact Senet](http://www.senetco.com/) to get firmware and a device ID.
@@ -116,14 +117,14 @@ Once you have the Semtech NorAm mote and a Senet account, you'll need to registe
 ![](assets/Senet_new_node.png)
 
 
-The NorAm mote contains a battery so begin by charging it using a micro-USB cable in the `USB1` port.  The `CHG` light is red while the mote is charging and green when fully charged. The `USR` light blinks green while the mote is searching for GPS and is solid green when it has locked the GPS signal.  You don't need to worry about lights `1` `2` and `3` nor the `USB2` port which a port for updating the mote's firmware. 
+The NorAm mote contains a battery so begin by charging it using a micro-USB cable in the `USB1` port.  The `CHG` light is red while the mote is charging and green when fully charged. The `USR` light blinks green while the mote is searching for GPS and is solid green when it has locked the GPS signal.  You don't need to worry about lights `1` `2` and `3` nor the `USB2` port (which is covered with orange tape) -- it's a port for updating the mote's firmware. 
 
 Next, operate the NorAm mote turning the `ON/OFF` switch to `ON`. When the mote is `ON` it (1) searches for a GPS signal to determine its location and (2) tries to send the signal to the nearest Senet gateway.  While there's no GPS signal, the mote transmits a null packet `010200000000000000001E` which translates to lat, long: `0, 0`, which is the [Gulf of Guinea](https://www.google.com/maps/place/0%C2%B000'00.0%22N+0%C2%B000'00.0%22E/@6.1567252,-4.3467511,4.41z/data=!4m2!3m1!1s0x0:0x0).  If you receive any null packets, **good news!**, you've got coverage.  If you receive a packet with data, even better, you can identify exactly where you have coverage.  
 
 ### Generate a map in the Senet portal
 Once you've sent GPS data to Senet, navigate to the webpage with data for your device and follow the steps below to visualize the data in a map. _(If you prefer, we've also detailed [how to do this manually](assets/map_Senet_PDUs.md))_. 
 
-1. Click the :beer: gear to open the drop-down menu
+1. Click the gear to open the drop-down menu
 2. Click `Device Edit`
 3. Click `Implements Senet Protocol`
 4. Click `Update`
@@ -150,8 +151,8 @@ By default, the Multitech mDot is configured to communicate with AT commands at 
 
 Mount the mDot on the mDot USB developer board and then plug it into the USB port on your computer.  On a MacBook it's simple to load the firmware: you drag & drop the .bin file into the mDot's disk image. _(We haven't done this on a Windows PC. If Windows is different, please let us know how you loaded the mDot firmware and we'll update the instructions here.)_ 
  
-_add image(s) of mDot w/ USB in computer_
-
+![](assets/dev_board.png)  
+  
 ### Register the mDot with Senet and get identifiers
 You'll need to register the mDot with Senet to get identifiers for the Arduino sketch.  First, go to the [Senet portal](https://app.senetco.com/senetdev/main.aspx) and register your device by providing the device ID and nicknamen (similar to what you did with the NorAm mote). Next, click on the mDot name to open a webpage with the mDot's information and then follow these steps: 
 
@@ -162,6 +163,8 @@ You'll need to register the mDot with Senet to get identifiers for the Arduino s
 5. Record the Senet `App Key`, which is referred to as the `Network_key` in the Arduino sketch.
 6. Record the Senet `Application` number, which is referred to as the `Network_ID` in the Arduino sketch. 
 
+![](assets/Senet_select_device0.png)  
+   
 ![](assets/Senet_menu12.png)
 
 ![](assets/Senet_register_mDot3456.png)
@@ -170,7 +173,7 @@ You'll need to register the mDot with Senet to get identifiers for the Arduino s
 ### Arduino sketch
 [![](assets/button_LoRa_Arduino_sketch.png)](assets/LoRa_Arduino_quickstart_April2016.ino?raw=true)  
 
-**You must customize your Arduino code so that it works with your mDot**.  You'll need the [Arduino IDE](https://www.arduino.cc/en/Main/Software) to configure [the LoRa-Arduino sketch](assets/LoRa_Arduino_quickstart_April2016.ino?raw=true).  Line 27 of the sketch identifies where to modify the code: **`// *** Select the current mDot **`**.  The code in this section is a template for you to modify: 
+**You must customize your Arduino code so that it works with your mDot**.  You'll need the [Arduino IDE](https://www.arduino.cc/en/Main/Software) to configure [the LoRa-Arduino sketch](assets/LoRa_Arduino_quickstart_April2016.ino?raw=true).  The code starting at Line 27 is a template for you to modify: 
 
 ```Arduino
 // *** Select the current mDot **
@@ -187,15 +190,34 @@ This template assumes that you have three mDots (you're ambitious!) named `AAA`,
 
 *show cassis and how we labeled the mDot and tied the device # to the name*
 
-We've commented the .ino file extensively so that you can understand how the code works.  In brief, in `setup()` the device sends AT commands to join the LoRa network and in `loop()` the device samples the sensors every 100ms and sends a LoRa data payload every 15 minutes.  The sketch gathers sensor data to demonstrate *LoRa* by monitoring activities: 
- 1. Click. Count how many times users click a button. 
- 2. Sound. Count how many times there's a loud noise.  
- 3. Light. Meausre the average light level. 
+We've commented the .ino file extensively so that you can understand how the code works.  In brief, in `setup()` the device sends AT commands to join the LoRa network and in `loop()` the device samples the sensors every 100ms and sends a LoRa data payload every 15 minutes.  The sketch gathers sensor data to demonstrate *LoRa* by monitoring activities:  
 
-# Mike left off here Tue Apr 19th
+ 1. `Click` Count how many times users click a button.  
+ 2. `Sound` Count how many times there's a loud noise.   
+ 3. `Light` Meausre the average light level. 
 
 ## Assemble the hardware 
-Plug stuff in to match the photo
+
+Assemble the hardware to match the diagram and photo below:
+
+* To allow the mDot to mount properly, bend the two pins in the XB_TX row that are next to digital pins 11 and 12.    
+* The Arduino transmit pin (Tx) needs to connect to the mDot's receive pin (Rx), and vice versa. To do this, place the jumpers on the XBee shield to connect mDot's receive Pin 2 (XB_RX) to Arduino pin 11; also connect mDot's transmit Pin 3 (XB_TX) to Arduino pin 10. In our Arduino sketch we configure Arduino pins 10 and 11 as Tx and Rx.  
+* Mount the mDot on top of the XBee shield on top of the Arduino Uno.  
+* Use a wire to connect mDot reset pin 5 to Arduino analog pin A0.  
+* Connect the Arduino 5V and GND to the power and ground rails for the sensors.  
+* Connect the Arduino analog pins A1, A2 and a3 to the sound trigger, light sensor, and button. 
+
+![](assets/arduino_pinout_img4.png)  
+  
+![](assets/LittleBits_Sensors_LoRa.png)  
+  
+![](assets/)  
+  
+![](assets/)  
+  
+![](assets/)  
+  
+  
 
 ## Test drive LoRa
 Power up and run it!
