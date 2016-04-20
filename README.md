@@ -188,7 +188,7 @@ You'll need to register the mDot with Senet to get identifiers for the Arduino s
 5. Record the Senet `App Key`, which is referred to as the `Network_key` in the Arduino sketch.
 6. Record the Senet `Application` number, which is referred to as the `Network_ID` in the Arduino sketch. 
 
-![](assets/Senet_register_mDot12.png)
+![](assets/Senet_menu12.png)
 
 ![](assets/Senet_register_mDot3456.png)
 
