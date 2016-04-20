@@ -121,9 +121,9 @@ The NorAm mote contains a battery so begin by charging it using a micro-USB cabl
 Next, operate the NorAm mote turning the `ON/OFF` switch to `ON`. When the mote is `ON` it (1) searches for a GPS signal to determine its location and (2) tries to send the signal to the nearest Senet gateway.  While there's no GPS signal, the mote transmits a null packet `010200000000000000001E` which translates to lat, long: `0, 0`, which is the [Gulf of Guinea](https://www.google.com/maps/place/0%C2%B000'00.0%22N+0%C2%B000'00.0%22E/@6.1567252,-4.3467511,4.41z/data=!4m2!3m1!1s0x0:0x0).  If you receive any null packets, **good news!**, you've got coverage.  If you receive a packet with data, even better, you can identify exactly where you have coverage.  
 
 ### Generate a map in the Senet portal
-Once you've sent GPS data to Senet, navigate to the webpage with data for your device and follow these steps to visualize the data in a map:
+Once you've sent GPS data to Senet, navigate to the webpage with data for your device and follow the steps below to visualize the data in a map. _(If you prefer, we've also detailed [how to do this manually](assets/map_Senet_PDUs.md))_. 
 
-1. Click the gear to open the drop-down menu
+1. Click the :gear: gear to open the drop-down menu
 2. Click `Device Edit`
 3. Click `Implements Senet Protocol`
 4. Click `Update`
