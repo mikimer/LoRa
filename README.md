@@ -6,7 +6,7 @@
 ###This project allows you to quickly try LoRa communications. 
 **LoRa** is an exciting new technology for communicating at **Lo**ng **Ra**nge, low power, and low cost.  This project uses an Arduino Uno and a [Multitech mDot LoRa node](http://www.multitech.com/models/94557148LF) to send data to the [Senet LoRa network](https://app.senetco.com/senetdev/login.aspx).  Senet provides the gateways to receive the LoRa signal; [Zapier](https://zapier.com) and  Google Spreadsheets provide the rest of the software. 
 
-This project should take about an hour to complete, once you have the hardware.
+It should take **about 1 hour to complete this project**, once you have the hardware.
 
 This project was developed by the [Orange IoT Studio](http://orangeiotstudio.com/) to promote the consideration and adoption of LoRa. To that end, the IoT Studio is [supporting companies](http://orangeiotstudio.com/) interested in LoRa by giving out hardware kits and by funding co-development.  
 
@@ -81,7 +81,7 @@ _Mike & Anna need to try this!!_
 You'll need to create accounts with the following websites to get this project to work.  
 
 ### Senet
-[Senet](https://app.senetco.com/senetdev/login.aspx) provides a public LoRa network in North America. You'll need to create an account with Senet to view your data.  
+[Senet](https://app.senetco.com/senetdev/login.aspx) is continuing to expand their public LoRa network in the United States. You'll need to create an account with Senet to view and access your data.  
 
 [ ![Senet portal](assets/Senet_Development_Portal.png) ](https://app.senetco.com/senetdev/login.aspx)  
 
@@ -120,51 +120,25 @@ The NorAm mote contains a battery so begin by charging it using a micro-USB cabl
 
 Next, operate the NorAm mote turning the `ON/OFF` switch to `ON`. When the mote is `ON` it (1) searches for a GPS signal to determine its location and (2) tries to send the signal to the nearest Senet gateway.  While there's no GPS signal, the mote transmits a null packet `010200000000000000001E` which translates to lat, long: `0, 0`, which is the [Gulf of Guinea](https://www.google.com/maps/place/0%C2%B000'00.0%22N+0%C2%B000'00.0%22E/@6.1567252,-4.3467511,4.41z/data=!4m2!3m1!1s0x0:0x0).  If you receive any null packets, **good news!**, you've got coverage.  If you receive a packet with data, even better, you can identify exactly where you have coverage.  
 
-### Extract lat-long data
+### Generate a map in the Senet portal
+Once you've sent GPS data to Senet, navigate to the webpage with data for your device and follow these steps to visualize the data in a map:
 
-In the Senet portal, select your mote and click the Excel icon to download your data as a .csv file.  
+1. Click the gear to open the drop-down menu
+2. Click `Device Edit`
+3. Click `Implements Senet Protocol`
+4. Click `Update`
+5. Click `Transactions` to reveal drop-down menu
+6. Select `GPS Data`
+7. Scroll down to reveal the map
+8. Double-click on the map to zoom in to view the relevant data
 
-![download data from Senet](assets/Senet_download_data.png)
-
-
-The important part of the .csv file is **Column C**, which contains the **P**acket **D**ata **U**nit (for simplicity, this example ignores other columns of data).  Your .csv file should look like this:
-
-| `Column A` | `Column B` | `Column C` | `Column D` |
-|:---:|:---:|:---:|:---:|| **Gateway EUI** | **UTC** | **PDU** | **...** |
-|00250C00010186B0 | 4/13/16 2:56 | 010235C107A8F6CCFFFA14 | ... |
-
-Use these formulas in Microsoft Excel or Google Spreadsheets to convert the hexadecimal payload to usable lat-long data: 
-
-**Latitude**  `=(HEX2DEC(MID($C2,5,6))*90)/8388607`  
-**Longitude**  `=(HEX2DEC(MID($C2,11,6))*180)/8388608-360`  
-**Elevation** `=HEX2DEC(MID($C2,17,4))`  
-**Transmit Power** (TxPow) `=HEX2DEC(MID($C2,21,2))`  
-
-The file with formulas should look like this:
-
-| `Column C` | `Column D` | `Column E` | `Column F`  |
-|:---:|:---:|:---:|:---:|| **PDU** | **Lat** | **Long** | **...** |
-| 010235C107A8F6CCFFFA14 | 37.79579494 | -122.3943043 | ... |
-
-Last, you'll take the lat-long data and plot it on a Google map so that it's easy to interpret.  First, copy-paste the lat-long data into its own spreadsheet.  The latitude data should be in Column A and longitude data in Column B.  Next, navigate to [GPS Visualizer for Google Maps](http://www.gpsvisualizer.com/map_input?form=google) and configure settings: 
-
-1. Set "Line width" to 0
-2. Set tracks to "named with time stamps"
-3. Set labels as "permanent"
-4. Select the file with your lat-long data
-5. Click **`Draw the map`**
-6. You can click on the `view` link to get a shareable link to your map. 
-
-The file with just lat-long data should look like: 
-
-| `Column A` | `Column B` |
-|:---:|:---:| | Lat | Long |  
-| 37.79579494 | -122.3943043 | 
-| ... | ... |
-
-![](assets/GPS_Visualizer_instructions.png)
-
-![](assets/GPS_Visualizer__result.png)
+![](assets/Senet_select_device0.png)  
+   
+![](assets/Senet_menu12.png)  
+   
+![](assets/Senet_map_3456.png)  
+   
+![](assets/Senet_map_78.png)  
 
    
 ## Configure the software
