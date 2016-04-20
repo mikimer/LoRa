@@ -123,7 +123,7 @@ Next, operate the NorAm mote turning the `ON/OFF` switch to `ON`. When the mote 
 ### Generate a map in the Senet portal
 Once you've sent GPS data to Senet, navigate to the webpage with data for your device and follow the steps below to visualize the data in a map. _(If you prefer, we've also detailed [how to do this manually](assets/map_Senet_PDUs.md))_. 
 
-1. Click the :gear: gear to open the drop-down menu
+1. Click the :beer: gear to open the drop-down menu
 2. Click `Device Edit`
 3. Click `Implements Senet Protocol`
 4. Click `Update`
