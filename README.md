@@ -164,6 +164,25 @@ You'll need to register the mDot with Senet to get identifiers for the Arduino s
 
 ![](assets/Senet_register_mDot3456.png)
 
+### Send data from Senet via Zapier to a Google Spreadsheet
+The Senet data is more easily analyzed in the form of a Google Spreadsheet.  
+
+Keep the Senet webpage open while you open additional tabs for Zapier and a new gDoc spreadsheet.   
+
+![]()  
+
+![](assets/Zapier_webhook1.png)
+
+![](assets/Zapier_webhook2.png)
+
+![](assets/Zapier_webhook3.png)
+
+![](.png)  
+
+![](.png)  
+![](.png)  
+
+
 
 ### Arduino sketch
 [![](assets/button_LoRa_Arduino_sketch.png)](assets/LoRa_Arduino_quickstart_April2016.ino?raw=true)  
@@ -206,7 +225,7 @@ Assemble the hardware to match the diagram and photo below:
   
 ![](assets/LittleBits_Sensors_LoRa.png)  
 
-## Test drive LoRa
+## Test drive LoRa  -- _Anna is working on this_
 Connect the USB Type A-B cable 
 
 
