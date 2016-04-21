@@ -134,13 +134,7 @@ Once you've sent GPS data to Senet, navigate to the webpage with data for your d
 7. Scroll down to reveal the map
 8. Double-click on the map to zoom in to view the relevant data
 
-![](assets/Senet_select_device0.png)  
-   
-![](assets/Senet_menu12.png)  
-   
-![](assets/Senet_map_3456.png)  
-   
-![](assets/Senet_map_78.png)  
+![](assets/Senet_map.png)  
 
    
 ## Configure the software
