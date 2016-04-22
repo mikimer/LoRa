@@ -239,8 +239,8 @@ The hardware is assembled. You still have a few steps to go but you're getting c
    b. Open the 'Serial window'   
    c. Click on the 'upload' arrow   
 5. After a few seconds, the 'Serial window' writes:    
-   'Successfully joined the LoRa network.     
-    Arduino is beginning to read the sensors and send data...'   
+   _'Successfully joined the LoRa network.     
+    Arduino is beginning to read the sensors and send data...'_   
 6. Play with your three sensors and check if the data come through your Senet account.    
    Notice that the 'time_threshold' is set at 900. The data will be sent every 15 minutes unless you click the button 20 times in a row.   
 7. Now, you can go on the Google Drive you created and start using the data generated!
