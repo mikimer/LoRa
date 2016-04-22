@@ -230,7 +230,7 @@ Assemble the hardware to match the diagram and photo below:
 The hardware is assembled. You still have a few steps to go but you're getting close!
 
 1. Open the [Arduino code](assets/LoRa_Arduino_quickstart_April2016.ino) on the Arduino IDE   
-.._Save it in a folder using the same name:_ 'LoRa_Arduino_quickstart_April2016'  
+_Save it in a folder using the same name:_ 'LoRa_Arduino_quickstart_April2016'  
 2. In the *** Select the current mDot *** section of the Arduino code, replace:    
    a. 'Network_key' with the Senet's 'App Key'   
    b. 'Network_ID' with Senet's 'Application'   
@@ -245,7 +245,7 @@ The hardware is assembled. You still have a few steps to go but you're getting c
    _'Successfully joined the LoRa network.     
     Arduino is beginning to read the sensors and send data...'_   
 6. Play with your three sensors and check if the data comes through on your Senet account.    
-   Notice that the 'time_threshold' is set at 900. The data will be sent every 15 minutes unless you click the button 20 times in a row.   
+   _Notice that the_ 'time_threshold' _is set at 900. The data will be sent every 15 minutes unless you click the button 20 times in a row._   
 7. Now, you can go on the Google Drive you created and start using the data generated!
    
 You're all set, congratulations!   
