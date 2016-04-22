@@ -230,22 +230,22 @@ Assemble the hardware to match the diagram and photo below:
 The hardware is assembled. You still have a few steps to go but you're getting close!
 
 1. Download and open the '[Arduino code](assets/LoRa_Arduino_quickstart_April2016.ino)' in the Arduino IDE
-2. In the *** Select the current mDot *** section of the Arduino code, replace: 
-   a. 'Network_key' with the Senet's 'App Key'
-   b. 'Network_ID' with Senet's 'Application'
-3. Connect the USB Type A-B cable to your computer
-4. Upload the Arduino code
-   a. In the 'Tools' tab, select the 'Arduino/Genuino Uno' board, and the port corresponding to the one you plugged your USB cable in
-   b. Open the 'Serial window'
-   c. Click on the 'upload' arrow
-5. After a few seconds, the 'Serial window' writes: 
-   'Successfully joined the LoRa network. 
-    Arduino is beginning to read the sensors and send data...'
-
-Congratulations, you're connected to the network! You're now sending data to Senet.
-
-6. Play with your three sensors and check if the data come through your Senet account. 
-   Notice that the 'time_threshold' is set at 900. The data will be sent every 15 minutes unless you click the button 20 times in a row.
+2. In the *** Select the current mDot *** section of the Arduino code, replace:    
+   a. 'Network_key' with the Senet's 'App Key'   
+   b. 'Network_ID' with Senet's 'Application'   
+3. Connect the USB Type A-B cable to your computer   
+4. Upload the Arduino code   
+   a. In the 'Tools' tab, select the 'Arduino/Genuino Uno' board, and the port corresponding to the one you plugged your USB cable in   
+   b. Open the 'Serial window'   
+   c. Click on the 'upload' arrow   
+5. After a few seconds, the 'Serial window' writes:    
+   'Successfully joined the LoRa network.     
+    Arduino is beginning to read the sensors and send data...'   
+   
+Congratulations, you're connected to the network! You're now sending data to Senet.   
+   
+6. Play with your three sensors and check if the data come through your Senet account.    
+   Notice that the 'time_threshold' is set at 900. The data will be sent every 15 minutes unless you click the button 20 times in a row.   
 7. Now, you can go on the Google Drive you created and start using the data generated!
 
 ![](assets/test_drive.png)  
