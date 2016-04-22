@@ -229,7 +229,7 @@ Assemble the hardware to match the diagram and photo below:
 
 The hardware is assembled. You still have a few steps to go but you're getting close!
 
-1. Download and open the '[Arduino code](assets/LoRa_Arduino_quickstart_April2016.ino)' in the Arduino IDE
+1. Download and open the [Arduino code](assets/LoRa_Arduino_quickstart_April2016.ino) in the Arduino IDE
 2. In the *** Select the current mDot *** section of the Arduino code, replace:    
    a. 'Network_key' with the Senet's 'App Key'   
    b. 'Network_ID' with Senet's 'Application'   
