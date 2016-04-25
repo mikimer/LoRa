@@ -131,7 +131,7 @@ Now that you have the Semtech NorAm mote and a Senet account, you'll need to reg
 
 ![](assets/Senet_new_node.png)
 
-Next, operate the NorAm mote turning the `ON/OFF` switch to `ON`. When the mote is `ON` it (1) searches for a GPS signal to determine its location and (2) tries to send the signal to the nearest Senet gateway.  While there's no GPS signal, the mote transmits a null packet `010200000000000000001E` which translates to lat, long: `0, 0`, which is the [Gulf of Guinea](https://www.google.com/maps/place/0%C2%B000'00.0%22N+0%C2%B000'00.0%22E/@6.1567252,-4.3467511,4.41z/data=!4m2!3m1!1s0x0:0x0).  If you receive any null packets, **good news!**, you've got coverage.  If you receive a packet with data, even better, you can identify exactly where you have coverage.  
+Charge the battery on the mote by connecting power `USB1` to power.  Next, operate the NorAm mote turning the `ON/OFF` switch to `ON`. When the mote is `ON` it (1) searches for a GPS signal to determine its location and (2) tries to send the signal to the nearest Senet gateway.  While there's no GPS signal, the mote transmits a null packet `010200000000000000001E` which translates to lat, long: `0, 0`, which is the [Gulf of Guinea](https://www.google.com/maps/place/0%C2%B000'00.0%22N+0%C2%B000'00.0%22E/@6.1567252,-4.3467511,4.41z/data=!4m2!3m1!1s0x0:0x0).  If you receive any null packets, **good news!**, you've got coverage.  If you receive a packet with data, even better, you can identify exactly where you have coverage.  
 
 ### Generate a map in the Senet portal
 Once you've sent GPS data to Senet, navigate to the webpage with data for your device and follow the steps below to visualize the data in a map. _(If you prefer, we've also detailed [how to do this manually](assets/map_Senet_PDUs.md))_. 
@@ -153,14 +153,14 @@ Once you've sent GPS data to Senet, navigate to the webpage with data for your d
 ### mDot 
 [ ![](assets/button_mDot_firmware.png) ](assets/mDot_9600_baud.bin?raw=true)  
 
-By default, the Multitech mDot is configured to communicate with AT commands at a 115200 baud rate. However, we found that errors happened between the mDot and the Arduino when they tried to communitacte that fast, so [here's firmware](assets/mDot_9600_baud.bin?raw=true) with a slower 9600 baud rate, which works much better.  
+By default, the Multitech mDot is configured to communicate with AT commands at a 115200 baud rate. However, we found that errors happened between the mDot and the Arduino when they tried to communitacte that fast, so [here's firmware](assets/mDot_9600_baud.bin?raw=true) (a .bin file) with a slower 9600 baud rate, which works much better.  
 
 Mount the mDot on the mDot USB developer board and then plug it into the USB port on your computer.  On a MacBook it's simple to load the firmware: you drag & drop the .bin file into the mDot's disk image. _(We haven't done this on a Windows PC. If Windows is different, please let us know how you loaded the mDot firmware and we'll update the instructions here.)_ 
  
 ![](assets/mDot_dev_board.jpg)  
   
 ### Register the mDot with Senet and get identifiers
-You'll need to register the mDot with Senet to get identifiers for the Arduino sketch.  First, go to the [Senet portal](https://app.senetco.com/senetdev/main.aspx) and register your device by providing the device ID and nicknamen (similar to what you did with the NorAm mote). Next, click on the mDot name to open a webpage with the mDot's information and then follow these steps: 
+You'll need to register the mDot with Senet to get identifiers for the Arduino sketch.  First, go to the [Senet portal](https://app.senetco.com/senetdev/main.aspx) and register your device by providing the device ID and nickname (similar to what you did with the NorAm mote). Next, click on the mDot name to open a webpage with the mDot's information and then follow these steps: 
 
 1. Click on the gear to open the menu.
 2. Click on `Device Edit` to reveal the `Device Setup/Edit` sub-menu.
@@ -176,23 +176,49 @@ You'll need to register the mDot with Senet to get identifiers for the Arduino s
 ![](assets/Senet_register_mDot3456.png)
 
 ### Send data from Senet via Zapier to a Google Spreadsheet
-The Senet data is more easily analyzed in the form of a Google Spreadsheet.  
+The Senet data comes in JSON format and is more easily analyzed in the form of a Google Spreadsheet. Zapier receives the JSON payloads from Senet and copies them as rows in a Google Sheet.  Are you build this data flow, keep the Senet webpage open while you open additional tabs for Zapier and a new gDoc spreadsheet.   
 
-Keep the Senet webpage open while you open additional tabs for Zapier and a new gDoc spreadsheet.   
+Create a new Google Sheet and copy paste the column headers you'll need:  
+`Date/Time`, 	`PDU`, 	`Time PT`, 	`Mins past midnight`, 	`Click`, 	`Sound`, 	`Light`, 	`decoded PDU in ASCII`, 	`0`, 	`2`, 
+_These column headers are formatted so that you can easily copy-paste them into gDocs without manipulation._
 
-![]()  
+![](assets/gDocs_new_sheet.png)  
 
-![](assets/Zapier_webhook1.png)
+![](assets/gDocs_fill_in_sheet.png)  
 
-![](assets/Zapier_webhook2.png)
+![](assets/gDocs_column_headers.png)  
 
-![](assets/Zapier_webhook3.png)
+Now that your gDoc Sheet is ready, you can prepare your zap. 
 
-![](.png)  
+1. In Zapier, click `Make a Zap`. 
+2. In the trigger search bar, type `webhook` and select `Webhooks by Zapier`. 
+3. Select `Catch Hook`.
+4. In `Pick off a child key (optional)` just click `Continue` to skip this step.
+5. Click `Copy to clipboard` to copy the the Zapier webhook URL.
 
-![](.png)  
-![](.png)  
+You've created the Zapier webhook that will receive the JSON payload from Senet.  Switch from the Zapier tab to the Senet tab -- continue to keep both tabs open. In the Senet portal:
 
+1. Navigate to the `Device Setup/Edit` window for your mDot.
+2. Open the `Forward To` drop-down menu and select `HTTPS Post`.
+3. Paste the webhook URL from Zapier.
+4. Click `Update`.
+
+Senet will now send a copy of the mDot's payload to Zapier, including the PDU.  Switch back from the Senet tab to the Zapier tab.  
+
+
+![](assets/Zapier_make_a_zap.png)  
+
+![](assets/Zapier_webhook1.png)  
+
+![](assets/Zapier_webhook2.png)  
+
+![](assets/Zapier_webhook3.png)  
+
+![](assets/Zapier_webhook4.png)  
+
+![](assets/Zapier_Senet_webhook.png)  
+
+![](assets/.png)  
 
 
 ### Arduino sketch
