@@ -175,50 +175,8 @@ You'll need to register the mDot with Senet to get identifiers for the Arduino s
 
 ![](assets/Senet_register_mDot3456.png)
 
-### Send data from Senet via Zapier to a Google Spreadsheet
-The Senet data comes in JSON format and is more easily analyzed in the form of a Google Spreadsheet. Zapier receives the JSON payloads from Senet and copies them as rows in a Google Sheet.  Are you build this data flow, keep the Senet webpage open while you open additional tabs for Zapier and a new gDoc spreadsheet.   
-
-Create a new Google Sheet and copy paste the column headers you'll need:  
-`Date/Time`, 	`PDU`, 	`Time PT`, 	`Mins past midnight`, 	`Click`, 	`Sound`, 	`Light`, 	`decoded PDU in ASCII`, 	`0`, 	`2`, 
-_These column headers are formatted so that you can easily copy-paste them into gDocs without manipulation._
-
-![](assets/gDocs_new_sheet.png)  
-
-![](assets/gDocs_fill_in_sheet.png)  
-
-![](assets/gDocs_column_headers.png)  
-
-Now that your gDoc Sheet is ready, you can prepare your zap. 
-
-1. In Zapier, click `Make a Zap`. 
-2. In the trigger search bar, type `webhook` and select `Webhooks by Zapier`. 
-3. Select `Catch Hook`.
-4. In `Pick off a child key (optional)` just click `Continue` to skip this step.
-5. Click `Copy to clipboard` to copy the the Zapier webhook URL.
-
-You've created the Zapier webhook that will receive the JSON payload from Senet.  Switch from the Zapier tab to the Senet tab -- continue to keep both tabs open. In the Senet portal:
-
-1. Navigate to the `Device Setup/Edit` window for your mDot.
-2. Open the `Forward To` drop-down menu and select `HTTPS Post`.
-3. Paste the webhook URL from Zapier.
-4. Click `Update`.
-
-Senet will now send a copy of the mDot's payload to Zapier, including the PDU.  Switch back from the Senet tab to the Zapier tab.  
 
 
-![](assets/Zapier_make_a_zap.png)  
-
-![](assets/Zapier_webhook1.png)  
-
-![](assets/Zapier_webhook2.png)  
-
-![](assets/Zapier_webhook3.png)  
-
-![](assets/Zapier_webhook4.png)  
-
-![](assets/Zapier_Senet_webhook.png)  
-
-![](assets/.png)  
 
 
 ### Arduino sketch
@@ -290,6 +248,63 @@ You're all set, congratulations!
 ![](assets/test_drive.png)  
 
 Let us know how it went via [@OrangeIoTstudio](https://twitter.com/orangeiotstudio)
+
+
+
+
+
+
+
+
+
+### Send data from Senet via Zapier to a Google Spreadsheet
+The Senet data comes in JSON format and is more easily analyzed in the form of a Google Spreadsheet. Zapier receives the JSON payloads from Senet and copies them as rows in a Google Sheet.  Are you build this data flow, keep the Senet webpage open while you open additional tabs for Zapier and a new gDoc spreadsheet.   
+
+Create a new Google Sheet and copy paste the column headers you'll need:  
+`Date/Time`, 	`PDU`, 	`Time PT`, 	`Mins past midnight`, 	`Click`, 	`Sound`, 	`Light`, 	`decoded PDU in ASCII`, 	`0`, 	`2`, 
+_These column headers are formatted so that you can easily copy-paste them into gDocs without manipulation._
+
+![](assets/gDocs_new_sheet.png)  
+
+![](assets/gDocs_fill_in_sheet.png)  
+
+![](assets/gDocs_column_headers.png)  
+
+Now that your gDoc Sheet is ready, you can prepare your zap. 
+
+1. In Zapier, click `Make a Zap`. 
+2. In the trigger search bar, type `webhook` and select `Webhooks by Zapier`. 
+3. Select `Catch Hook`.
+4. In `Pick off a child key (optional)` just click `Continue` to skip this step.
+5. Click `Copy to clipboard` to copy the the Zapier webhook URL.
+
+ 
+
+![](assets/Zapier_make_a_zap.png)  
+
+![](assets/Zapier_webhook1.png)  
+
+![](assets/Zapier_webhook2.png)  
+
+![](assets/Zapier_webhook3.png)  
+
+![](assets/Zapier_webhook4.png)  
+
+You've created the Zapier webhook that will receive the JSON payload from Senet.  Switch from the Zapier tab to the Senet tab -- continue to keep both tabs open. In the Senet portal:
+
+1. Navigate to the `Device Setup/Edit` window for your mDot.
+2. Open the `Forward To` drop-down menu and select `HTTPS Post`.
+3. Paste the webhook URL from Zapier.
+4. Click `Update`.
+
+Senet will now send a copy of the mDot's payload to Zapier, including the PDU.  Switch back from the Senet tab to the Zapier tab. 
+
+![](assets/Zapier_Senet_webhook.png)  
+
+![](assets/.png)  
+
+
+
 
 ## Build on LoRa, Promote your vision
 We hope that you'll use this project 
