@@ -225,17 +225,18 @@ Assemble the hardware to match the diagram and photo below:
 
 The hardware is assembled. You still have a few steps to go but you're getting close!
 
-1. Open your Arduino code that you customized with your unique `Network_ID` and `Network_key`.
-2. Use the USB Type A-B cable to connect the Arduino to your computer.   
-3. Upload the code from your IDE to the Arduino.   
+1. Open the Arduino code. 
+2. If you haven't already, ensure that you customize the code with your unique `Network_ID` and `Network_key`.
+3. Use the USB Type A-B cable to connect the Arduino to your computer.   
+4. Upload the code from your IDE to the Arduino.   
    a. In the 'Tools' tab, select the 'Arduino/Genuino Uno' board, and the port corresponding to your USB cable _(/dev/cu.usbmodem1411 for Mac)_     
    b. Open the `Serial Monitor` window in the IDE.    
    c. Select 9600 baud as a baude rate     
    d. Click on the `upload` arrow    
    e. Wait until it is 'Done uploading.'     
-4. You can monitor the Arduino in the Serial Monitor window -- things are good when you see `Successfully joined the LoRa network.     
+5. You can monitor the Arduino in the Serial Monitor window -- things are good when you see `Successfully joined the LoRa network.     
     Arduino is beginning to read the sensors and send data...`   
-5. Play with your three sensors and check if the data comes through on your Senet account.    
+6. Play with your three sensors and check if the data comes through on your Senet account.    
    _Notice that the_ 'time_threshold' _is set at 900. The data will be sent every 15 minutes unless you click the button 10 times in a row._   
    
 You're sending data via LoRa, congratulations!   
