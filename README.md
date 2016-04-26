@@ -338,8 +338,9 @@ Column G - **Light**
 Column H - **decoded PDU in ASCII**
 `=CONCATENATE(I3:BA3)`
 
-Columns I to AN  - **decoded PDU bytes** 
-_Each column analyzes one byte of the PDU string. We're using the [ASCII table](http://www.asciitable.com/) in order to translate the PDU (numerical representation) into characters (readable data). _
+Columns I to AN  - **decoded PDU bytes**    
+_Each column analyzes one byte of the PDU string. We're using the [ASCII table](http://www.asciitable.com/) in order to translate the PDU (numerical representation) into characters (readable data)._   
+
 I `=if(I$2<len($B3), char(hex2dec(left(REPLACE($B3,1,I$2,""),2))), " ")`  
 
 J `=if(J$2<len($B3), char(hex2dec(left(REPLACE($B3,1,J$2,""),2))), " ")`  
