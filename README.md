@@ -240,6 +240,13 @@ The hardware is assembled. You still have a few steps to go but you're getting c
    _Notice that the `time_threshold` is set at 900. The data will be sent every 15 minutes unless you click the button 10 times in a row._   
    
 You're sending data via LoRa, congratulations!   
+
+### Debugging tips
+If you're having trouble getting this project to work, here are some steps you can take:
+
+* If your Arduino-mDot device isn't sending data to the Senet LoRa network, validate that you have coverage by plugging in the Semtech NorAm mote.  If you don't receive data from the mote, then you probably won't be able to receive data from the mDot either.  You'll need to find a new location (which could be a few miles away) where you get coverage.
+* 
+
    
 ![](assets/test_drive.png)  
 
