@@ -203,7 +203,13 @@ We've commented the .ino file extensively so that you can understand how the cod
 
  1. `Click` Count how many times users click a button.  
  2. `Sound` Count how many times there's a loud noise.   
- 3. `Light` Meausre the average light level. 
+ 3. `Light` Meausre the average light level.  
+
+A few high-level points about the Arduino sketch:
+
+* The Arduino sketch only tries to join the LoRa network in the beginning of the program, not continuously -- it issues the AT+JOIN command in setup(), not in loop().
+* If you change the code, there is a huge difference between the print() and println() commands. The Arduino issues a carriage return (`Enter`) after a println(), but not after a print().   
+
 
 ## Assemble the hardware 
 
@@ -244,7 +250,7 @@ You're sending data via LoRa, congratulations!
 ### Debugging tips
 If you're having trouble getting this project to work, here are some steps you can take:
 
-* If your Arduino-mDot device isn't sending data to the Senet LoRa network, validate that you have coverage by plugging in the Semtech NorAm mote.  If you don't receive data from the mote, then you probably won't be able to receive data from the mDot either.  You'll need to find a new location (which could be a few miles away) where you get coverage.
+* If your Arduino-mDot device isn't sending data to the Senet LoRa network, validate that you have coverage by plugging in the Semtech NorAm mote.  If you don't receive data from the mote, then you probably won't be able to receive data from the mDot either.  You'll need to find a new location (which could be as close as the nearest window or as far as miles away) where you get coverage.
 * 
 
    
