@@ -195,7 +195,7 @@ You'll need to register the mDot with Senet to get identifiers for the Arduino s
 
 Replace `AAA` with your mDot nickname, `11:22` with the last 4 digits of your mDot ID number, as well as the `Network_key` and `Network_ID` with your unique values from Senet.  Note that Senet provides the ID in the format `0x11,0x22,0x33,...` which you'll need to change to `11:22:33:...`.
 
-This template assumes that you have three mDots (you're ambitious!) named `AAA`, `BBB` and `CCC` with ID numbers ending in `11:22`, `33:44` and `55:66`, respectively.  If you've only got one mDot, then simply delete the lines for `BBB` and `CCC`. If you've got multiple mDots, then you can update `BBB` and `CCC` with your mDot information. When you run the sketch, you'll need to ensure that the code is commented with `//` so that only one mDot is selected at a time.
+This template assumes that you have three mDots (you're ambitious!) named `AAA`, `BBB` and `CCC` with ID numbers ending in `11:22`, `33:44` and `55:66`, respectively.  If you've only got one mDot, then simply delete the lines for `BBB` and `CCC`. If you've got multiple mDots, then you can update `BBB` and `CCC` with your mDot information. When you run the sketch, you'll need to ensure that the code is commented with `//` so that only one mDot is selected at a time.  Be sure to save your customized file. 
 
 *show cassis and how we labeled the mDot and tied the device # to the name*
 
@@ -210,11 +210,12 @@ We've commented the .ino file extensively so that you can understand how the cod
 Assemble the hardware to match the diagram and photo below:
 
 * To allow the mDot to mount properly, bend the two pins in the XB_TX row that are next to digital pins 11 and 12.    
-* The Arduino transmit pin (Tx) needs to connect to the mDot's receive pin (Rx), and vice versa. To do this, place the jumpers on the XBee shield to connect mDot's receive Pin 2 (XB_RX) to Arduino pin 11; also connect mDot's transmit Pin 3 (XB_TX) to Arduino pin 10. In our Arduino sketch we configure Arduino pins 10 and 11 as Tx and Rx.  
-* Mount the mDot on top of the XBee shield on top of the Arduino Uno.  
+* The Arduino transmit pin (Tx) needs to connect to the mDot's receive pin (Rx), and vice versa. To do this, place the jumpers on the XBee shield to connect mDot's receive Pin 2 (XB_RX) to Arduino pin 11. 
+* Connect the mDot's transmit Pin 3 (XB_TX) to Arduino pin 10. In our Arduino sketch we configure Arduino pins 10 and 11 as Tx and Rx; if you change the pins defined in `SoftwareSerial` in the Arduino sketch, you'll need to change the hardware accordingly.  
+* Mount the mDot on top of the XBee shield. Then mount the XBee shield on top of the Arduino Uno.  
 * Use a wire to connect mDot reset pin 5 to Arduino analog pin A0.  
-* Connect the Arduino 5V and GND to the power and ground rails for the sensors.  
-* Connect the Arduino analog pins A1, A2 and a3 to the sound trigger, light sensor, and button. 
+* Connect the Arduino 5V and GND to the power and ground rails (pins) on the sensors.   
+* Connect the Arduino analog pins A1, A2 and A3 to the sound trigger, light sensor, and button, respectively. 
 
 ![](assets/arduino_pinout_img4.png)  
   
@@ -224,37 +225,22 @@ Assemble the hardware to match the diagram and photo below:
 
 The hardware is assembled. You still have a few steps to go but you're getting close!
 
-1. Open the [Arduino code](assets/LoRa_Arduino_quickstart_April2016.ino) on the Arduino IDE   
-_Save it in a folder using the same name:_ 'LoRa_Arduino_quickstart_April2016'  
-2. In the *** Select the current mDot *** section of the Arduino code, replace:    
-   a. 'Network_key' with the Senet's 'App Key'   
-   b. 'Network_ID' with Senet's 'Application'   
-3. Connect the USB Type A-B cable to your computer   
-4. Upload the Arduino code   
-   a. In the 'Tools' tab, select the 'Arduino/Genuino Uno' board, and the port corresponding to the one you plugged your USB cable in (/dev/cu.usbmodem1411 for Mac)     
-   b. Open the 'Serial window'   
+1. Open your Arduino code that you customized with your unique `Network_ID` and `Network_key`.
+2. Use the USB Type A-B cable to connect the Arduino to your computer.   
+3. Upload the code from your IDE to the Arduino.   
+   a. In the 'Tools' tab, select the 'Arduino/Genuino Uno' board, and the port corresponding to your USB cable _(/dev/cu.usbmodem1411 for Mac)_     
+   b. Open the `Serial Monitor` window in the IDE.    
    c. Select 9600 baud as a baude rate     
-   d. Click on the 'upload' arrow    
+   d. Click on the `upload` arrow    
    e. Wait until it is 'Done uploading.'     
-5. After a few seconds, the 'Serial window' writes:    
-   _'Successfully joined the LoRa network.     
-    Arduino is beginning to read the sensors and send data...'_   
-6. Play with your three sensors and check if the data comes through on your Senet account.    
-   _Notice that the_ 'time_threshold' _is set at 900. The data will be sent every 15 minutes unless you click the button 20 times in a row._   
-7. Now, you can go on the Google Drive you created and start using the data generated!
+4. You can monitor the Arduino in the Serial Monitor window -- things are good when you see `Successfully joined the LoRa network.     
+    Arduino is beginning to read the sensors and send data...`   
+5. Play with your three sensors and check if the data comes through on your Senet account.    
+   _Notice that the_ 'time_threshold' _is set at 900. The data will be sent every 15 minutes unless you click the button 10 times in a row._   
    
-You're all set, congratulations!   
+You're sending data via LoRa, congratulations!   
    
 ![](assets/test_drive.png)  
-
-Let us know how it went via [@OrangeIoTstudio](https://twitter.com/orangeiotstudio)
-
-
-
-
-
-
-
 
 
 ### Send data from Senet via Zapier to a Google Spreadsheet
@@ -303,6 +289,8 @@ Senet will now send a copy of the mDot's payload to Zapier, including the PDU.  
 
 ![](assets/.png)  
 
+
+Let us know how it went via [@OrangeIoTstudio](https://twitter.com/orangeiotstudio)
 
 
 
