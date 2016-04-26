@@ -320,22 +320,22 @@ In Zapier, click `Ok, I did this` and Zapier will look for JSON payloads from Se
 
 Switch from Zapier to the Google Sheet tab to see the results of the integration. Zapier is now automatically posting data into Column A, `Date/Time` and Column B, `PDU`.  We'll now add formulas to the Sheet to decode the PDU:   
 
-Column C - **Time PT**  
+Column C - **Time PT**    
 `=CONCATENATE( mod(left(right($A3,8),2)+17,24),":", right(left(right($A3,8),5),2))`
 
-Column D - **Mins past midnight**
+Column D - **Mins past midnight**   
 `=60*mod(left(right($A3,8),2)+16,24)+ right(left(right($A3,8),5),2)`
 
-Column E - **Click**
+Column E - **Click**   
 `=REGEXEXTRACT(H3,"\(([0-9]+)\)")`
 
-Column F - **Sound**
+Column F - **Sound**   
 `=REGEXEXTRACT(H3,"\[([0-9]+)\]")`
 
-Column G - **Light**
+Column G - **Light**   
 `=REGEXEXTRACT(H3,"\{([0-9]+)\}")/10`
 
-Column H - **decoded PDU in ASCII**
+Column H - **decoded PDU in ASCII**   
 `=CONCATENATE(I3:BA3)`
 
 Columns I to AN  - **decoded PDU bytes**    
