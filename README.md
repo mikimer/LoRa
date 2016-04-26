@@ -74,7 +74,7 @@ Adafruit sensors require more work, but are more affordable. If you prefer somet
 _Mike & Anna need to try this!!_
 
 * [Breadboard](https://www.adafruit.com/products/64), $5
-* [Sound trigger](??), _??get link with price!_ 
+* [Sound trigger - Microphone Amplifier](https://www.adafruit.com/product/1063), $6.95 
 * [Light sensor - Photo transistor](https://www.adafruit.com/products/2831), $0.95
 * [Tactile Button switch ](https://www.adafruit.com/products/367), $2.5
 * [LED](https://www.adafruit.com/products/299), $4
