@@ -250,8 +250,8 @@ You're sending data via LoRa, congratulations!
 ### Debugging tips
 If you're having trouble getting this project to work, here are some steps you can take:
 
+* If your Adruino-mDot device keeps joining and then failing to join the network, you're at the edge of your coverage. Move to another spot (probably closer to outdoors) where you can get consistent coverage.   
 * If your Arduino-mDot device isn't sending data to the Senet LoRa network, validate that you have coverage by plugging in the Semtech NorAm mote.  If you don't receive data from the mote, then you probably won't be able to receive data from the mDot either.  You'll need to find a new location (which could be as close as the nearest window or as far as miles away) where you get coverage.
-* 
 
    
 ![](assets/test_drive1.png)    
