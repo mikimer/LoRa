@@ -254,7 +254,17 @@ If you're having trouble getting this project to work, here are some steps you c
 * 
 
    
-![](assets/test_drive.png)  
+![](assets/test_drive1.png)    
+
+![](assets/test_drive2.png)   
+
+![](assets/test_drive3.png)   
+
+![](assets/test_drive4.png)   
+
+![](assets/test_drive5.png)   
+
+![](assets/test_drive6.png)  
 
 ### Send data from Senet via Zapier to a Google Spreadsheet
 Once you're sending data to Senet, the final step is to get the data into a Google Sheet for easy analysis.  We'll now connect Senet, Zapier, and gDocs so that Senet sends a JSON payload to Zapier; then Zapier copies the payload into a column in a Google Sheet. In your browser, you'll need to keep tabs open to all three websites.
