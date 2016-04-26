@@ -350,9 +350,12 @@ K `=if(K$2<len($B3), char(hex2dec(left(REPLACE($B3,1,K$2,""),2))), " ")`
 ...    
 
 AN `=if(AN$2<len($B3), char(hex2dec(left(REPLACE($B3,1,AN$2,""),2))), " ")`   
-  
-    
-    
+   
+   
+   
+   
+   
+   
 before: ()[https://docs.google.com/spreadsheets/d/1kXAukup2GtXPQxM8ynN2tTLIhVC6fSjEJaebg6I6U4A/edit#gid=0]
 
 after: https://docs.google.com/spreadsheets/d/1Z60H2-Of9G4kpgzMc_OFMDdRLO3Lvn2EDL5Tu5e7Syo/edit#gid=0 
