@@ -248,7 +248,8 @@ Once you're sending data to Senet, the final step is to get the data into a Goog
 
 
 Create a new Google Sheet and name it something like `LoRa Arduino Awesome Sheet`. Copy these column headers and paste them into the Sheet:  
-`Date/Time`, 	`PDU`, 	`Time PT`, 	`Mins past midnight`, 	`Click`, 	`Sound`, 	`Light`, 	`decoded PDU in ASCII`, 	`0`, 	`2`, 
+`Date/Time`, 	`PDU`, 	`Time PT`, 	`Mins past midnight`, 	`Click`, 	`Sound`, 	`Light`, 	`decoded PDU in ASCII`, 	`0`, 	`2`   
+
 _These column headers are formatted so that you can easily copy-paste them into gDocs without manipulation._ 
 
 ![](assets/gDocs_new_sheet.png)  
@@ -319,6 +320,21 @@ In Zapier, click `Ok, I did this` and Zapier will look for JSON payloads from Se
 
 Switch from Zapier to the Google Sheet tab to see the results of the integration. Zapier is now automatically posting data into Column A, `Date/Time` and Column B, `PDU`.  We'll now add formulas to the Sheet to decode the PDU. 
 
+`=CONCATENATE( mod(left(right($A3,8),2)+17,24),":", right(left(right($A3,8),5),2))`
+
+[sdf.com](sdf.com)
+
+`tick mark`
+`tick` 
+
+```ruby 
+fomula = (); 
+```
+
+
+before: ()[https://docs.google.com/spreadsheets/d/1kXAukup2GtXPQxM8ynN2tTLIhVC6fSjEJaebg6I6U4A/edit#gid=0]
+
+after: https://docs.google.com/spreadsheets/d/1Z60H2-Of9G4kpgzMc_OFMDdRLO3Lvn2EDL5Tu5e7Syo/edit#gid=0 
 
 ![](assets/gDocs_formulas0.png)  
 
