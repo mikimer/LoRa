@@ -221,7 +221,7 @@ Assemble the hardware to match the diagram and photo below:
   
 ![](assets/LittleBits_Sensors_LoRa.png)  
 
-## Test drive LoRa  -- _Anna is working on this_
+## Test drive LoRa   
 
 The hardware is assembled. You still have a few steps to go but you're getting close!
 
@@ -237,19 +237,19 @@ The hardware is assembled. You still have a few steps to go but you're getting c
 5. You can monitor the Arduino in the Serial Monitor window -- things are good when you see `Successfully joined the LoRa network.     
     Arduino is beginning to read the sensors and send data...`   
 6. Play with your three sensors and check if the data comes through on your Senet account.    
-   _Notice that the_ 'time_threshold' _is set at 900. The data will be sent every 15 minutes unless you click the button 10 times in a row._   
+   _Notice that the `time_threshold` is set at 900. The data will be sent every 15 minutes unless you click the button 10 times in a row._   
    
 You're sending data via LoRa, congratulations!   
    
 ![](assets/test_drive.png)  
 
-
 ### Send data from Senet via Zapier to a Google Spreadsheet
-The Senet data comes in JSON format and is more easily analyzed in the form of a Google Spreadsheet. Zapier receives the JSON payloads from Senet and copies them as rows in a Google Sheet.  Are you build this data flow, keep the Senet webpage open while you open additional tabs for Zapier and a new gDoc spreadsheet.   
+Once you're sending data to Senet, the final step is to get the data into a Google Sheet for easy analysis.  We'll now connect Senet, Zapier, and gDocs so that Senet sends a JSON payload to Zapier; then Zapier copies the payload into a column in a Google Sheet. In your browser, you'll need to keep tabs open to all three websites.
 
-Create a new Google Sheet and copy paste the column headers you'll need:  
+
+Create a new Google Sheet and name it something like `LoRa Arduino Awesome Sheet`. Copy these column headers and paste them into the Sheet:  
 `Date/Time`, 	`PDU`, 	`Time PT`, 	`Mins past midnight`, 	`Click`, 	`Sound`, 	`Light`, 	`decoded PDU in ASCII`, 	`0`, 	`2`, 
-_These column headers are formatted so that you can easily copy-paste them into gDocs without manipulation._
+_These column headers are formatted so that you can easily copy-paste them into gDocs without manipulation._ 
 
 ![](assets/gDocs_new_sheet.png)  
 
@@ -257,15 +257,13 @@ _These column headers are formatted so that you can easily copy-paste them into 
 
 ![](assets/gDocs_column_headers.png)  
 
-Now that your gDoc Sheet is ready, you can prepare your zap. 
+Now that your gDoc Sheet is ready, you can prepare your zap. We start with the `Trigger`.
 
 1. In Zapier, click `Make a Zap`. 
 2. In the trigger search bar, type `webhook` and select `Webhooks by Zapier`. 
 3. Select `Catch Hook`.
 4. In `Pick off a child key (optional)` just click `Continue` to skip this step.
 5. Click `Copy to clipboard` to copy the the Zapier webhook URL.
-
- 
 
 ![](assets/Zapier_make_a_zap.png)  
 
@@ -284,11 +282,52 @@ You've created the Zapier webhook that will receive the JSON payload from Senet.
 3. Paste the webhook URL from Zapier.
 4. Click `Update`.
 
-Senet will now send a copy of the mDot's payload to Zapier, including the PDU.  Switch back from the Senet tab to the Zapier tab. 
+Senet will now send a copy of the mDot's payload to Zapier, including the PDU. **Make sure that your Arduino is sending data so that Senet delivers data to Zapier.**  Switch from the Senet tab back to the Zapier tab. 
 
 ![](assets/Zapier_Senet_webhook.png)  
 
+![](assets/Zapier_webhook_OK.png)  
+
+In Zapier, click `Ok, I did this` and Zapier will look for JSON payloads from Senet.  Now we'll configure the zap's `Action` in Google Sheets:  
+
+1. Select `Google Sheets` as your Action App.
+2. Click `Create a Row`, then `Save + Continue`.
+3. Grant permission for Zapier to interact with your Google Sheets account, then `Save + Continue`. 
+4. Connect the Google Sheet columns to the parts of the JSON payload coming into the webhook:
+  a. Select your `Sheet`.
+  b. Select your `Worksheet`.
+  c. Connect the Google Sheet column `datetime` to the in-coming webhook payload `Txtime`.
+  d. Connect the Google Sheet column `pdu` to the in-coming webhook payload `Pdu`.
+  e. Click `Continue`. 
+5. Click `Create & Continue`. 
+6. Click `Finish`.  
+7. Finally, turn your zap `ON`! 
+
+![](assets/Zapier_sheets1.png)  
+
+![](assets/Zapier_sheets2.png)  
+
+![](assets/Zapier_sheets3.png)  
+
+![](assets/Zapier_sheets4.png)  
+
+![](assets/Zapier_sheets5.png)  
+
+![](assets/Zapier_sheets6.png)  
+
+![](assets/Zapier_sheets7.png)  
+
+Switch from Zapier to the Google Sheet tab to see the results of the integration. Zapier is now automatically posting data into Column A, `Date/Time` and Column B, `PDU`.  We'll now add formulas to the Sheet to decode the PDU. 
+
+
+![](assets/gDocs_formulas0.png)  
+
 ![](assets/.png)  
+
+![](assets/.png)  
+
+![](assets/.png)  
+
 
 
 Let us know how it went via [@OrangeIoTstudio](https://twitter.com/orangeiotstudio)
