@@ -318,18 +318,33 @@ In Zapier, click `Ok, I did this` and Zapier will look for JSON payloads from Se
 
 ![](assets/Zapier_sheets7.png)  
 
-Switch from Zapier to the Google Sheet tab to see the results of the integration. Zapier is now automatically posting data into Column A, `Date/Time` and Column B, `PDU`.  We'll now add formulas to the Sheet to decode the PDU. 
+Switch from Zapier to the Google Sheet tab to see the results of the integration. Zapier is now automatically posting data into Column A, `Date/Time` and Column B, `PDU`.  We'll now add formulas to the Sheet to decode the PDU:   
 
+Column C - **Time PT**  
 `=CONCATENATE( mod(left(right($A3,8),2)+17,24),":", right(left(right($A3,8),5),2))`
 
-[sdf.com](sdf.com)
+Column D - **Mins past midnight**
+`=60*mod(left(right($A3,8),2)+16,24)+ right(left(right($A3,8),5),2)`
 
-`tick mark`
-`tick` 
+Column E - **Click**
+`=REGEXEXTRACT(H3,"\(([0-9]+)\)")`
 
-```ruby 
-fomula = (); 
-```
+Column F - **Sound**
+`=REGEXEXTRACT(H3,"\[([0-9]+)\]")`
+
+Column G - **Light**
+`=REGEXEXTRACT(H3,"\{([0-9]+)\}")/10`
+
+Column H - **decoded PDU in ASCII**
+`=CONCATENATE(I3:BA3)`
+
+Columns I to AN  - **decoded PDU bytes** 
+_Each column analyzes one byte of the PDU string. We're using the [ASCII table](http://www.asciitable.com/) in order to translate the PDU (numerical representation) into characters (readable data). _
+I `=if(I$2<len($B3), char(hex2dec(left(REPLACE($B3,1,I$2,""),2))), " ")`  
+J `=if(J$2<len($B3), char(hex2dec(left(REPLACE($B3,1,J$2,""),2))), " ")`
+K `=if(K$2<len($B3), char(hex2dec(left(REPLACE($B3,1,K$2,""),2))), " ")`
+...   
+AN `=if(AN$2<len($B3), char(hex2dec(left(REPLACE($B3,1,AN$2,""),2))), " ")`
 
 
 before: ()[https://docs.google.com/spreadsheets/d/1kXAukup2GtXPQxM8ynN2tTLIhVC6fSjEJaebg6I6U4A/edit#gid=0]
