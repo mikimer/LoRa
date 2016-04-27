@@ -155,7 +155,17 @@ Once you've sent GPS data to Senet, navigate to the webpage with data for your d
 
 By default, the Multitech mDot is configured to communicate with AT commands at a 115200 baud rate. However, we found that errors happened between the mDot and the Arduino when they tried to communitacte that fast, so [here's firmware](assets/mDot_9600_baud.bin?raw=true) (a .bin file) with a slower 9600 baud rate, which works much better.  
 
-Mount the mDot on the mDot USB developer board and then plug it into the USB port on your computer.  On a MacBook it's simple to load the firmware: you drag & drop the .bin file into the mDot's disk image. _(We haven't done this on a Windows PC. If Windows is different, please let us know how you loaded the mDot firmware and we'll update the instructions here.)_ 
+Mount the mDot on the mDot USB developer board and then plug it into the USB port on your computer.  Validate that 
+in terminal: 
+`cd /dev`
+`ls`
+`screen /dev/tty.usbmodem 115200` 
+
+
+On a MacBook it's simple to load the firmware: you drag & drop the .bin file into the mDot's disk image. _(We haven't done this on a Windows PC. If Windows is different, please let us know how you loaded the mDot firmware and we'll update the instructions here.)_ 
+
+Validate that the 
+`screen /dev/tty.usbmodem 9600` 
  
 ![](assets/mDot_dev_board.jpg)  
   
