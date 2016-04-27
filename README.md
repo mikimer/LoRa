@@ -217,7 +217,17 @@ Assemble the hardware to match the diagram and photo below:
 
 ![](assets/arduino_pinout_img4.png)  
   
-![](assets/LittleBits_Sensors_LoRa.png)  
+![](assets/LittleBits_Sensors_LoRa.png)    
+    
+ **In case you chose the Adafruit sensors**   
+ 
+ ![](assets/adafruit_img1.png)  
+ 
+ ![](assets/adafruit_img2.png)   
+ 
+ ![](assets/adafruit_img3.png)  
+ 
+ ![](assets/adafruit_img4.png)
 
 ## Test drive LoRa   
 
