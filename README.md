@@ -176,9 +176,6 @@ You'll need to register the mDot with Senet to get identifiers for the Arduino s
 ![](assets/Senet_register_mDot3456.png)
 
 
-
-
-
 ### Arduino sketch
 [![](assets/button_LoRa_Arduino_sketch.png)](assets/LoRa_Arduino_quickstart_April2016.ino?raw=true)  
 
@@ -204,11 +201,6 @@ We've commented the .ino file extensively so that you can understand how the cod
  1. `Click` Count how many times users click a button.  
  2. `Sound` Count how many times there's a loud noise.   
  3. `Light` Meausre the average light level.  
-
-A few high-level points about the Arduino sketch:
-
-* The Arduino sketch only tries to join the LoRa network in the beginning of the program, not continuously -- it issues the AT+JOIN command in setup(), not in loop().
-* If you change the code, there is a huge difference between the print() and println() commands. The Arduino issues a carriage return (`Enter`) after a println(), but not after a print().   
 
 
 ## Assemble the hardware 
@@ -387,10 +379,6 @@ after: https://docs.google.com/spreadsheets/d/1Z60H2-Of9G4kpgzMc_OFMDdRLO3Lvn2ED
 
 ![](assets/.png)  
 
-![](assets/.png)  
-
-![](assets/.png)  
-
 
 
 Let us know how it went via [@OrangeIoTstudio](https://twitter.com/orangeiotstudio)
@@ -401,16 +389,11 @@ Let us know how it went via [@OrangeIoTstudio](https://twitter.com/orangeiotstud
 We hope that you'll use this project 
 Share your experience -- we're featuring the most interesting projects on our website.
 
-![](assets/)  
-  
-![](assets/)  
-  
-![](assets/)  
 
 
 ## Acknolwedgements
 
-Mike Vladimer & Anna Aflalo developed this project at the [Orange IoT Studio](http://orangeiotstudio.com), part of [Orange Silicon Valley](http://www.orangesv.com/). We welcome feedback -- you can contact us via twitter: [@orangeiotstudio](https://twitter.com/orangeiotstudio), 
+[Mike Vladimer](https://twitter.com/mikevladimer) & [Anna Aflalo](https://twitter.com/anna_aflalo) developed this project at the [Orange IoT Studio](http://orangeiotstudio.com), part of [Orange Silicon Valley](http://www.orangesv.com/). We welcome feedback -- you can contact us via twitter: [@orangeiotstudio](https://twitter.com/orangeiotstudio), 
  [@mikevladimer](https://twitter.com/mikevladimer) & [@anna_aflalo](https://twitter.com/anna_aflalo).  
 **Thanks to** Dave Kjendal & Shaun Nelson @ Senet, Joe Knapp @ Semtech. 
  
