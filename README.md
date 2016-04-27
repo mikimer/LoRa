@@ -386,8 +386,10 @@ Let us know how it went via [@OrangeIoTstudio](https://twitter.com/orangeiotstud
 
 
 ## Build on LoRa, Promote your vision
-We hope that you'll use this project 
+We hope that this project will be a foundation that you can build off of -- if you're trying to do that [here are resources](assets.build_off_quickstart.md) to help you.
+
 Share your experience -- we're featuring the most interesting projects on our website.
+
 
 
 
