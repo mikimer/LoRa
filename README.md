@@ -364,36 +364,36 @@ In Zapier, click `Ok, I did this` and Zapier will look for JSON payloads from Se
 Switch from the Zapier tab to the Google Sheet tab to see the results of the integration. Zapier is now automatically posting data into Column A, `Date/Time` and Column B, `PDU`.  We'll now add formulas to **Row 3** of the Sheet to decode the PDU:   
 
 Column C - **Time PT**    
-`=CONCATENATE( mod(left(right($A3,8),2)+17,24),":", right(left(right($A3,8),5),2))`
+`=CONCATENATE( mod(left(right($A3,8),2)+17,24),":", right(left(right($A3,8),5),2))`  
 *The `17` in this formula corresponds to Pacific Time (PT) in San Francisco. You can adjust this value for your timezone -- for instance, `20` corresponds to Eastern Time (ET) in New York City.*
 
 Column D - **Mins past midnight**   
-`=60*mod(left(right($A3,8),2)+17,24)+ right(left(right($A3,8),5),2)`
+`=60*mod(left(right($A3,8),2)+17,24)+ right(left(right($A3,8),5),2)`  
 _We use this metric to more easily visualize data when we graph it._  
 
 Column E - **Click**   
-`=REGEXEXTRACT(H3,"\(([0-9]+)\)")`
+`=REGEXEXTRACT(H3,"\(([0-9]+)\)")`  
 _This is a count of how many times users clicked the button._
 
 Column F - **Sound**   
-`=REGEXEXTRACT(H3,"\[([0-9]+)\]")`
+`=REGEXEXTRACT(H3,"\[([0-9]+)\]")`  
 _This is a count of how many loud noises (impulses) happened._
 
 Column G - **Light**   
-`=REGEXEXTRACT(H3,"\{([0-9]+)\}")/10`
+`=REGEXEXTRACT(H3,"\{([0-9]+)\}")/10`  
 _This is the average light level. The Arduino measures this for just 1 second every 15 minutes._
 
-Column H - **decoded PDU in ASCII**   
-`=CONCATENATE(I3:BA3)`
+Column H - **decoded PDU in ASCII**     
+`=CONCATENATE(I3:BA3)`  
 
-Column I - **decoded first PDU byte**  
-`=if(I$1<len($B3), char(hex2dec(left(REPLACE($B3,1,I$1,""),2))), " ")`  
+Column I - **decoded first PDU byte**    
+`=if(I$1<len($B3), char(hex2dec(left(REPLACE($B3,1,I$1,""),2))), " ")`    
 *This formula converts the first PDU byte to ASCII text.*
 
 Column J - **decoded second PDU byte** 
 `=if(J$1<len($B3), char(hex2dec(left(REPLACE($B3,1,J$1,""),2))), " ")`  
 
-Columns K to AN  - **decoded PDU bytes**    
+Columns K to AN  - **decoded PDU bytes**      
 Each column analyzes one byte of the PDU string. We're using the [ASCII table](http://www.asciitable.com/) in order to translate the PDU (numerical representation) into characters (readable data).  These formulas rely on numbers in **Row 1** incrementing by 2: 0, 2, 4, 6...  
 
 * In cell `J1`, change the value `2`  to be the formula `=i1+2`.  

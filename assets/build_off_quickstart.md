@@ -11,7 +11,7 @@ Here are tips, tricks, and other resources:
 
 * Here are Google Script functions that we used to copy/paste formulas 
 
-```java 
+```javascript 
 // function to add formulas to decode the JSON payload 
 function copy_paste_formulas(){
 
