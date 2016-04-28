@@ -267,11 +267,11 @@ The hardware is assembled. You still have a few steps to go but you're getting c
    
 You're sending data via LoRa, congratulations!   
 
-### Debugging tips
+### Connectivity debugging tips
 If you're having trouble getting this project to work, here are some steps you can take:
 
-* If your Adruino-mDot device keeps joining and then failing to join the network, you're at the edge of your coverage. Move to another spot (probably closer to outdoors) where you can get consistent coverage.   
-* If your Arduino-mDot device isn't sending data to the Senet LoRa network, validate that you have coverage by plugging in the Semtech NorAm mote.  If you don't receive data from the mote, then you probably won't be able to receive data from the mDot either.  You'll need to find a new location (which could be as close as the nearest window or as far as miles away) where you get coverage.
+* If your mDot keeps joining and then failing to join the network, you're at the edge of your coverage. Move to another spot (probably closer to outdoors) where you can get consistent coverage.   
+* If your mDot isn't sending data to the Senet LoRa network, validate that you have coverage by plugging in the Semtech NorAm mote.  If you don't receive data from the mote, then you probably won't be able to receive data from the mDot either.  You'll need to find a new location (which could be as close as the nearest window or as far as miles away) where you get coverage.
 
    
 ![](assets/test_drive1.png)    
@@ -361,7 +361,7 @@ In Zapier, click `Ok, I did this` and Zapier will look for JSON payloads from Se
 
 ![](assets/Zapier_sheets7.png)  
 
-Switch from Zapier to the Google Sheet tab to see the results of the integration. Zapier is now automatically posting data into Column A, `Date/Time` and Column B, `PDU`.  We'll now add formulas to the Sheet to decode the PDU:   
+Switch from the Zapier tab to the Google Sheet tab to see the results of the integration. Zapier is now automatically posting data into Column A, `Date/Time` and Column B, `PDU`.  We'll now add formulas to **Row 3** of the Sheet to decode the PDU:   
 
 Column C - **Time PT**    
 `=CONCATENATE( mod(left(right($A3,8),2)+17,24),":", right(left(right($A3,8),5),2))`
@@ -381,35 +381,22 @@ Column G - **Light**
 Column H - **decoded PDU in ASCII**   
 `=CONCATENATE(I3:BA3)`
 
-Columns I to AN  - **decoded PDU bytes**    
-_Each column analyzes one byte of the PDU string. We're using the [ASCII table](http://www.asciitable.com/) in order to translate the PDU (numerical representation) into characters (readable data)._   
+Column I - **decoded first PDU byte**  `=if(I$2<len($B3), char(hex2dec(left(REPLACE($B3,1,I$1,""),2))), " ")`  
 
-I `=if(I$2<len($B3), char(hex2dec(left(REPLACE($B3,1,I$2,""),2))), " ")`  
+Column J - **decoded second PDU byte** `=if(J$2<len($B3), char(hex2dec(left(REPLACE($B3,1,J$1,""),2))), " ")`  
 
-J `=if(J$2<len($B3), char(hex2dec(left(REPLACE($B3,1,J$2,""),2))), " ")`  
+Columns K to AN  - **decoded PDU bytes**    
+Each column analyzes one byte of the PDU string. We're using the [ASCII table](http://www.asciitable.com/) in order to translate the PDU (numerical representation) into characters (readable data).  These formulas rely on numbers in **Row 1** incrementing by 2: 0, 2, 4, 6...  
 
-K `=if(K$2<len($B3), char(hex2dec(left(REPLACE($B3,1,K$2,""),2))), " ")`  
-
-...    
-
-AN `=if(AN$2<len($B3), char(hex2dec(left(REPLACE($B3,1,AN$2,""),2))), " ")`   
+* In cell `J1`, change the value `2`  to be the formula `=i1+2`.  
+* Copy-paste that formula out from cell `J1` to `AN1`.
+* Now in **Row 3** copy-paste the formula from cell `J3` to `AN3`. 
    
    
-   
-   
-   
-   
-before: ()[https://docs.google.com/spreadsheets/d/1kXAukup2GtXPQxM8ynN2tTLIhVC6fSjEJaebg6I6U4A/edit#gid=0]
-
-after: https://docs.google.com/spreadsheets/d/1Z60H2-Of9G4kpgzMc_OFMDdRLO3Lvn2EDL5Tu5e7Syo/edit#gid=0 
-
 ![](assets/gDocs_formulas0.png)  
 
-![](assets/.png)  
 
-
-
-Let us know how it went via [@OrangeIoTstudio](https://twitter.com/orangeiotstudio)
+**Let us know how it went via [@OrangeIoTstudio](https://twitter.com/orangeiotstudio)!**
 
 
 
