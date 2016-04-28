@@ -14,7 +14,7 @@ This project was developed by the [Orange IoT Studio](http://orangeiotstudio.com
 
 [ ![](assets/video_explanation1.png)](https://www.youtube.com/watch?v=j-q5CqtO7FA)  
 
-[ ![](assets/video_explanation2.png)]()  
+[ ![](assets/video_explanation2.png)](https://www.youtube.com/watch?v=5WJ3lGqsFJQ)  
 
 [ ![](assets/video_explanation3.png)](https://www.youtube.com/watch?v=8MTVphgoIsc)  
 
