@@ -342,7 +342,7 @@ You've created the Zapier webhook that will receive the JSON payload from Senet.
 
 ![](assets/Zapier_Senet_webhook.png)  
 
-**Confirm that you're sending data to Senet, then switch to Zapier**
+**Confirm that you're sending data to Senet, then switch to Zapier**   
 Senet will now send a copy of the mDot's payload to Zapier, including the PDU. **Make sure that your Arduino is sending data so that Senet delivers data to Zapier.**  To do this, click the sensor button 10 times and then wait 15 seconds -- you should see a new data payload arrive in the Senet portal. (*The Arduino sketch automatically sends data every 15 minutes or if a user clicks the button 10 times -- this is the external button on port A3, not the reset button on the Arduino board itself.*)   
   
 
