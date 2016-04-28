@@ -6,7 +6,7 @@
 ###This project allows you to quickly try LoRa communications. 
 **LoRa** is an exciting new technology for communicating at **Lo**ng **Ra**nge, low power, and low cost.  This project uses an Arduino Uno and a [Multitech mDot LoRa node](http://www.multitech.com/models/94557148LF) to send data to the [Senet LoRa network](https://app.senetco.com/senetdev/login.aspx).  Senet provides the gateways to receive the LoRa signal; [Zapier](https://zapier.com) and  Google Spreadsheets provide the rest of the software. 
 
-It should take **about 1 hour to complete this project**, once you have the hardware. 
+It should take **about 1 hour to complete this project**, once you have the hardware. We've included lots of photos and screenshots to explain the project visually; the text provides additional details. 
 
 This project was developed by the [Orange IoT Studio](http://orangeiotstudio.com/) to promote the adoption of LoRa. To that end, the IoT Studio is [supporting companies](http://orangeiotstudio.com/) interested in LoRa by donating hardware kits and by funding co-development.  
 
@@ -155,19 +155,25 @@ Once you've sent GPS data to Senet, navigate to the webpage with data for your d
 
 By default, the Multitech mDot is configured to communicate with AT commands at a 115200 baud rate. However, we found that errors happened between the mDot and the Arduino when they tried to communitacte that fast, so [here's firmware](assets/mDot_9600_baud.bin?raw=true) (a .bin file) with a slower 9600 baud rate, which works much better.  
 
-Mount the mDot on the mDot USB developer board and then plug it into the USB port on your computer.  Validate that 
-in terminal: 
-`cd /dev`
-`ls`
-`screen /dev/tty.usbmodem 115200` 
-
-
 On a MacBook it's simple to load the firmware: you drag & drop the .bin file into the mDot's disk image. _(We haven't done this on a Windows PC. If Windows is different, please let us know how you loaded the mDot firmware and we'll update the instructions here.)_ 
 
-Validate that the 
-`screen /dev/tty.usbmodem 9600` 
+After the firmware loads, you'll get an error message that you disconnected the USB dev board -- don't worry, that's normal. 
+**Anna to add real error message**
+
+Now you'll want to validate that the firmware loaded correctly.  Unplug and replug the USB dev board from your laptop (keep the mDot attached to the dev board). Open a terminal (we like [iTerm2](https://www.iterm2.com/)) and type the following commands to begin communicating with the mDot via the dev board: 
+
+*  `cd /dev` to navigate to the folder with the dev board.
+*  `ls` to list all of the contents of the folder. Look for a something that looks like *`tty.usbmodem1234`*. If you have more than one of these, you'll need to guess-and-check to determine which one is the dev board. 
+*  _`screen tty.usbmodem1234 9600`_ to begin communicating with your board with the `screen` command. Again, you'll need to customize `tty.usbmodem1234` to have the numbers of your particular board.  The `9600` indicates that you're using a 9600 baud rate. 
+*  A new screen will open, indicating that you're communicating with the board. Now type `"AT"` to confirm that the board uses AT commands.  
+*  The board should respond with `OK`.  If it does, you're all set -- just eject the board and continue with the project.  If the board doesn't reply with `OK` then you'll need to retry installing the mDot firware.  
  
 ![](assets/mDot_dev_board.jpg)  
+
+**Add screenshots of how to communicate with the board**
+![](assets/)  
+![](assets/)  
+
   
 ### Register the mDot with Senet and get identifiers
 You'll need to register the mDot with Senet to get identifiers for the Arduino sketch.  First, go to the [Senet portal](https://app.senetco.com/senetdev/main.aspx) and register your device by providing the device ID and nickname (similar to what you did with the NorAm mote). Next, click on the mDot name to open a webpage with the mDot's information and then follow these steps: 
