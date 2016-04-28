@@ -311,7 +311,7 @@ _These column headers are formatted so that you can easily copy-paste them into 
 
 ![](assets/gDocs_column_headers.png)  
 
-**Switch from gDocs to Zapier**
+**Switch from gDocs to Zapier**  
 Now that your gDoc Sheet is ready, you can prepare your zap. We start with the `Trigger`.
 
 1. In Zapier, click `Make a Zap`. 
@@ -331,7 +331,7 @@ Now that your gDoc Sheet is ready, you can prepare your zap. We start with the `
 
 ![](assets/Zapier_webhook4.png)  
 
-**Switch from Zapier to Senet**
+**Switch from Zapier to Senet**  
 You've created the Zapier webhook that will receive the JSON payload from Senet.  Switch from the Zapier tab to the Senet tab -- continue to keep both tabs open. In the Senet portal:
 
 1. Navigate to the `Device Setup/Edit` window for your mDot.
@@ -339,11 +339,11 @@ You've created the Zapier webhook that will receive the JSON payload from Senet.
 3. Paste the webhook URL from Zapier.
 4. Click `Update`.
 
-Senet will now send a copy of the mDot's payload to Zapier, including the PDU. **Make sure that your Arduino is sending data so that Senet delivers data to Zapier.**  Switch from the Senet tab back to the Zapier tab. 
 
 ![](assets/Zapier_Senet_webhook.png)  
 
-![](assets/Zapier_webhook_OK.png)  
+**Send data to Senet, then switch to Zapier**
+Senet will now send a copy of the mDot's payload to Zapier, including the PDU. **Make sure that your Arduino is sending data so that Senet delivers data to Zapier.**  Zapier must recieve at least one JSON payload at the webhook in order to know what to expect for key-value pairs.  Switch back to the Zapier tab. 
 
 In Zapier, click `Ok, I did this` and Zapier will look for JSON payloads from Senet.  Now we'll configure the zap's `Action` in Google Sheets:  
 
@@ -360,6 +360,8 @@ In Zapier, click `Ok, I did this` and Zapier will look for JSON payloads from Se
 6. Click `Finish`.  
 7. Finally, turn your zap `ON`! 
 
+![](assets/Zapier_webhook_OK.png)  
+
 ![](assets/Zapier_sheets1.png)  
 
 ![](assets/Zapier_sheets2.png)  
@@ -374,6 +376,7 @@ In Zapier, click `Ok, I did this` and Zapier will look for JSON payloads from Se
 
 ![](assets/Zapier_sheets7.png)  
 
+**Switch from Zapier to gDocs**  
 Switch from the Zapier tab to the Google Sheet tab to see the results of the integration. Zapier is now automatically posting data into Column A, `Date/Time` and Column B, `PDU`.  We'll now add formulas to **Row 3** of the Sheet to decode the PDU:   
 
 Column C - **Time PT**    
