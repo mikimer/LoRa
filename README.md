@@ -299,6 +299,7 @@ If you're having trouble getting this project to work, here are some steps you c
 Once you're sending data to Senet, the final step is to get the data into a Google Sheet for easy analysis.  We'll now connect **Senet, Zapier, and gDocs** so that Senet sends a JSON payload to Zapier; then Zapier copies the payload into a column in a Google Sheet. In your browser, you'll need to **keep tabs open to all three websites**.
 
 
+**Start by making a Google Sheet**  
 Create a new Google Sheet and name it something like `LoRa Arduino Awesome Sheet`. Copy these column headers and paste them into the Sheet:  
 `Date/Time`, 	`PDU`, 	`Time PT`, 	`Mins past midnight`, 	`Click`, 	`Sound`, 	`Light`, 	`decoded PDU in ASCII`, 	`0`, 	`2`   
 
@@ -310,6 +311,7 @@ _These column headers are formatted so that you can easily copy-paste them into 
 
 ![](assets/gDocs_column_headers.png)  
 
+**Switch from gDocs to Zapier**
 Now that your gDoc Sheet is ready, you can prepare your zap. We start with the `Trigger`.
 
 1. In Zapier, click `Make a Zap`. 
@@ -329,6 +331,7 @@ Now that your gDoc Sheet is ready, you can prepare your zap. We start with the `
 
 ![](assets/Zapier_webhook4.png)  
 
+**Switch from Zapier to Senet**
 You've created the Zapier webhook that will receive the JSON payload from Senet.  Switch from the Zapier tab to the Senet tab -- continue to keep both tabs open. In the Senet portal:
 
 1. Navigate to the `Device Setup/Edit` window for your mDot.
