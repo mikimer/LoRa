@@ -245,7 +245,7 @@ Assemble the hardware to match the diagram and photo below:
   
 ![](assets/LittleBits_Sensors_LoRa.png)    
     
- **In case you chose the Adafruit sensors**   
+###In case you're using Adafruit sensors  
  
  ![](assets/adafruit_img1.png)  
  
@@ -274,13 +274,6 @@ The hardware is assembled. You still have a few steps to go but you're getting c
    _Notice that the `time_threshold` is set at 900. The data will be sent every 15 minutes unless you click the button 10 times in a row._   
    
 You're sending data via LoRa, congratulations!   
-
-### Connectivity debugging tips
-If you're having trouble getting this project to work, here are some steps you can take:
-
-* If your mDot keeps joining and then failing to join the network, you're at the edge of your coverage. Move to another spot (probably closer to outdoors) where you can get consistent coverage.   
-* If your mDot isn't sending data to the Senet LoRa network, validate that you have coverage by plugging in the Semtech NorAm mote.  If you don't receive data from the mote, then you probably won't be able to receive data from the mDot either.  You'll need to find a new location (which could be as close as the nearest window or as far as miles away) where you get coverage.
-
    
 ![](assets/test_drive1.png)    
 
@@ -294,8 +287,16 @@ If you're having trouble getting this project to work, here are some steps you c
 
 ![](assets/test_drive6.png)  
 
+
+### Debugging tips for LoRa connectivity
+If you're having trouble getting this project to work, here are some steps you can take:
+
+* If your mDot keeps joining and then failing to join the network, you're at the edge of your coverage. Move to another spot (probably closer to outdoors) where you can get consistent coverage.   
+* If your mDot isn't sending data to the Senet LoRa network, validate that you have coverage by plugging in the Semtech NorAm mote.  If you don't receive data from the mote, then you probably won't be able to receive data from the mDot either.  You'll need to find a new location (which could be as close as the nearest window or as far as miles away) where you get coverage.
+
+
 ### Send data from Senet via Zapier to a Google Spreadsheet
-Once you're sending data to Senet, the final step is to get the data into a Google Sheet for easy analysis.  We'll now connect Senet, Zapier, and gDocs so that Senet sends a JSON payload to Zapier; then Zapier copies the payload into a column in a Google Sheet. In your browser, you'll need to keep tabs open to all three websites.
+Once you're sending data to Senet, the final step is to get the data into a Google Sheet for easy analysis.  We'll now connect **Senet, Zapier, and gDocs** so that Senet sends a JSON payload to Zapier; then Zapier copies the payload into a column in a Google Sheet. In your browser, you'll need to **keep tabs open to all three websites**.
 
 
 Create a new Google Sheet and name it something like `LoRa Arduino Awesome Sheet`. Copy these column headers and paste them into the Sheet:  
@@ -312,10 +313,11 @@ _These column headers are formatted so that you can easily copy-paste them into 
 Now that your gDoc Sheet is ready, you can prepare your zap. We start with the `Trigger`.
 
 1. In Zapier, click `Make a Zap`. 
-2. In the trigger search bar, type `webhook` and select `Webhooks by Zapier`. 
-3. Select `Catch Hook`.
-4. In `Pick off a child key (optional)` just click `Continue` to skip this step.
-5. Click `Copy to clipboard` to copy the the Zapier webhook URL.
+2. Name your Zap something like `LoRa Arduino super Zap`.
+3. In the trigger search bar, type `webhook` and select `Webhooks by Zapier`. 
+4. Select `Catch Hook`.
+5. In `Pick off a child key (optional)` just click `Continue` to skip this step.
+6. Click `Copy to clipboard` to copy the the Zapier webhook URL.
 
 ![](assets/Zapier_make_a_zap.png)  
 
