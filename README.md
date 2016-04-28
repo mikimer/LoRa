@@ -12,6 +12,13 @@ This project was developed by the [Orange IoT Studio](http://orangeiotstudio.com
 
 ![](assets/data_com_img2.png)
 
+[ ![](assets/video_explanation1.png)](https://www.youtube.com/watch?v=j-q5CqtO7FA)  
+
+[ ![](assets/video_explanation2.png)]()  
+
+[ ![](assets/video_explanation3.png)](https://www.youtube.com/watch?v=8MTVphgoIsc)  
+
+
 ### LoRa is great for IoT
 LoRa is an ideal communications technology for many internet-of-things (IoT) devices because **internet connectivity** is a key feature of IoT while also one of IoT devices' the biggest pain points.  Specifically, pairing devices with WiFi or Bluetooth is tedious; cellular connectivity is easy to implement and can transmit megabytes (MB) of data, but it's often not affordable for simple IoT devices. That's where LoRa comes in. For simple IoT devices that only need to send kilobytes (KB) of data or less, LoRa is an ideal solution.  
 
@@ -425,9 +432,7 @@ Each column analyzes one byte of the PDU string. We're using the [ASCII table](h
 
 ## Build on LoRa, Promote your vision
 
-Thanks for taking the time to work on this project -- we're delighted that you tried out LoRa. **Please let us know how it went via [@OrangeIoTstudio](https://twitter.com/orangeiotstudio)!**  
-
-We hope that this project will be a foundation that you can build off of -- if you're trying to do that [here are resources](assets/build_off_quickstart.md) to help you.  We'll be featuring the most interesting projects on our website.  
+Thanks for taking the time to work on this project -- we're delighted that you tried out LoRa. **Please let us know how it went via [@OrangeIoTstudio](https://twitter.com/orangeiotstudio)!**  We hope that this project will be a foundation that you can build off of -- if you're trying to do that [here are resources](assets/build_off_quickstart.md) to help you.  We'll be featuring the most interesting projects on our website.  
 
 
 ## Acknolwedgements
