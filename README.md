@@ -118,14 +118,14 @@ The NorAm mote contains a battery so charge it using a micro-USB cable in the `U
 
 ### Get mote Device ID
 
-If you're using a NorAm mote from the IoT Studio, then it will come pre-loaded with the device ID and firmware to operate on the Senet network. 
+If you're using a NorAm mote from the IoT Studio, then skip this step since your mote comes pre-loaded with the device ID and firmware to operate on the Senet network. 
  
 If you purchased a NorAm mote, then you will need to use the [Senet NoRam Mote Network Coverage Test Tool on ARM mbed](https://developer.mbed.org/teams/Senet/code/Senet-NAMote/). To build the program click “Import Library” to add a copy of the source code  to your developer workspace. In the pop-up window select “saves as program”.  Most importantly, you'll need to generate your own, unique device ID -- the wiki page describes how to do this. After you've customized your firmware, click compile to build and download the firmware (the .bin file).  
 
 You'll now need to upload the file to your Semtech NorAm mote. First, connect the USB1 port to a power source -- this port is only used for power.  Next connect the USB2 port to your computer -- this port is only used for communication.  The mote will appear as a USB storage device. Drag your .bin file to the mote and the firmware will install itself.  Disconnect the mote from your laptop. You're all set.
  
 ### Send GPS data to Senet
-Now that you have the Semtech NorAm mote and a Senet account, you'll need to register the device with Senet so they know to send its data to your account.  After you're logged into your Senet account, click on `REGISTER NEW DEVICE`. Next input the hexadecimal device ID (e.g., `00:25:0C:01:00:00:12:34`) and create a nickname for the device (e.g., `Boutargue`). 
+Now that you have the Semtech NorAm mote with the proper firmware, you'll need to register the device with Senet so they know to send its data to your account.  After you're logged into your Senet account, click on `REGISTER NEW DEVICE`. Next input the hexadecimal device ID (e.g., `00:25:0C:01:00:00:12:34`) and create a nickname for the device (e.g., `Boutargue`). 
 
 ![](assets/Senet_register_device.png)
 
@@ -174,8 +174,16 @@ _(We haven't done this on a Windows PC. If Windows is different, please let us k
 
 ![](assets/usb_dev_board2.png)  
 
-![](assets/usb_dev_board6.png)  
+![](assets/term_img1.png)  
 
+![](assets/term_img2.png)  
+  
+![](assets/term_img3.png)  
+  
+![](assets/term_img4.png)  
+  
+![](assets/term_img5.png)  
+  
   
 ### Register the mDot with Senet and get identifiers
 You'll need to register the mDot with Senet to get identifiers for the Arduino sketch.  First, go to the [Senet portal](https://app.senetco.com/senetdev/main.aspx) and register your device by providing the device ID and nickname (similar to what you did with the NorAm mote). Next, click on the mDot name to open a webpage with the mDot's information and then follow these steps: 
@@ -373,15 +381,15 @@ _We use this metric to more easily visualize data when we graph it._
 
 Column E - **Click**   
 `=REGEXEXTRACT(H3,"\(([0-9]+)\)")`  
-_This is a count of how many times users clicked the button._
+_This formula uses the contents of **Column H**, so don't be alarmed if there's an error when Column H is empty. is a count of how many times users clicked the button._
 
 Column F - **Sound**   
 `=REGEXEXTRACT(H3,"\[([0-9]+)\]")`  
-_This is a count of how many loud noises (impulses) happened._
+_This formula uses the contents of **Column H**, so don't be alarmed if there's an error when Column H is empty.  This is a count of how many loud noises (impulses) happened._
 
 Column G - **Light**   
 `=REGEXEXTRACT(H3,"\{([0-9]+)\}")/10`  
-_This is the average light level. The Arduino measures this for just 1 second every 15 minutes._
+_This formula uses the contents of **Column H**, so don't be alarmed if there's an error when Column H is empty.  This is the average light level. The Arduino measures this for just 1 second every 15 minutes._
 
 Column H - **decoded PDU in ASCII**     
 `=CONCATENATE(I3:BA3)`  
@@ -393,27 +401,24 @@ Column I - **decoded first PDU byte**
 Column J - **decoded second PDU byte** 
 `=if(J$1<len($B3), char(hex2dec(left(REPLACE($B3,1,J$1,""),2))), " ")`  
 
-Columns K to AN  - **decoded PDU bytes**      
+Columns K to AR  - **decoded PDU bytes**      
 Each column analyzes one byte of the PDU string. We're using the [ASCII table](http://www.asciitable.com/) in order to translate the PDU (numerical representation) into characters (readable data).  These formulas rely on numbers in **Row 1** incrementing by 2: 0, 2, 4, 6...  
 
-* In cell `J1`, change the value `2`  to be the formula `=i1+2`.  
-* Copy-paste that formula out from cell `J1` to `AN1`.
-* Now in **Row 3** copy-paste the formula from cell `J3` to `AN3`. 
+* Change the contents of cell `J1` from the value `2` to the formula `=i1+2`.  
+* Copy-paste that formula out from cells `J1` to `AR1`.
+* Now in **Row 3** copy-paste the formula from cells `J3` to `AR3`. 
    
    
 ![](assets/gDocs_formulas0.png)  
 
-
-**Let us know how it went via [@OrangeIoTstudio](https://twitter.com/orangeiotstudio)!**
-
+![](assets/gDocs_formulas1.png)  
 
 
 ## Build on LoRa, Promote your vision
-We hope that this project will be a foundation that you can build off of -- if you're trying to do that [here are resources](assets/build_off_quickstart.md) to help you.
 
-Share your experience -- we're featuring the most interesting projects on our website.
+Thanks for taking the time to work on this project -- we're delighted that you tried out LoRa. **Please let us know how it went via [@OrangeIoTstudio](https://twitter.com/orangeiotstudio)!**  
 
-
+We hope that this project will be a foundation that you can build off of -- if you're trying to do that [here are resources](assets/build_off_quickstart.md) to help you.  We'll be featuring the most interesting projects on our website.  
 
 
 ## Acknolwedgements
