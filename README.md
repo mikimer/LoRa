@@ -155,24 +155,26 @@ Once you've sent GPS data to Senet, navigate to the webpage with data for your d
 
 By default, the Multitech mDot is configured to communicate with AT commands at a 115200 baud rate. However, we found that errors happened between the mDot and the Arduino when they tried to communitacte that fast, so [here's firmware](assets/mDot_9600_baud.bin?raw=true) (a .bin file) with a slower 9600 baud rate, which works much better.  
 
-On a MacBook it's simple to load the firmware: you drag & drop the .bin file into the mDot's disk image. _(We haven't done this on a Windows PC. If Windows is different, please let us know how you loaded the mDot firmware and we'll update the instructions here.)_ 
+On a MacBook it's simple to load the firmware:   
 
-After the firmware loads, you'll get an error message that you disconnected the USB dev board -- don't worry, that's normal. 
-**Anna to add real error message**
-
-Now you'll want to validate that the firmware loaded correctly.  Unplug and replug the USB dev board from your laptop (keep the mDot attached to the dev board). Open a terminal (we like [iTerm2](https://www.iterm2.com/)) and type the following commands to begin communicating with the mDot via the dev board: 
-
+* Drag & drop the .bin file into the mDot's disk image. After the firmware loads, you'll get an error message **`Disk Not Ejected Properly`** -- don't worry, that's normal. Now you'll want to validate that the firmware loaded correctly.  
+* Unplug and replug the USB dev board from your laptop to be safe (keep the mDot attached to the dev board). 
+* Open a terminal window (we use [iTerm2](https://www.iterm2.com/)). 
 *  `cd /dev` to navigate to the folder with the dev board.
 *  `ls` to list all of the contents of the folder. Look for a something that looks like *`tty.usbmodem1234`*. If you have more than one of these, you'll need to guess-and-check to determine which one is the dev board. 
 *  _`screen tty.usbmodem1234 9600`_ to begin communicating with your board with the `screen` command. Again, you'll need to customize `tty.usbmodem1234` to have the numbers of your particular board.  The `9600` indicates that you're using a 9600 baud rate. 
 *  A new screen will open, indicating that you're communicating with the board. Now type `"AT"` to confirm that the board uses AT commands.  
 *  The board should respond with `OK`.  If it does, you're all set -- just eject the board and continue with the project.  If the board doesn't reply with `OK` then you'll need to retry installing the mDot firware.  
  
+_(We haven't done this on a Windows PC. If Windows is different, please let us know how you loaded the mDot firmware and we'll update the instructions here.)_ 
+ 
 ![](assets/mDot_dev_board.jpg)  
 
-**Add screenshots of how to communicate with the board**
-![](assets/)  
-![](assets/)  
+![](assets/usb_dev_board1.png)  
+
+![](assets/usb_dev_board2.png)  
+
+![](assets/usb_dev_board6.png)  
 
   
 ### Register the mDot with Senet and get identifiers
