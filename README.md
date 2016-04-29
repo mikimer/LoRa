@@ -10,7 +10,7 @@ It should take **about 1 hour to complete this project**, once you have the hard
 
 This project was developed by the [Orange IoT Studio](http://orangeiotstudio.com/) to promote the adoption of LoRa. To that end, the IoT Studio is [supporting companies](http://orangeiotstudio.com/) interested in LoRa by donating hardware kits and by funding co-development.  
 
-![](assets/data_com_img2.png)
+![](assets/data_com_img2.png)  
 
 [ ![](assets/video_explanation1.png)](https://www.youtube.com/watch?v=j-q5CqtO7FA)  
 
