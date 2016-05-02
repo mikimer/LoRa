@@ -1,12 +1,5 @@
 
-String inputString = "";         // a string to hold incoming data
-boolean stringComplete = false;  // whether the string is complete
-
-#include <SoftwareSerial.h>         // Include software serial to communicate with mDot
-SoftwareSerial mDotSerial(10, 11);  // The Arduino receive (Rx) is on pin 10; transmit (tx) is on pin 11. 
-
 // Declare pins
-const int mDotResetPin = A0;        // Important: Ensure Arduino A0 is connected to mDot pin 5
 const int click_sensor = A1;        // push-button sensor, digital (binary) values  
 const int sound_sensor = A2;        // sound sensor , digital (binary) values
 const int light_sensor = A3;        // light sensor, analog (0-1023) values  
@@ -14,7 +7,6 @@ const int light_sensor = A3;        // light sensor, analog (0-1023) values
 // Declare variables
 #define time_threshold 5     // if count = 900 seconds = 15mins, then send data
 #define click_threshold 2     // if click = 10 clicks, then send data
-#define lora_join_threshold 6  // max number of tries to join the lora network
 int click_value = 0;           // current push button value
 int sound_value = 0;           // current sound value
 int light_value = 0;           // current light value
@@ -25,10 +17,9 @@ int light_values_array[10];    // array to store light values during 1s = 10 sam
 int sum_light_value = 0;       // sum light values
 unsigned int i;                // counter variable 
 unsigned int x;                // temp variable
-String mDotString;             // variable to hold mDot response
 unsigned int count;            // count (in seconds) how many times we've read the input
 unsigned int count_tenths = 0; // tenths of a second on the count (we need this since we sample every 0.1sec and count is an integer)
-String LoRa_payload = "";      // the LoRa data payload. In the Senet portal, this appears as the PDU (Packet Data Unit). Limited to 50 ascii characters
+String LoRa_payload = "";      // the LoRa data payload. In the Senet portal, this appears aas the PDU (Packet Data Unit). Limited to 50 ascii characters
 int last_click_value = 0;      // store the last state of the clicker to ensure the button toggled on and off
 int last_sound_value = 0;      // store the last state of the sound to ensure the sound toggled on and off
 
@@ -72,8 +63,6 @@ void loop() {
     Serial.println("reset values & counters");    
        
   } // end send payload
-
-
 
 }
 
