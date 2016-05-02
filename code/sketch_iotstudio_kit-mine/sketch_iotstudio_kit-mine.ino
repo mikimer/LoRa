@@ -33,10 +33,9 @@ int last_click_value = 0;      // store the last state of the clicker to ensure 
 int last_sound_value = 0;      // store the last state of the sound to ensure the sound toggled on and off
 
 
+//--------------------------------------------------------------------------------------
 
 void setup() {
-  Serial.begin(115200);
-  Serial.println("AT");
 
   //  configure the input sensors 
   pinMode(click_sensor, INPUT);
@@ -45,17 +44,9 @@ void setup() {
   
 }
 
-void loop() {
-/*
-  // print the string when a newline arrives:
-  if (stringComplete) {
-    Serial.println(inputString);
-    // clear the string:
-    inputString = "";
-    stringComplete = false;
-  }
-*/
+//--------------------------------------------------------------------------------------
 
+void loop() {
 
   // log the last reading, get a new sensor reading every 0.1 sec (100 ms) and increment the count and count_tenths
   delay(100);              // 0.1sec delay
@@ -72,22 +63,6 @@ void loop() {
     Serial.println("sending stuff.. but not really");
     Serial.println(LoRa_payload);
 
-/*               
-    // send payload
-    mDotSerial.print("AT+SEND ");    
-    mDotSerial.println(LoRa_payload);  // LoRa_payload is loaded in sensor_input_value() 
-    delay(100);
-    while (mDotSerial.available()) { mDotString = mDotSerial.readString(); }; // get the mDot's response
-    if ( Validate (mDotString) ) {  // validate the mDot's response
-      Serial.print("SENDING sensor values: ");
-      Serial.println(LoRa_payload);
-    } 
-    else {
-      Serial.print("  Error: Couldn't send current reading via your node ");
-      Serial.print(mDot_name);
-      Serial.println(". That's all we know.");    
-    }
-*/
     //reset values and counters
     count = 0;
     count_tenths = 0;
@@ -104,29 +79,7 @@ void loop() {
 
 
 
-// --------------------------------------------------------------------------------------
-
-/*
-  SerialEvent occurs whenever a new data comes in the
- hardware serial RX.  This routine is run between each
- time loop() runs, so using delay inside loop can delay
- response.  Multiple bytes of data may be available.
- */
-void serialEvent() {
-  while (Serial.available()) {
-    // get the new byte:
-    char inChar = (char)Serial.read();
-    // add it to the inputString:
-    inputString += inChar;
-    // if the incoming character is a newline, set a flag
-    // so the main loop can do something about it:
-    if (inChar == '\n') {
-      stringComplete = true;
-    }
-  }
-}
-
-
+//--------------------------------------------------------------------------------------
 
 // This function is for reading the input values from the sensors 
 // Adjust this however you need to make your sensor(s) work.
