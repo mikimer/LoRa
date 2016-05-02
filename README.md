@@ -41,6 +41,12 @@ Public LoRa networks are being deployed world wide, including by [Orange in Fran
 ### _Disclaimer_
 _LoRa is a new technology and this project is in alpha, so it could break. If you're cool trying new things that aren't 100% reliable, proceed and have fun._   
 
+### Nomeclature
+Since this project is at the cutting-edge of LoRa, many of the terms are new, so we've defined them here:
+
+* `Network_ID` is the term used in the Arduino sketch that is your specific account ID with Senet.  It's also referred to as `Application`, `Application ID`, `APPEUI` and `reverse_APPEUI`.  
+* `ID number` is the term used in the Arduino sketch that is the ID number for your device on the Senet network.  For mDot's, it's the ID number written on the device; for Semtech NorAm motes, it's the ID number you get from the Orange IoT Studio or you generate in ARM mbed. It's also referred to as `Device ID`, `DEVEUI` and `reverse_DEVEUI`.
+* `Network_key` is the term used in the Arduino sketch that is the encoded key for your device on the Senet network. It's also referred to as `App Key` and `DEVKEY`.
 
 ## Get the hardware
 You'll need to either apply for a hardware kit from the IoT studio or purchase the equipment yourself. 
