@@ -70,6 +70,8 @@ void loop() {
   if ( (count >= time_threshold) || ( stored_click_value >= click_threshold) ) { 
 
     Serial.println("sending stuff.. but not really");
+    Serial.println(LoRa_payload);
+
 /*               
     // send payload
     mDotSerial.print("AT+SEND ");    
