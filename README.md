@@ -46,7 +46,7 @@ _LoRa is a new technology and this project is in alpha, so it could break. If yo
 You'll need to either apply for a hardware kit from the IoT studio or purchase the equipment yourself. 
 
 ### Apply for support from the IoT Studio
-The IoT Studio is [supporting the developer community](http://orangeiotstudio.com/) to encourage use of LoRa.  You can apply for a free hardware kit containing the bill of materials, below. If you work for a company with a compelling use case, you can also apply for funded co-development.  The IoT Studio will be showcasing prototypes that demonstrate compelling LoRa use cases.
+The IoT Studio is [supporting the developer community through its engagement program](http://orangeiotstudio.com/) to encourage use of LoRa.  You can apply for a free hardware kit containing the bill of materials, below. If you work for a company with a compelling use case, you can also apply for funded co-development.  The IoT Studio will be showcasing prototypes that demonstrate compelling LoRa use cases.
 
 
 ### Bill of Materials (BOM)
