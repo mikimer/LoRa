@@ -4,9 +4,8 @@
 
 # Overview
 ###This project allows you to quickly try LoRa communications. 
+#### 3 hour project
 **LoRa** is an exciting new technology for communicating at **Lo**ng **Ra**nge, low power, and low cost.  This project uses an Arduino Uno and a [Multitech mDot LoRa node](http://www.multitech.com/models/94557148LF) to send data to the [Senet LoRa network](https://portal.senetco.com/).  Senet provides the gateways to receive the LoRa signal; [Zapier](https://zapier.com) and  Google Spreadsheets provide the rest of the software. 
-
-It should take **about 1 hour to complete this project**, once you have the hardware. We've included lots of photos and screenshots to explain the project visually; the text provides additional details. 
 
 This project was developed by the [Orange IoT Studio](http://orangeiotstudio.com/) to promote the adoption of LoRa. To that end, the IoT Studio is [supporting companies](http://orangeiotstudio.com/) interested in LoRa by donating hardware kits and by funding co-development.  
 
