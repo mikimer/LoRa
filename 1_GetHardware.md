@@ -1,4 +1,4 @@
-# Get the hardware
+# 1. Get the hardware
 You'll need to either apply for a hardware kit from the IoT studio or purchase the equipment yourself. 
 
 ## Apply for support from the IoT Studio
@@ -41,5 +41,5 @@ Adafruit sensors require more work, but are more affordable. If you prefer somet
 * [Tactile Button switch ](https://www.adafruit.com/products/367), $2.5
 * [LED](https://www.adafruit.com/products/299), $4
 
-#### Next step  
-[Create your accounts](2_CreateAccounts.md) 
+#### Next tutorial  
+[2. Create your accounts](2_CreateAccounts.md) 
