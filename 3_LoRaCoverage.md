@@ -1,4 +1,4 @@
-# Verify LoRa coverage 
+# 3. Verify LoRa coverage 
 [Senet](https://portal.senetco.com/) provides a public LoRa network in North America and you'll need to verify where you have coverage. Specifically, you might not have coverage at your workbench, but you could find LoRa coverage in another part of your building or nearby. You can use [Semtech's NorAm LoRa Mote](http://www.semtech.com/images/datasheet/NorAmMote_User_Guide_3v0.2.pdf) to determine where you have coverage.  
   
 In this quickstart project, the North American (NorAm) mote receives a GPS signal and sends its location to Senet as a hexadecimal data payload.  We convert that string into latitude and longitude (lat-long) data to view the exact location on a map. Senet refers to the data payload as a "packet data unit" (PDU). 
@@ -52,3 +52,6 @@ Once you've sent GPS data to Senet, navigate to the webpage with data for your d
 8. Double-click on the map to zoom in to view the relevant data
 
 ![](assets/Senet_map.png) 
+
+## Next tutorial
+4.[Configure the software](4_ConfigureHardware.md) 
