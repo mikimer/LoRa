@@ -1,4 +1,4 @@
-# Assemble the hardware 
+# 5. Assemble the hardware 
 
 Assemble the hardware to match the diagram and photo below:
 
@@ -25,3 +25,6 @@ Assemble the hardware to match the diagram and photo below:
  ![](assets/adafruit_img4.png)
 
 You can test your basic wiring ( Arduino Uno and sensors only - no mDot ) with this [Arduino code](assets/adafruit_wiring_test.ino).  
+
+## Next tutorial
+6.[Test drive LoRa](6_TestLoRa.md) 
