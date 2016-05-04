@@ -123,6 +123,10 @@ Zapier must recieve at least one JSON payload at the webhook in order to know wh
 **Switch from Zapier to gDocs**  
 Switch from the Zapier tab to the Google Sheet tab to see the results of the integration. Zapier is now automatically posting data into Column A, `Date/Time` and Column B, `PDU`.  We'll now add formulas to **Row 3** of the Sheet to decode the PDU:   
 
+Find the **formulas** on this [template](https://docs.google.com/spreadsheets/d/1SyGVlMp_O3UY1SqvRneCFR7j2sqjy8ZmX5fIZr2ulGI/edit#gid=0).  
+
+The following lines will explain specifically what the formulas do:  
+
 Column C - **Time PT**    
 `=CONCATENATE( mod(left(right($A3,8),2)+17,24),":", right(left(right($A3,8),5),2))`  
 *The `17` in this formula corresponds to Pacific Time (PT) in San Francisco. You can adjust this value for your timezone -- for instance, `20` corresponds to Eastern Time (ET) in New York City.*
