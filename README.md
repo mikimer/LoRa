@@ -84,7 +84,6 @@ LittleBits sensors are easier to use, but more expensive.  If you prefer the som
 
 #### Adafruit sensors 
 Adafruit sensors require more work, but are more affordable. If you prefer something easier, use the LittleBits sensors.  
-_Mike & Anna need to try this!!_
 
 * [Breadboard](https://www.adafruit.com/products/64), $5
 * [Sound trigger - Microphone Amplifier](https://www.adafruit.com/product/1063), $6.95 
@@ -133,12 +132,18 @@ The NorAm mote contains a battery so you will need to charge it.  There are 2 mi
 
 If you're using a NorAm mote from the IoT Studio, then skip this step since your mote comes pre-loaded with the device ID and firmware to operate on the Senet network. 
  
-If you purchased a NorAm mote, then you will need to load it with a firmware downloaded from here: [Senet NoRam Mote Network Coverage Test Tool on ARM mbed](https://developer.mbed.org/teams/Senet/code/Senet-NAMote/). To build the program click “Import Library” to add a copy of the source code  to your developer workspace. In the pop-up window select “saves as program”.  Most importantly, you'll need to generate your own, unique device ID -- the wiki page describes how to do this. After you've customized your firmware, click compile to build and download the firmware (the .bin file).
+If you purchased a NorAm mote, then you will need to load it:   
+1. Download the firmware from here: [Senet NoRam Mote Network Coverage Test Tool on ARM mbed](https://developer.mbed.org/teams/Senet/code/Senet-NAMote/).   
+2.  To build the program click “Import Library” to add a copy of the source code  to your developer workspace.
+3. In the pop-up window select “saves as program”.   
+4. Confirm and wait 2 to 3 minutes for the import to complete.     
+
+Most importantly, you'll need to generate your own, unique device ID -- the wiki page describes how to do this. After you've customized your firmware, click compile to build and download the firmware (the .bin file).
 
 You'll now need to upload the file to your Semtech NorAm mote. First, connect the USB1 port to a power source -- this port is only used for power.  Next connect the USB2 port to your computer -- this port is only used for communication.  The mote will appear as a USB storage device. Drag your .bin file to the mote and the firmware will install itself.  Disconnect the mote from your laptop. You're all set.
  
 ### Send GPS data to Senet
-Now that you have the Semtech NorAm mote with the proper firmware, you'll need to register the device with Senet so they know to send its data to your account.  After you're logged into your Senet account, click on `REGISTER NEW DEVICE`. Next input the hexadecimal device ID (e.g., `00:25:0C:01:00:00:12:34`) and create a nickname for the device (e.g., `Boutargue`). 
+Now that you have the Semtech NorAm mote with the proper firmware, you'll need to register the device with Senet so they know to send its data to your account.  After you're logged into your Senet account, input the hexadecimal device ID (e.g., `00:25:0C:01:00:00:12:34`) and create a nickname for the device (e.g., `Boutargue`) in the window saying: _"You have no nodes. Please enter a node."_. If it isn't the first device you register on Senet, click on `REGISTER NEW DEVICE` and you will be able to add this new device.  
 
 ![](assets/Senet_register_device.png)
 
@@ -267,6 +272,8 @@ Assemble the hardware to match the diagram and photo below:
  ![](assets/adafruit_img3.png)  
  
  ![](assets/adafruit_img4.png)
+
+You can test your basic wiring ( Arduino Uno and sensors only - no mDot ) with this [Arduino code](assets/adafruit_wiring_test.ino).  
 
 ## Test drive LoRa   
 
