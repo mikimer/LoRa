@@ -1,4 +1,4 @@
-# Configure the software
+# 4. Configure the software
 
 ## mDot 
 [ ![](assets/button_mDot_firmware.png) ](assets/mDot_9600_baud.bin?raw=true)  
@@ -77,3 +77,6 @@ We've commented the .ino file extensively so that you can understand how the cod
  1. `Click` Count how many times users click a button.  
  2. `Sound` Count how many times there's a loud noise.   
  3. `Light` Meausre the average light level.
+  
+## Next tutorial
+5.[Assemble the hardware](5_AssembleHardware.md) 
