@@ -28,7 +28,7 @@ Public LoRa networks are being deployed world wide, including by [Orange in Fran
 1. [Get the hardware](1_GetHardware.md) 
 2. [Create your accounts](2_CreateAccounts.md) 
 3. [Verify LoRa coverage](3_LoRaCoverage.md) 
-4. [Configure the software](4_ConfigureHardware.md) 
+4. [Configure the software](4_ConfigureSoftware.md) 
 5. [Assemble the hardware](5_AssembleHardware.md) 
 6. [Test drive LoRa](6_TestLoRa.md) 
 7. [Build on LoRa & promote your vision](7_TheEnd.md) 
