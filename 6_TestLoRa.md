@@ -1,4 +1,4 @@
-# Test drive LoRa   
+# 6. Test drive LoRa   
 
 The hardware is assembled. You still have a few steps to go but you're getting close!
 
@@ -164,3 +164,6 @@ Each column analyzes one byte of the PDU string. We're using the [ASCII table](h
 ![](assets/gDocs_formulas0.png)  
 
 ![](assets/gDocs_formulas1.png)  
+
+## Next tutorial
+7.[Build on LoRa & promote your vision](7_TheEnd.md) 
