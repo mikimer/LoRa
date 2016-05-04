@@ -46,7 +46,7 @@ _LoRa is a new technology and this project is in alpha, so it could break. If yo
 You'll need to either apply for a hardware kit from the IoT studio or purchase the equipment yourself. 
 
 ### Apply for support from the IoT Studio
-The IoT Studio is [supporting the developer community through its engagement program](http://orangeiotstudio.com/) to encourage use of LoRa.  You can apply for a free hardware kit containing the bill of materials, below. If you work for a company with a compelling use case, you can also apply for funded co-development.  The IoT Studio will be showcasing prototypes that demonstrate compelling LoRa use cases.
+The IoT Studio is supporting the developer community through its engagement program to encourage use of LoRa - fill in this [1 minute application](http://orangeiotstudio.com/).  You can apply for a free hardware kit containing the bill of materials, below. If you work for a company with a compelling use case, you can also apply for funded co-development.  The IoT Studio will be showcasing prototypes that demonstrate compelling LoRa use cases.
 
 
 ### Bill of Materials (BOM)
@@ -121,13 +121,13 @@ In this quickstart project, the North American (NorAm) mote receives a GPS signa
 ![](assets/norammote_img5.png)
 
 ### The user interface for the mote
-The NorAm mote contains a battery so charge it using a micro-USB cable in the `USB1` port.  The `CHG` light is red while the mote is charging and green when fully charged. The `USR` light blinks green while the mote is searching for GPS and is solid green when it has locked the GPS signal.  You don't need to worry about lights `1` `2` and `3`. If you've got a mote from the IoT Studio, then the `USB2` port is covered with orange tape -- it's a port for updating the mote's firmware. 
+The NorAm mote contains a battery so you will need to charge it.  There are 2 micro-USB ports on the front of the mote, chage with the one labeled `USB1`.  The `CHG` light is orange while the mote is charging and green when fully charged. The `USR` light blinks green while the mote is searching for GPS and is solid green when it has locked the GPS signal.  You don't need to worry about lights `1` `2` and `3`. If you've got a mote from the IoT Studio, then the `USB2` port is covered with orange tape -- it's a port for updating the mote's firmware. 
 
 ### Get mote Device ID
 
 If you're using a NorAm mote from the IoT Studio, then skip this step since your mote comes pre-loaded with the device ID and firmware to operate on the Senet network. 
  
-If you purchased a NorAm mote, then you will need to use the [Senet NoRam Mote Network Coverage Test Tool on ARM mbed](https://developer.mbed.org/teams/Senet/code/Senet-NAMote/). To build the program click “Import Library” to add a copy of the source code  to your developer workspace. In the pop-up window select “saves as program”.  Most importantly, you'll need to generate your own, unique device ID -- the wiki page describes how to do this. After you've customized your firmware, click compile to build and download the firmware (the .bin file).  
+If you purchased a NorAm mote, then you will need to load it with a firmware downloaded from here: [Senet NoRam Mote Network Coverage Test Tool on ARM mbed](https://developer.mbed.org/teams/Senet/code/Senet-NAMote/). To build the program click “Import Library” to add a copy of the source code  to your developer workspace. In the pop-up window select “saves as program”.  Most importantly, you'll need to generate your own, unique device ID -- the wiki page describes how to do this. After you've customized your firmware, click compile to build and download the firmware (the .bin file).
 
 You'll now need to upload the file to your Semtech NorAm mote. First, connect the USB1 port to a power source -- this port is only used for power.  Next connect the USB2 port to your computer -- this port is only used for communication.  The mote will appear as a USB storage device. Drag your .bin file to the mote and the firmware will install itself.  Disconnect the mote from your laptop. You're all set.
  
@@ -168,10 +168,10 @@ On a MacBook it's simple to load the firmware:
 * Unplug and replug the USB dev board from your laptop to be safe (keep the mDot attached to the dev board). 
 * Open a terminal window (we use [iTerm2](https://www.iterm2.com/)). 
 *  `cd /dev` to navigate to the folder with the dev board.
-*  `ls` to list all of the contents of the folder. Look for a something that looks like *`tty.usbmodem1234`*. If you have more than one of these, you'll need to guess-and-check to determine which one is the dev board. 
+*  `ls` to list all of the contents of the folder. Look for a something that looks like *`tty.usbmodem1234`*. If you have more than one of these, you'll need to trial-and-error to determine which one is the dev board. 
 *  _`screen tty.usbmodem1234 9600`_ to begin communicating with your board with the `screen` command. Again, you'll need to customize `tty.usbmodem1234` to have the numbers of your particular board.  The `9600` indicates that you're using a 9600 baud rate. 
 *  A new screen will open, indicating that you're communicating with the board. Now type `"AT"` to confirm that the board uses AT commands.  
-*  The board should respond with `OK`.  If it does, you're all set -- just eject the board and continue with the project.  If the board doesn't reply with `OK` then you'll need to retry installing the mDot firware.  
+*  The board should respond with `OK`.  If it does, then firmware should be loaded correctly and you're all set -- just eject the board and continue with the project.  If the board doesn't reply with `OK` then you'll need to retry installing the mDot firware.  
  
 _(We haven't done this on a Windows PC. If Windows is different, please let us know how you loaded the mDot firmware and we'll update the instructions here.)_ 
  
@@ -197,10 +197,10 @@ You'll need to register the mDot with Senet to get identifiers for the Arduino s
 
 1. Click on the gear to open the menu.
 2. Click on `Device Edit` to reveal the `Device Setup/Edit` sub-menu.
-3. Record `mDot_name`, the nickname you gave the mDot
-4. Record `XXXX`, the last 4 digits of the ID number on the mDot
-5. Record the Senet `App Key`, which is referred to as the `Network_key` in the Arduino sketch.
-6. Record the Senet `Application` number, which is referred to as the `Network_ID` in the Arduino sketch. 
+3. Take note of `mDot_name`, the nickname you gave the mDot
+4. Take note of `XXXX`, the last 4 digits of the ID number on the mDot
+5. Take note of the Senet `App Key`, which is referred to as the `Network_key` in the Arduino sketch.
+6. Take note of the Senet `Application` number, which is referred to as the `Network_ID` in the Arduino sketch. 
 
 ![](assets/Senet_select_device0.png)  
    
