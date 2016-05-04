@@ -1,4 +1,4 @@
-# Create your accounts
+# 2. Create your accounts
 You'll need to create accounts with the following websites to get this project to work.  
 
 ## Senet
@@ -16,3 +16,6 @@ You'll use [Google Spreadsheets](https://docs.google.com/spreadsheets/u/0/) to v
 
 ## ARM mbed (optional)
 If you're buying your own equipment, then you'll need an [ARM mbed account](https://developer.mbed.org/account/login/?next=/teams/Senet/code/Senet-NAMote/) to configure the firmware for your Semtech NorAm LoRa mote to operate on the Senet LoRa network.  If you're using a kit from the Orange IoT Studio, then your mote will come pre-configured so that you do not need to install firmware yourself. 
+
+### Next tutorial  
+3.[Verify LoRa coverage](3_LoRaCoverage.md) 
