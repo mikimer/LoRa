@@ -17,7 +17,7 @@ You need the basic equipment for the project and a set of sensors, either by Lit
 * [XBee shield v2.0](http://www.robotmesh.com/xbee-shield-v2-0),  $10 (There are a few versions so be sure to get the [Seeed Studio version](http://www.seeedstudio.com/wiki/XBee_Shield_V2.0))  
 * [Antenna for mDot](http://www.digikey.com/product-detail/en/multi-tech-systems/AN868-915A-10HRA/881-1242-ND/5246371), $10
 * [USB A-B cable](https://www.adafruit.com/products/62), $4
-* [Wires](https://www.adafruit.com/products/1956), $2 (you'll need 6 male-male wires, 2 male-female wires)
+* [Breadboard Wires](https://www.adafruit.com/products/1956), $2 (you'll need 6 male-male wires, 2 male-female wires)
 * [Semtech NorAm mote LoRa network tester](http://www.semtech.com/images/datasheet/NorAmMote_User_Guide_3v0.2.pdf), _??get link with price!_	
 
 ###LittleBits sensors 
