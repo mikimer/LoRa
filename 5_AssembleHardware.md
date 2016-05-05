@@ -26,5 +26,5 @@ Assemble the hardware to match the diagram and photo below:
 
 You can test your basic wiring ( Arduino Mega and sensors only - mDot not mounted yet ) with this [Arduino code](assets/adafruit_wiring_test.ino).  
 
-## Next tutorial
+### Next tutorial
 6.[Test drive LoRa](6_TestLoRa.md) 
