@@ -3,8 +3,8 @@
 Assemble the hardware to match the diagram and photo below:
 
 * To allow the mDot to mount properly, bend the two pins in the XB_TX row that are next to digital pins 11 and 12.    
-* The Arduino transmit pin (Tx) needs to connect to the mDot's receive pin (Rx), and vice versa. To do this, place the jumpers on the XBee shield to connect mDot's receive Pin 2 (XB_RX) to Arduino pin 11. 
-* Connect the mDot's transmit Pin 3 (XB_TX) to Arduino pin 10. In our Arduino sketch we configure Arduino pins 10 and 11 as Tx and Rx; if you change the pins defined in `SoftwareSerial` in the Arduino sketch, you'll need to change the hardware accordingly.  
+* The Arduino transmit pin (TX1) needs to connect to the mDot's receive pin (RX). To do this, use a male-female wire to connect XBee shield to connect mDot's receive Pin 2 (XB_RX) to Arduino pin 18. 
+* And vice versa, The Arduino receive pin (RX1) needs to connect to the mDot's transmit pin (TX). To do this, use a male-female wire to connect XBee shield to connect mDot's receive Pin 3 (XB_TX) to Arduino pin 19.
 * Mount the mDot on top of the XBee shield. Then mount the XBee shield on top of the Arduino Uno.  
 * Use a wire to connect mDot reset pin 5 to Arduino analog pin A0.  
 * Connect the Arduino 5V and GND to the power and ground rails (pins) on the sensors.   
@@ -24,7 +24,7 @@ Assemble the hardware to match the diagram and photo below:
  
  ![](assets/adafruit_img4.png)
 
-You can test your basic wiring ( Arduino Uno and sensors only - no mDot ) with this [Arduino code](assets/adafruit_wiring_test.ino).  
+You can test your basic wiring ( Arduino Mega and sensors only - mDot not mounted yet ) with this [Arduino code](assets/adafruit_wiring_test.ino).  
 
 ## Next tutorial
 6.[Test drive LoRa](6_TestLoRa.md) 
