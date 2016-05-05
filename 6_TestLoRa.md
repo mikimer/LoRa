@@ -169,5 +169,5 @@ Each column analyzes one byte of the PDU string. We're using the [ASCII table](h
 
 ![](assets/gDocs_formulas1.png)  
 
-## Next tutorial
+### Next tutorial
 7.[Build on LoRa & promote your vision](7_TheEnd.md) 
