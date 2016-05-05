@@ -8,7 +8,7 @@ The hardware is assembled. You still have a few steps to go but you're getting c
 4. Upload the code from your IDE to the Arduino.   
    a. In the 'Tools' tab, select the 'Arduino/Genuino Uno' board, and the port corresponding to your USB cable _(/dev/cu.usbmodem1411 for Mac)_     
    b. Open the `Serial Monitor` window in the IDE.    
-   c. Select 9600 baud as a baude rate     
+   c. Select 115200 baud as a baude rate     
    d. Click on the `upload` arrow    
    e. Wait until it is 'Done uploading.'     
 5. You can monitor the Arduino in the Serial Monitor window -- things are good when you see `Successfully joined the LoRa network.     
