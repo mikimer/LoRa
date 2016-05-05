@@ -4,7 +4,7 @@ Assemble the hardware to match the diagram and photo below:
 
 * To allow the mDot to mount properly, bend the two pins in the XB_TX row that are next to digital pins 11 and 12.    
 * The Arduino transmit pin (TX1) needs to connect to the mDot's receive pin (RX). To do this, use a male-female wire to connect XBee shield to connect mDot's receive Pin 2 (XB_RX) to Arduino pin 18. 
-* And vice versa, The Arduino receive pin (RX1) needs to connect to the mDot's transmit pin (TX). To do this, use a male-female wire to connect XBee shield to connect mDot's receive Pin 3 (XB_TX) to Arduino pin 19.
+* The Arduino receive pin (RX1) needs to connect to the mDot's transmit pin (TX). To do this, use a male-female wire to connect XBee shield to connect mDot's receive Pin 3 (XB_TX) to Arduino pin 19.
 * Mount the mDot on top of the XBee shield. Then mount the XBee shield on top of the Arduino Uno.  
 * Use a wire to connect mDot reset pin 5 to Arduino analog pin A0.  
 * Connect the Arduino 5V and GND to the power and ground rails (pins) on the sensors.   
