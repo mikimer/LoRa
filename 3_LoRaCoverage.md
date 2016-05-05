@@ -53,5 +53,5 @@ Once you've sent GPS data to Senet, navigate to the webpage with data for your d
 
 ![](assets/Senet_map.png) 
 
-## Next tutorial
+### Next tutorial
 4.[Configure the software](4_ConfigureSoftware.md) 
