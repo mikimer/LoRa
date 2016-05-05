@@ -54,9 +54,5 @@ Since this project is at the cutting-edge of LoRa, many of the terms are new, so
  [@mikevladimer](https://twitter.com/mikevladimer) & [@anna_aflalo](https://twitter.com/anna_aflalo).  
 A hat tip :tophat: and thanks to Dave Kjendal & Shaun Nelson @ Senet, Joe Knapp @ Semtech. 
  
-April 2016    
-
-
-### Lets get started   
-1. [Get the hardware](1_GetHardware.md) 
+April 2016
 
