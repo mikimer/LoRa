@@ -27,14 +27,13 @@
 // *** Select the current mDot **
 // Update the mDot data below to reflect the name, network key, and network identifier your mDot(s) 
 // You need to adjust the comments in the code to select the mDot you're currently using
-/* AAA with ID ending in 11:22 */     const String mDot_name = "AAA"; const String Network_key =  "11:22:33:44:55:11:22:33:44:55:11:22:33:44:11:22"; const String Network_ID = "11:22:33:44:55:66:77:88"; 
-/* BBB with ID ending in 33:44 */    // const String mDot_name = "BBB"; const String Network_key = "11:22:33:44:55:11:22:33:44:55:11:22:33:44:33:44"; const String Network_ID = "11:22:33:44:55:66:77:88"; 
-/* CCC with ID ending in 55:66 */    // const String mDot_name = "CCC"; const String Network_key = "11:22:33:44:55:11:22:33:44:55:11:22:33:44:55:66"; const String Network_ID = "11:22:33:44:55:66:77:88"; 
+/* AAA with ID ending in 11:22 */       const String mDot_name = "AAA"; const String Network_key =  "11:22:33:44:55:11:22:33:44:55:11:22:33:44:11:22"; const String Network_ID = "11:22:33:44:55"; 
+/* BBB with ID ending in 33:44 */    // const String mDot_name = "BBB"; const String Network_key = "11:22:33:44:55:11:22:33:44:55:11:22:33:44:33:44"; const String Network_ID = "11:22:33:44:55"; 
+/* CCC with ID ending in 55:66 */    // const String mDot_name = "CCC"; const String Network_key = "11:22:33:44:55:11:22:33:44:55:11:22:33:44:55:66"; const String Network_ID = "11:22:33:44:55"; 
 
 //create software-defined serial port on pins 10 & 11
 //from: https://www.arduino.cc/en/Tutorial/SoftwareSerialExample
-#include <SoftwareSerial.h>         // Include software serial to communicate with mDot
-SoftwareSerial mDotSerial(10, 11);  // The Arduino receive (Rx) is on pin 10; transmit (tx) is on pin 11. 
+#include <SoftwareSerial.h>         // Include software serial to communicate with mDot 
 
 // Declare pins
 const int mDotResetPin = A0;        // Important: Ensure Arduino A0 is connected to mDot pin 5
@@ -75,7 +74,7 @@ void setup() {
   pinMode(light_sensor, INPUT);
   
   // configure the Arduino serial port (D0,D1) to your computer (the Serial Monitor) 
-  Serial.begin(9600); 
+  Serial.begin(115200);
   Serial.println("");
   Serial.println("  ***  This is a quickstart project to send sensor data to the internet via LoRa ***  ");
   delay(500);
@@ -96,21 +95,21 @@ void setup() {
   digitalWrite(mDotResetPin, HIGH);
   delay(500); //delay to let mDot reset 
    
-  // configure Arduino Serial to mDot
-  mDotSerial.begin(9600); //initialize the serial port. 
+  // configure Arduino Serial1 to mDot
+  Serial1.begin(115200); //initialize the serial port. 
   delay(100);
-
+  
   //clear any existing outputs and clear out whatever might have been in the mDot receive buffer
   Serial.flush();
-  mDotSerial.flush();
-  while (mDotSerial.available() != 0) mDotSerial.read();
+  Serial1.flush();
+  while (Serial1.available() != 0) Serial1.read();
 
   // issue the generic AT commands
   int successful_attempt = 0; // set counter
   for (i=0; i<GenericATcommand_count; i++) {
-    mDotSerial.println(GenericATcommands[i]);  // issue the AT command 
+    Serial1.println(GenericATcommands[i]);  // issue the AT command 
     delay(100);  // it is important to have a delay after every interaction between the Arduino & mDot
-    while (mDotSerial.available()) { mDotString = mDotSerial.readString(); }; // get the mDot's response
+    while (Serial1.available()) { mDotString = Serial1.readString(); }; // get the mDot's response
     delay (100);
     if ( Validate (mDotString) ) {  // validate the mDot's response
       Serial.print(".");  // Print a single '.' to show that the Arduino successfully sent the AT command 
@@ -126,18 +125,18 @@ void setup() {
 
   Serial.println("Trying to join the LoRa network...");
   // issue the mDot-specific AT commands
-    mDotSerial.print("AT+NI=0,");   // Set Network Identifier for Senet account
-    mDotSerial.println(Network_ID);   
+    Serial1.print("AT+NI=0,");   // Set Network Identifier for Senet account
+    Serial1.println(Network_ID);   
     delay(100); 
-    while (mDotSerial.available()) { mDotString = mDotSerial.readString(); }; // get the mDot's response
+    while (Serial1.available()) { mDotString = Serial1.readString(); }; // get the mDot's response
     delay (100);
    if ( Validate(mDotString) ) {  // validate the mDot's response
       Serial.print("."); } // Print a single '.' to show that this is working 
      
-    mDotSerial.print("AT+NK=0,");   // Set Network Key for mDot
-    mDotSerial.println(Network_key);   
+    Serial1.print("AT+NK=0,");   // Set Network Key for mDot
+    Serial1.println(Network_key);   
     delay(100);
-    while (mDotSerial.available()) { mDotString = mDotSerial.readString(); }; // get the mDot's response
+    while (Serial1.available()) { mDotString = Serial1.readString(); }; // get the mDot's response
     if ( Validate (mDotString) ) {  // validate the mDot's response
       Serial.print("."); // Print a single '.' to show that this is working 
     }
@@ -145,9 +144,9 @@ void setup() {
     // try to join the network three times
     successful_attempt = 1;  // use this as a counter and a flag
     while ( (successful_attempt < lora_join_threshold) && (successful_attempt != 100) ) {
-      mDotSerial.println("AT+JOIN"); 
+      Serial1.println("AT+JOIN"); 
       delay(1000 * successful_attempt); // make the delay longer with each attempt to join network  
-      while (mDotSerial.available()) { mDotString = mDotSerial.readString(); }; // get the mDot's response
+      while (Serial1.available()) { mDotString = Serial1.readString(); }; // get the mDot's response
       if ( Validate (mDotString) ) {  // validate the mDot's response
         successful_attempt = 100;  // set a flag for successfully joining the network
         Serial.print("."); // Print a single '.' to show that this is working   
@@ -186,10 +185,10 @@ void loop() {
   // send LoRa_payload to the internet via LoRa when we exceed the time_threshold (15mins=900sec) or click_threshold = 20 clicks 
   if ( (count >= time_threshold) || ( stored_click_value >= click_threshold) ) {            
     // send payload
-    mDotSerial.print("AT+SEND ");    
-    mDotSerial.println(LoRa_payload);  // LoRa_payload is loaded in sensor_input_value() 
+    Serial1.print("AT+SEND ");    
+    Serial1.println(LoRa_payload);  // LoRa_payload is loaded in sensor_input_value() 
     delay(100);
-    while (mDotSerial.available()) { mDotString = mDotSerial.readString(); }; // get the mDot's response
+    while (Serial1.available()) { mDotString = Serial1.readString(); }; // get the mDot's response
     if ( Validate (mDotString) ) {  // validate the mDot's response
       Serial.print("SENDING sensor values: ");
       Serial.println(LoRa_payload);
@@ -286,4 +285,3 @@ void sensor_input_value() {
   LoRa_payload = stringone + stored_click_value + stringtwo + stored_sound_value + stringthree + stored_light_value + stringfour;
 
 } // end sensor_input_value()
-
