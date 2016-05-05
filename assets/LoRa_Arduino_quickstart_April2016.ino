@@ -11,17 +11,14 @@
  * 
  * by Mike Vladimer & Anna Aflalo
  * at Orange Silicon Valley http://www.orangesv.com/
- * March 2016
+ * May 2016
  *  
  * We welcome feedback via twitter: @mikevladimer @anna_aflalo
  */
 
 // How to prepare the mDot LoRa node
-/* The mDot default baud rate is 115200 but the Arduino & mDot have trouble communicating so quickly
- * so you need to ensure that the mDot baud rate is 9600: 
- * https://github.com/mikimer/LoRa/ 
- * To upload the firmware, you'll need the MultiTech Micro Developer Kit (MTMDK) to change the mDot firmware: 
- * http://www.multitech.com/models/94558020LF
+/* The mDot default baud rate is 115200, therefore we will be using this baud rate 
+ * https://github.com/mikimer/LoRa/
 */
 
 // *** Select the current mDot **
