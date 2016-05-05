@@ -43,5 +43,5 @@ We've commented the .ino file extensively so that you can understand how the cod
  2. `Sound` Count how many times there's a loud noise.   
  3. `Light` Meausre the average light level.
   
-## Next tutorial
+### Next tutorial
 5.[Assemble the hardware](5_AssembleHardware.md) 
