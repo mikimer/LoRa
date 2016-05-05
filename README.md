@@ -48,6 +48,8 @@ Since this project is at the cutting-edge of LoRa, many of the terms are new, so
 * `ID number` is the term used in the Arduino sketch that is the ID number for your device on the Senet network.  For mDot's, it's the ID number written on the device; for Semtech NorAm motes, it's the ID number you get from the Orange IoT Studio or you generate in ARM mbed. It's also referred to as `Device ID`, `DEVEUI` and `reverse_DEVEUI`.
 * `Network_key` is the term used in the Arduino sketch that is the encoded key for your device on the Senet network. It's also referred to as `Device App Key`, `App Key` and `DEVKEY`.
 
+### Start tutorial   
+1. [Get the hardware](1_GetHardware.md) 
 
 
 ## Acknolwedgements
@@ -57,3 +59,4 @@ Since this project is at the cutting-edge of LoRa, many of the terms are new, so
 A hat tip :tophat: and thanks to Dave Kjendal & Shaun Nelson @ Senet, Joe Knapp @ Semtech. 
  
 April 2016 
+
