@@ -18,17 +18,17 @@ The hardware is assembled. You still have a few steps to go but you're getting c
    
 You're sending data via LoRa, congratulations!   
    
-![](assets/test_drive1.png)    
+![](test_drive1.png)    
 
-![](assets/test_drive2.png)   
+![](test_drive2.png)   
 
-![](assets/test_drive3.png)   
+![](test_drive3.png)   
 
-![](assets/test_drive4.png)   
+![](test_drive4.png)   
 
-![](assets/test_drive5.png)   
+![](test_drive5.png)   
 
-![](assets/test_drive6.png)  
+![](test_drive6.png)  
 
 
 ## Debugging tips for LoRa connectivity
@@ -48,11 +48,11 @@ Create a new Google Sheet and name it something like `LoRa Arduino Awesome Sheet
 
 _These column headers are formatted so that you can easily copy-paste them into gDocs without manipulation._ 
 
-![](assets/gDocs_new_sheet.png)  
+![](gDocs_new_sheet.png)  
 
-![](assets/gDocs_fill_in_sheet.png)  
+![](gDocs_fill_in_sheet.png)  
 
-![](assets/gDocs_column_headers.png)  
+![](gDocs_column_headers.png)  
 
 **Switch from gDocs to Zapier**  
 Now that your gDoc Sheet is ready, you can prepare your zap. We start with the `Trigger`.
@@ -64,15 +64,15 @@ Now that your gDoc Sheet is ready, you can prepare your zap. We start with the `
 5. In `Pick off a child key (optional)` just click `Continue` to skip this step.
 6. Click `Copy to clipboard` to copy the the Zapier webhook URL.
 
-![](assets/Zapier_make_a_zap.png)  
+![](Zapier_make_a_zap.png)  
 
-![](assets/Zapier_webhook1.png)  
+![](Zapier_webhook1.png)  
 
-![](assets/Zapier_webhook2.png)  
+![](Zapier_webhook2.png)  
 
-![](assets/Zapier_webhook3.png)  
+![](Zapier_webhook3.png)  
 
-![](assets/Zapier_webhook4.png)  
+![](Zapier_webhook4.png)  
 
 **Switch from Zapier to Senet**  
 You've created the Zapier webhook that will receive the JSON payload from Senet.  Switch from the Zapier tab to the Senet tab -- continue to keep both tabs open. In the Senet portal:
@@ -83,7 +83,7 @@ You've created the Zapier webhook that will receive the JSON payload from Senet.
 4. Click `Update`.
 
 
-![](assets/Zapier_Senet_webhook.png)  
+![](Zapier_Senet_webhook.png)  
 
 **Confirm that you're sending data to Senet, then switch to Zapier**   
 Senet will now send a copy of the mDot's payload to Zapier, including the PDU. **Make sure that your Arduino is sending data so that Senet delivers data to Zapier.**  To do this, click the sensor button 10 times and then wait 15 seconds -- you should see a new data payload arrive in the Senet portal. (*The Arduino sketch automatically sends data every 15 minutes or if a user clicks the button 10 times -- this is the external button on port A3, not the reset button on the Arduino board itself.*)   
@@ -104,21 +104,21 @@ Zapier must recieve at least one JSON payload at the webhook in order to know wh
 6. Click `Finish`.  
 7. Finally, turn your zap `ON`! 
 
-![](assets/Zapier_webhook_OK.png)  
+![](Zapier_webhook_OK.png)  
 
-![](assets/Zapier_sheets1.png)  
+![](Zapier_sheets1.png)  
 
-![](assets/Zapier_sheets2.png)  
+![](Zapier_sheets2.png)  
 
-![](assets/Zapier_sheets3.png)  
+![](Zapier_sheets3.png)  
 
-![](assets/Zapier_sheets4.png)  
+![](Zapier_sheets4.png)  
 
-![](assets/Zapier_sheets5.png)  
+![](Zapier_sheets5.png)  
 
-![](assets/Zapier_sheets6.png)  
+![](Zapier_sheets6.png)  
 
-![](assets/Zapier_sheets7.png)  
+![](Zapier_sheets7.png)  
 
 **Switch from Zapier to gDocs**  
 Switch from the Zapier tab to the Google Sheet tab to see the results of the integration. Zapier is now automatically posting data into Column A, `Date/Time` and Column B, `PDU`.  We'll now add formulas to **Row 3** of the Sheet to decode the PDU:   
@@ -165,9 +165,9 @@ Each column analyzes one byte of the PDU string. We're using the [ASCII table](h
 * Now in **Row 3** copy-paste the formula from cells `J3` to `AR3`. 
    
    
-![](assets/gDocs_formulas0.png)  
+![](gDocs_formulas0.png)  
 
-![](assets/gDocs_formulas1.png)  
+![](gDocs_formulas1.png)  
 
 ### Next tutorial
 7.[Build on LoRa & promote your vision](7_TheEnd.md) 
