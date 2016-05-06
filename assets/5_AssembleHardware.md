@@ -10,21 +10,21 @@ Assemble the hardware to match the diagram and photo below:
 * Connect the Arduino 5V and GND to the power and ground rails (pins) on the sensors.   
 * Connect the Arduino analog pins A1, A2 and A3 to the sound trigger, light sensor, and button, respectively. 
 
-![](assets/arduino_pinout_img4.png)  
+![](arduino_pinout_img4.png)  
   
-![](assets/LittleBits_Sensors_LoRa.png)    
+![](LittleBits_Sensors_LoRa.png)    
     
 ##In case you're using Adafruit sensors  
  
- ![](assets/adafruit_img1.png)  
+ ![](adafruit_img1.png)  
  
- ![](assets/adafruit_img2.png)   
+ ![](adafruit_img2.png)   
  
- ![](assets/adafruit_img3.png)  
+ ![](adafruit_img3.png)  
  
- ![](assets/adafruit_img4.png)
+ ![](adafruit_img4.png)
 
-You can test your basic wiring ( Arduino Mega and sensors only - mDot not mounted yet ) with this [Arduino code](assets/adafruit_wiring_test.ino).  
+You can test your basic wiring ( Arduino Mega and sensors only - mDot not mounted yet ) with this [Arduino code](adafruit_wiring_test.ino).  
 
 ### Next tutorial
 6.[Test drive LoRa](6_TestLoRa.md) 
