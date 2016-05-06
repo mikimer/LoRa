@@ -25,13 +25,13 @@ LoRa is an ideal communications technology for many internet-of-things (IoT) dev
 Public LoRa networks are being deployed world wide, including by [Orange in France](http://www.orange.com/en/Press-and-medias/press-releases-2016/press-releases-2015/Orange-deploys-a-network-for-the-Internet-of-Things). This project uses the [Senet LoRa network](https://portal.senetco.com/) in North America since it was developed by the [Orange IoT Studio](http://orangeiotstudio.com/), part of [Orange Silicon Valley](http://orangesv.com/) in San Francisco. 
 
 ### Project overview  
-1. [Get the hardware](1_GetHardware.md) 
-2. [Create your accounts](2_CreateAccounts.md) 
-3. [Verify LoRa coverage](3_LoRaCoverage.md) 
-4. [Configure the software](4_ConfigureSoftware.md) 
-5. [Assemble the hardware](5_AssembleHardware.md) 
-6. [Test drive LoRa](6_TestLoRa.md) 
-7. [Build on LoRa & promote your vision](7_TheEnd.md) 
+1. [Get the hardware](assets/1_GetHardware.md) 
+2. [Create your accounts](assets/2_CreateAccounts.md) 
+3. [Verify LoRa coverage](assets/3_LoRaCoverage.md) 
+4. [Configure the software](assets/4_ConfigureSoftware.md) 
+5. [Assemble the hardware](assets/5_AssembleHardware.md) 
+6. [Test drive LoRa](assets/6_TestLoRa.md) 
+7. [Build on LoRa & promote your vision](assets/7_TheEnd.md) 
 
 ### Skills you need
 
