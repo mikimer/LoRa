@@ -18,7 +18,7 @@ You need the basic equipment for the project and a set of sensors, either by Lit
 * [Breadboard Wires](https://www.adafruit.com/products/1956), $2 (you'll need 6 male-male wires, 2 male-female wires)
 * [Semtech NorAm mote LoRa network tester](http://www.semtech.com/images/datasheet/NorAmMote_User_Guide_3v0.2.pdf), _??get link with price!_	   
 
-![](assets/BOM1.png)
+![](BOM1.png)
 
 
 ###LittleBits sensors 
@@ -31,7 +31,7 @@ LittleBits sensors are easier to use, but more expensive.  If you prefer the som
 * [LittleBits Button](http://littlebits.cc/bits/button), $8
 * [LittleBits LED](http://littlebits.cc/bits/led), $8   
 
-![](assets/BOM2.png)
+![](BOM2.png)
  
 
 ### Adafruit sensors 
@@ -43,7 +43,7 @@ Adafruit sensors require more work, but are more affordable. If you prefer somet
 * [Tactile Button switch ](https://www.adafruit.com/products/367), $2.5
 * [LED](https://www.adafruit.com/products/299), $4   
    
-![](assets/BOM3.png)
+![](BOM3.png)
 
 ### Next tutorial  
-2.[Create your accounts](assets/2_CreateAccounts.md) 
+2.[Create your accounts](2_CreateAccounts.md) 
