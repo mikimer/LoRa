@@ -46,4 +46,4 @@ Adafruit sensors require more work, but are more affordable. If you prefer somet
 ![](assets/BOM3.png)
 
 ### Next tutorial  
-2.[Create your accounts](2_CreateAccounts.md) 
+2.[Create your accounts](assets/2_CreateAccounts.md) 
