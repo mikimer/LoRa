@@ -8,8 +8,6 @@ The IoT Studio is supporting the developer community through its engagement prog
 ## Bill of Materials (BOM)
 You need the basic equipment for the project and a set of sensors, either by LittleBits or by Adafruit.  You'll need one (1) of each item below, unless otherwise noted. The prices are estimates.  _Note that the XBee shield is only used as a physical interface between the mDot and the Arduino. This project does not use XBee communications._
 
-![](assets/BOM.jpg)
-
 ###Basic equipment  
 
 * [Multitech mDot](http://www.digikey.com/product-search/en?mpart=MTDOT-915-X1P-SMA-1&v=591&v=881),  $60 
@@ -18,7 +16,10 @@ You need the basic equipment for the project and a set of sensors, either by Lit
 * [Antenna for mDot](http://www.digikey.com/product-detail/en/multi-tech-systems/AN868-915A-10HRA/881-1242-ND/5246371), $10
 * [USB A-B cable](https://www.adafruit.com/products/62), $4
 * [Breadboard Wires](https://www.adafruit.com/products/1956), $2 (you'll need 6 male-male wires, 2 male-female wires)
-* [Semtech NorAm mote LoRa network tester](http://www.semtech.com/images/datasheet/NorAmMote_User_Guide_3v0.2.pdf), _??get link with price!_	
+* [Semtech NorAm mote LoRa network tester](http://www.semtech.com/images/datasheet/NorAmMote_User_Guide_3v0.2.pdf), _??get link with price!_	   
+
+![](assets/BOM1.jpg)
+
 
 ###LittleBits sensors 
 LittleBits sensors are easier to use, but more expensive.  If you prefer the something more affordable use the Adafruit sensors.
@@ -28,7 +29,9 @@ LittleBits sensors are easier to use, but more expensive.  If you prefer the som
 * [LittleBits Sound trigger](http://littlebits.cc/bits/sound-trigger), $12
 * [LittleBits Light sensor](http://littlebits.cc/bits/light-sensor), $12
 * [LittleBits Button](http://littlebits.cc/bits/button), $8
-* [LittleBits LED](http://littlebits.cc/bits/led), $8
+* [LittleBits LED](http://littlebits.cc/bits/led), $8   
+
+![](assets/BOM2.jpg)
  
 
 ### Adafruit sensors 
@@ -38,7 +41,9 @@ Adafruit sensors require more work, but are more affordable. If you prefer somet
 * [Sound trigger - Microphone Amplifier](https://www.adafruit.com/product/1063), $6.95 
 * [Light sensor - Photo transistor](https://www.adafruit.com/products/2831), $0.95
 * [Tactile Button switch ](https://www.adafruit.com/products/367), $2.5
-* [LED](https://www.adafruit.com/products/299), $4
+* [LED](https://www.adafruit.com/products/299), $4   
+   
+![](assets/BOM3.jpg)
 
 ### Next tutorial  
 2.[Create your accounts](2_CreateAccounts.md) 
