@@ -18,7 +18,7 @@ You'll need to register the mDot with Senet to get identifiers for the Arduino s
 
 
 ## Arduino sketch
-[![](button_LoRa_Arduino_sketch.png)](assets/LoRa_Arduino_quickstart_April2016.ino?raw=true)  
+[![](button_LoRa_Arduino_sketch.png)](LoRa_Arduino_quickstart_April2016.ino?raw=true)  
 
 **You must customize your Arduino code so that it works with your mDot**.  You'll need the [Arduino IDE](https://www.arduino.cc/en/Main/Software) to configure [the LoRa-Arduino sketch](LoRa_Arduino_quickstart_April2016.ino?raw=true).  The code starting at Line 27 is a template for you to modify: 
 
