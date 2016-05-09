@@ -1,6 +1,6 @@
 # LoRa-Arduino quickstart project
 
-![](assets/intro_img.png)
+![](assets/video_intro.png)
 
 # Overview
 ###This project allows you to quickly try LoRa communications. 
