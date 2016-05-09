@@ -12,7 +12,7 @@ This project was developed by the [Orange IoT Studio](http://orangeiotstudio.com
 
 ![](assets/data_com_img2.png)  
 
-![](assets/video_intro.png)](https://youtu.be/vQj_jD_2KrY)  
+[![](assets/video_intro.png)](https://youtu.be/vQj_jD_2KrY)  
 
 
 ### LoRa is great for IoT
