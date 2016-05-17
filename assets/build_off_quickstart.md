@@ -12,6 +12,7 @@ Here are tips, tricks, and other resources:
 * Here are Google Script functions that we used to copy/paste formulas 
 
 ```javascript 
+
 // function to add formulas to decode the JSON payload 
 function copy_paste_formulas(){
 
@@ -83,6 +84,9 @@ function store_yesterdays_data() {
 
 /* Links I used:
 
+Bulk Hide, Show or Delete Multiple Sheets in Google Spreadsheets
+http://trevorfox.com/2014/09/bulk-hide-show-delete-multiple-sheets-google-spreadsheets
+
 formatDate()
 https://developers.google.com/apps-script/reference/utilities/utilities#formatdatedate-timezone-format
 http://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html
@@ -122,4 +126,5 @@ hide sheet
 https://developers.google.com/apps-script/reference/spreadsheet/sheet#hidesheet
 
 */
+
 ```
