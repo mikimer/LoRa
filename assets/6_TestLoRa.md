@@ -6,7 +6,7 @@ The hardware is assembled. You still have a few steps to go but you're getting c
 2. If you haven't already, ensure that you customize the code with your unique `Network_ID` and `Network_key`.
 3. Use the USB Type A-B cable to connect the Arduino to your computer.   
 4. Upload the code from your IDE to the Arduino.   
-   a. In the 'Tools' tab, select the 'Arduino/Genuino Uno' board, and the port corresponding to your USB cable _(/dev/cu.usbmodem1411 for Mac)_     
+   a. In the 'Tools' tab, select the 'Arduino Mega' board, and the port corresponding to your USB cable _(/dev/cu.usbmodem1411 for Mac)_     
    b. Open the `Serial Monitor` window in the IDE.    
    c. Select 115200 baud as a baude rate     
    d. Click on the `upload` arrow    
