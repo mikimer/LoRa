@@ -49,7 +49,10 @@ _LoRa is a new technology and this project is in alpha, so it could break. If yo
 ## Acknolwedgements
 
 [Mike Vladimer](https://twitter.com/mikevladimer) & [Anna Aflalo](https://twitter.com/anna_aflalo) developed this project at the [Orange IoT Studio](http://orangeiotstudio.com), part of [Orange Silicon Valley](http://www.orangesv.com/). We welcome feedback -- you can contact us via twitter: [@orangeiotstudio](https://twitter.com/orangeiotstudio), 
- [@mikevladimer](https://twitter.com/mikevladimer) & [@anna_aflalo](https://twitter.com/anna_aflalo).  
+ [@mikevladimer](https://twitter.com/mikevladimer) & [@anna_aflalo](https://twitter.com/anna_aflalo).   
+ 
+Thank you for allowing us to use your icons: [@Ale Estrada](https://thenounproject.com/ale-es/), [@Icon 54](https://thenounproject.com/icon54app/), [@Gregory Sujkowski](https://thenounproject.com/GregSuj/), [@Uizin](https://thenounproject.com/uizin/), [@Chameleon Design](https://thenounproject.com/Chamedesign/), [@Igor Strosin](https://thenounproject.com/igormarcel/).   
+
 A hat tip :tophat: and thanks to Dave Kjendal & Shaun Nelson @ Senet, Joe Knapp @ Semtech, Scott Dworkis & [Jeremy Huylebroeck](https://twitter.com/mikevladimer/status/727264857267949568) @ Orange Silicon Valley. 
  
 April 2016
