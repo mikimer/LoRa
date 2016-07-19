@@ -9,6 +9,7 @@ The IoT Studio is supporting the developer community through its engagement prog
 You need the basic equipment for the project and a set of sensors, either by LittleBits or by Adafruit.  You'll need one (1) of each item below, unless otherwise noted. The prices are estimates.  _Note that the XBee shield is only used as a physical interface between the mDot and the Arduino. This project does not use XBee communications._
 
 ###Basic equipment  
+About $200  
 
 * [mDot](http://www.digikey.com/product-search/en?mpart=MTDOT-915-X1P-SMA-1&v=591&v=881),  $60 
 * [Arduino Mega](https://www.sparkfun.com/products/11061),  $46 
@@ -22,7 +23,8 @@ You need the basic equipment for the project and a set of sensors, either by Lit
 
 
 ###LittleBits sensors 
-LittleBits sensors are easier to use, but more expensive.  If you prefer the something more affordable use the Adafruit sensors.
+LittleBits sensors are easier to use, but more expensive.  If you prefer the something more affordable use the Adafruit sensors.  
+About $100 
 
 * [LittleBits Proto](https://littlebits.cc/bits/proto), $50 (you'll need 4 Protos at $12/piece)
 * [LittleBits Fork](https://littlebits.cc/bits/fork), $12
@@ -36,11 +38,12 @@ LittleBits sensors are easier to use, but more expensive.  If you prefer the som
 
 ### Adafruit sensors 
 Adafruit sensors require more work, but are more affordable. If you prefer something easier, use the LittleBits sensors.  
+About $20
 
 * [Breadboard](https://www.adafruit.com/products/64), $5
-* [Sound trigger - Microphone Amplifier](https://www.adafruit.com/product/1063), $6.95 
-* [Light sensor - Photo transistor](https://www.adafruit.com/products/2831), $0.95
-* [Tactile Button switch ](https://www.adafruit.com/products/367), $2.5
+* [Sound trigger - Microphone Amplifier](https://www.adafruit.com/product/1063), $7 
+* [Light sensor - Photo transistor](https://www.adafruit.com/products/2831), $1
+* [Tactile Button switch ](https://www.adafruit.com/products/367), $3
 * [LED](https://www.adafruit.com/products/299), $4   
    
 ![](BOM3.png)
