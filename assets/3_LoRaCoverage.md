@@ -18,7 +18,7 @@ In this quickstart project, the mote receives a GPS signal and sends its locatio
 ## The user interface for the mote
 The mote contains a battery so you will need to charge it.  There are 2 micro-USB ports on the front of the mote, chage with the one labeled `USB1`.  The `CHG` light is orange while the mote is charging and green when fully charged. The `USR` light blinks green while the mote is searching for GPS and is solid green when it has locked the GPS signal.  You don't need to worry about lights `1` `2` and `3`. If you've got a mote from the IoT Studio, then the `USB2` port is covered with orange tape -- it's a port for updating the mote's firmware. 
 
-## Get mote Device ID
+## Get mote Device ID 
 
 If you're using a mote from the IoT Studio, then skip this step since your mote comes pre-loaded with the device ID and firmware to operate on the Senet network. 
  
@@ -54,6 +54,11 @@ Once you've sent GPS data to Senet, navigate to the webpage with data for your d
 8. Double-click on the map to zoom in to view the relevant data
 
 ![](Senet_map.png) 
+
+## Coverage is king  
+If your mote shows that you have coverage for the Senet LoRa network, you're all set. Continue with the tutorial.  
+    
+If you cannot confirm coverage with your mote, we suggest that you contact Senet before continuing.  They can let you know your options, including purchasing and installing your own gateway or whether they might offer coverage in your area soon.  
 
 ### Next tutorial
 4.[Configure the software](4_ConfigureSoftware.md) 
