@@ -3,7 +3,7 @@
 The hardware is assembled. You still have a few steps to go but you're getting close!
 
 1. Open the Arduino code. 
-2. If you haven't already, ensure that you customize the code with your unique `Network_ID` and `Network_key`.
+2. Ensure that you customize the code with your unique `Network_ID` and `Network_key`, which you should have done in [Step 4](4_ConfigureSoftware.md).
 3. Use the USB Type A-B cable to connect the Arduino to your computer.   
 4. Upload the code from your IDE to the Arduino.   
    a. In the 'Tools' tab, select the 'Arduino Mega' board, and the port corresponding to your USB cable _(/dev/cu.usbmodem1411 for Mac)_     
