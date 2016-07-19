@@ -37,7 +37,7 @@ This template assumes that you have three mDots (you're ambitious!) named `AAA`,
 
 *show cassis and how we labeled the mDot and tied the device # to the name*
 
-We've commented the .ino file extensively so that you can understand how the code works.  In brief, in `setup()` the device sends AT commands to join the LoRa network and in `loop()` the device samples the sensors every 100ms and sends a LoRa data payload every 15 minutes.  The sketch gathers sensor data to demonstrate *LoRa* by monitoring activities:  
+We've commented the Arduino .ino file extensively so that you can understand how the code works.  In brief, in `setup()` the device sends AT commands to join the LoRa network and in `loop()` the device samples the sensors every 100ms and sends a LoRa data payload every 15 minutes.  The sketch gathers sensor data to demonstrate *LoRa* by monitoring activities:  
 
  1. `Click` Count how many times users click a button.  
  2. `Sound` Count how many times there's a loud noise.   
