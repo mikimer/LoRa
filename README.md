@@ -10,6 +10,7 @@
 
 This project was developed by the [Orange IoT Studio](http://orangeiotstudio.com/) to promote the adoption of LoRa. To that end, the IoT Studio is [supporting companies](http://orangeiotstudio.com/) interested in LoRa by providing [developer resources](assets/build_off_quickstart.md), donating hardware kits and by funding co-development.  
 
+### Data flow diagram
 ![](assets/data_com_img2.png)  
 
 [![](assets/video_intro.png)](https://youtu.be/vQj_jD_2KrY)  
