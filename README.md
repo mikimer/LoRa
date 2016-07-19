@@ -42,7 +42,9 @@ Since this project is at the cutting-edge of LoRa, many of the terms are new, so
 * **`ID number`** is the term used in the Arduino sketch that is the ID number for your device on the Senet network.  For mDot's, it's the ID number written on the device; for Semtech NorAm motes, it's the ID number you get from the Orange IoT Studio or you generate in ARM mbed. It's also referred to as `Device ID`, `DEVEUI` and `reverse_DEVEUI`.
 * **`Network_key`** is the term used in the Arduino sketch that is the encoded key for your device on the Senet network. It's also referred to as `Device App Key`, `App Key` and `DEVKEY`.
 * **`mDot`** is the Low-Power Wide Area Network (LPWAN) RF module, capable of 2-way communication in excess of 10 miles / 16 km. It's also referred to as `Multitech mDot`, `MultiConnect mDot` and `LoRa mDot`.
-* **`mote`** is the LoRa device including a GPS receiver. In this tutorial, you'll use it to test the coverage. It's also referred to as `North America LoRa Mote device`, `NoRam mote` and `Semtech NorAm mote LoRa network tester`.  
+* **`mote`** is the LoRa device including a GPS receiver. In this tutorial, you'll use it to test the coverage. It's also referred to as `North America LoRa Mote device`, `NoRam mote` and `Semtech NorAm mote LoRa network tester`.   
+* **`Gateway`** is the term used for the device that routes communications between the `mDot` and Senet's cloud. 
+* **`PDU`** stands for Packet Data Unit, which is the term Senet uses for the data payload sent from the mDot to the gateway. 
  
 ### _Disclaimer_
 _LoRa is a new technology and this project is in alpha, so it could break. If you're cool trying new things that aren't 100% reliable, proceed and have fun._   
