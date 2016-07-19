@@ -7,7 +7,7 @@ You'll need to create accounts with the following websites to get this project t
 [ ![Senet portal](Senet_Development_Portal.png) ](https://portal.senetco.com/)  
 
 ## Zapier
-[Zapier](https://zapier.com) automates the flow of data between Senet and Google Docs. For this project, we'll have Senet do an HTTP Post to a Zapier webhook. Zapier then puts the contents of Senet's JSON payload into a row in a Google Spreadsheet (gDocs). 
+[Zapier](https://zapier.com) automates the flow of data between Senet and Google Docs. For this project, we'll have Senet do an HTTP POST to a Zapier webhook. Zapier then puts the contents of Senet's JSON payload into a row in a Google Spreadsheet (gDocs). 
 
 [ ![Zapier home](Zapier_home.png) ](https://zapier.com/)
 
