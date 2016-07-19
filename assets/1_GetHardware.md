@@ -10,6 +10,7 @@ You need the basic equipment for the project and a set of sensors, either by Lit
 
 ###Basic equipment  
 About $200  
+You'll need these components regardless of which type of sensors you choose, LittleBits or Adafruit. 
 
 * [mDot](http://www.digikey.com/product-search/en?mpart=MTDOT-915-X1P-SMA-1&v=591&v=881),  $60 
 * [Arduino Mega](https://www.sparkfun.com/products/11061),  $46 
@@ -23,8 +24,8 @@ About $200
 
 
 ###LittleBits sensors 
+About $100  
 LittleBits sensors are easier to use, but more expensive.  If you prefer the something more affordable use the Adafruit sensors.  
-About $100 
 
 * [LittleBits Proto](https://littlebits.cc/bits/proto), $50 (you'll need 4 Protos at $12/piece)
 * [LittleBits Fork](https://littlebits.cc/bits/fork), $12
@@ -37,8 +38,8 @@ About $100
  
 
 ### Adafruit sensors 
+About $20  
 Adafruit sensors require more work, but are more affordable. If you prefer something easier, use the LittleBits sensors.  
-About $20
 
 * [Breadboard](https://www.adafruit.com/products/64), $5
 * [Sound trigger - Microphone Amplifier](https://www.adafruit.com/product/1063), $7 
