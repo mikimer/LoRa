@@ -3,9 +3,9 @@
 Assemble the hardware to match the diagram and photo below:
 
 * To allow the mDot to mount properly, bend the two pins in the XB_TX row that are next to digital pins 11 and 12.    
-* The Arduino transmit pin (TX1) needs to connect to the mDot's receive pin (RX). To do this, use a male-female wire to connect XBee shield to connect mDot's receive Pin 2 (XB_RX) to Arduino pin 18. 
-* The Arduino receive pin (RX1) needs to connect to the mDot's transmit pin (TX). To do this, use a male-female wire to connect XBee shield to connect mDot's receive Pin 3 (XB_TX) to Arduino pin 19.
-* Mount the mDot on top of the XBee shield. Then mount the XBee shield on top of the Arduino Mega.  
+* Use a male-female wire to connect Arduino pin 18 (TX1) to any pin on the XBee shield in the XB_RX row. This will connect the Arduino transmit pin (TX1) to the mDot's receive pin (RX) via the XBee shield. 
+* Use a male-female wire to connect Arduino pin 19 (RX1) to any pin on the XBee shield in the XB_TX row. This will connect the Arduino receive pin (RX1) to the mDot's transmit pin (TX) via the XBee shield. 
+ * Mount the mDot on top of the XBee shield. Then mount the XBee shield on top of the Arduino Mega.  
 * Use a wire to connect mDot reset pin 5 to Arduino analog pin A0.  
 * Connect the Arduino 5V and GND to the power and ground rails (pins) on the sensors.   
 * Connect the Arduino analog pins A1, A2 and A3 to the sound trigger, light sensor, and button, respectively. 
