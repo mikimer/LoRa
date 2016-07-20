@@ -35,8 +35,6 @@ Replace `AAA` with your mDot nickname, `11:22` with the last 4 digits of your mD
 
 This template assumes that you have three mDots (you're ambitious!) named `AAA`, `BBB` and `CCC` with ID numbers ending in `11:22`, `33:44` and `55:66`, respectively, since we found it useful to work with a few mDots.  If you've only got one mDot, then simply delete the lines for `BBB` and `CCC`. If you've got multiple mDots, then you can update `BBB` and `CCC` with your mDot information. When you run the sketch, you'll need to ensure that the code is commented with `//` so that only one mDot is selected at a time.  Be sure to save your customized file. 
 
-*show cassis and how we labeled the mDot and tied the device # to the name*
-
 We've commented the Arduino .ino file extensively so that you can understand how the code works.  In brief, in `setup()` the device sends AT commands to join the LoRa network and in `loop()` the device samples the sensors every 100ms and sends a LoRa data payload every 15 minutes.  The sketch gathers sensor data to demonstrate *LoRa* by monitoring activities:  
 
  1. `Click` Count how many times users click a button.  
