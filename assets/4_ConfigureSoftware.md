@@ -1,5 +1,14 @@
 # 4. Configure the software
   
+
+## Get the Arduino sketch
+[![](button_LoRa_Arduino_sketch.png)](LoRa_Arduino_quickstart_April2016.ino?raw=true)  
+
+If you don't already have it, get the [Arduino IDE](https://www.arduino.cc/en/Main/Software).  Copy-paste our template code for [the LoRa-Arduino sketch](LoRa_Arduino_quickstart_April2016.ino?raw=true) into a clean Arduino sketch. 
+
+
+You must customize your Arduino code so that it works with your specific mDot.  You'll now get your unique identifiers from Senet that you'll copy/paste into the LoRa-Arduino sketch.   
+  
 ## Register the mDot with Senet and get identifiers
 You'll need to register the mDot with Senet to get identifiers for the Arduino sketch.  First, go to the [Senet portal](https://portal.senetco.com/) and register your device by providing the device ID and nickname (similar to what you did with the NorAm mote). Next, click on the mDot name to open a webpage with the mDot's information and then follow these steps: 
 
@@ -17,10 +26,8 @@ You'll need to register the mDot with Senet to get identifiers for the Arduino s
 ![](Senet_register_mDot3456.png)
 
 
-## Arduino sketch
-[![](button_LoRa_Arduino_sketch.png)](LoRa_Arduino_quickstart_April2016.ino?raw=true)  
-
-**You must customize your Arduino code so that it works with your mDot**.  You'll need the [Arduino IDE](https://www.arduino.cc/en/Main/Software) to configure [the LoRa-Arduino sketch](LoRa_Arduino_quickstart_April2016.ino?raw=true).  The code starting at Line 27 is a template for you to modify: 
+## Customize your Arduino sketch
+You'll need to modify the code with your values from Senet. Starting at Line 27 is a template for you to modify: 
 
 ```Arduino
 // *** Select the current mDot **
@@ -34,6 +41,8 @@ You'll need to register the mDot with Senet to get identifiers for the Arduino s
 Replace `AAA` with your mDot nickname, `11:22` with the last 4 digits of your mDot ID number, as well as the `Network_key` and `Network_ID` with your unique values from Senet.  Note that Senet provides the ID in the format `0x11,0x22,0x33,...` which you'll need to change to `11:22:33:...`.
 
 This template assumes that you have three mDots (you're ambitious!) named `AAA`, `BBB` and `CCC` with ID numbers ending in `11:22`, `33:44` and `55:66`, respectively, since we found it useful to work with a few mDots.  If you've only got one mDot, then simply delete the lines for `BBB` and `CCC`. If you've got multiple mDots, then you can update `BBB` and `CCC` with your mDot information. When you run the sketch, you'll need to ensure that the code is commented with `//` so that only one mDot is selected at a time.  Be sure to save your customized file. 
+
+#### How the sketch works
 
 We've commented the Arduino .ino file extensively so that you can understand how the code works.  In brief, in `setup()` the device sends AT commands to join the LoRa network and in `loop()` the device samples the sensors every 100ms and sends a LoRa data payload every 15 minutes.  The sketch gathers sensor data to demonstrate *LoRa* by monitoring activities:  
 
