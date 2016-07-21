@@ -60,8 +60,8 @@ int last_click_value = 0;      // store the last state of the clicker to ensure 
 int last_sound_value = 0;      // store the last state of the sound to ensure the sound toggled on and off
 
 // AT commands to stop echo, set transmit power to 20 (maximum), and set the public network
-#define GenericATcommand_count 4
-const String GenericATcommands[GenericATcommand_count] = {"ATE0", "ATV0", "AT+TXP=20","AT+PN=1"};
+#define GenericATcommand_count 5
+const String GenericATcommands[GenericATcommand_count] = {"ATE0", "ATV0", "AT+TXP=20","AT+PN=1","AT+FSB=1"};
 
 
 void setup() {
