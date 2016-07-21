@@ -137,7 +137,7 @@ _We use this metric to more easily visualize data when we graph it._
 
 Column E - **Click**   
 `=REGEXEXTRACT(H3,"\(([0-9]+)\)")`  
-_This formula uses the contents of **Column H**, so don't be alarmed if there's an error when Column H is empty. is a count of how many times users clicked the button._
+_This formula uses the contents of **Column H**, so don't be alarmed if there's an error when Column H is empty. This is a count of how many times users clicked the button._
 
 Column F - **Sound**   
 `=REGEXEXTRACT(H3,"\[([0-9]+)\]")`  
