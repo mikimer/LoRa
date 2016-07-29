@@ -18,7 +18,8 @@ You'll need these components regardless of which type of sensors you choose, Lit
 * [XBee shield v2.0](http://www.robotmesh.com/xbee-shield-v2-0),  $10 (There are a few versions so be sure to get the [Seeed Studio version](http://www.seeedstudio.com/wiki/XBee_Shield_V2.0))  
 * [USB A-B cable](https://www.adafruit.com/products/62), $4
 * [Breadboard Wires](https://www.adafruit.com/products/1956), $2 (you'll need 6 male-male wires, 2 male-female wires)
-* [mote](http://www.semtech.com/images/datasheet/NorAmMote_User_Guide_3v0.2.pdf), _??get link with price!_	   
+* [mote](http://www.semtech.com/images/datasheet/NorAmMote_User_Guide_3v0.2.pdf), $100 Optional network tester _??get link from Senet_	 
+* [Pre-configured gateway for $780]() _add link from senet_ or [non-configured gateway for $300](http://www.semiconductorstore.com/cart/pc/viewPrd.asp?idproduct=50688), if you get the non-configured gateway, you'll need to configure it using Senet's website.  
 
 ![](BOM1.png)
 
