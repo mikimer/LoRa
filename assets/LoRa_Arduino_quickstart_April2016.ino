@@ -25,9 +25,9 @@
 // *** Select the current mDot **
 // Update the mDot data below to reflect the name, network key, and network identifier your mDot(s) 
 // You need to adjust the comments in the code to select the mDot you're currently using
-/* Pistache with ID ending in A7:77 */     //  const String mDot_name = "Pistache"; const String Network_key =  "4E2CDA3C2F19E4CC912939CD6456CF4B"; const String Network_ID = "00250C0000010001"; 
-/* Chimp with ID ending in 33:44 */     const String mDot_name = "Chimp"; const String Network_key = "02E2DC9242A5639B98151A216212A47D"; const String Network_ID = "00250C0000010001"; 
-/* CCC with ID ending in 55:66 */    // const String mDot_name = "CCC"; const String Network_key = "11:22:33:44:55:11:22:33:44:55:11:22:33:44:55:66"; const String Network_ID = "11:22:33:44:55"; 
+/* AAA with ID ending in A7:77 */    //  const String mDot_name = "AAA"; const String Network_key = "11223344551122334455112233445566"; const String Network_ID = "00250C0000010001"; 
+/* BBB with ID ending in 33:44 */    //  const String mDot_name = "BBB"; const String Network_key = "11223344551122334455112233445566"; const String Network_ID = "00250C0000010001"; 
+/* CCC with ID ending in 55:66 */    //  const String mDot_name = "CCC"; const String Network_key = "11223344551122334455112233445566"; const String Network_ID = "00250C0000010001"; 
 
 
 //create software-defined serial port on pins 10 & 11
