@@ -1,17 +1,18 @@
 
+
 /*  
  * This sketch gathers sensor data to demonstrate *LoRa* by indicating activities in the kitchen:
  *   1. Click. Users can choose to push a button.
  *   2. Sound. The sound sensor triggers when people are talking or making lots of noise.
  *   3. Light. The light sensor shows when the lights come on, i.e., working hours.  
  *   
- * To reduce the dynamic memory of this sketch, reduce or remove the text in the Serial.print() statements.  
+ *    
  * 
  * Thanks to: Dave Kjendal & Shaun Nelson @ Senet, Joe Knapp @ Semtech
  * 
  * by Mike Vladimer & Anna Aflalo
  * at Orange Silicon Valley http://www.orangesv.com/
- * May 2016
+ * July 2016
  *  
  * We welcome feedback via twitter: @mikevladimer @anna_aflalo
  */
@@ -24,9 +25,10 @@
 // *** Select the current mDot **
 // Update the mDot data below to reflect the name, network key, and network identifier your mDot(s) 
 // You need to adjust the comments in the code to select the mDot you're currently using
-/* AAA with ID ending in 11:22 */       const String mDot_name = "AAA"; const String Network_key =  "11:22:33:44:55:11:22:33:44:55:11:22:33:44:11:22"; const String Network_ID = "11:22:33:44:55"; 
-/* BBB with ID ending in 33:44 */    // const String mDot_name = "BBB"; const String Network_key = "11:22:33:44:55:11:22:33:44:55:11:22:33:44:33:44"; const String Network_ID = "11:22:33:44:55"; 
+/* Pistache with ID ending in A7:77 */     //  const String mDot_name = "Pistache"; const String Network_key =  "4E2CDA3C2F19E4CC912939CD6456CF4B"; const String Network_ID = "00250C0000010001"; 
+/* Chimp with ID ending in 33:44 */     const String mDot_name = "Chimp"; const String Network_key = "02E2DC9242A5639B98151A216212A47D"; const String Network_ID = "00250C0000010001"; 
 /* CCC with ID ending in 55:66 */    // const String mDot_name = "CCC"; const String Network_key = "11:22:33:44:55:11:22:33:44:55:11:22:33:44:55:66"; const String Network_ID = "11:22:33:44:55"; 
+
 
 //create software-defined serial port on pins 10 & 11
 //from: https://www.arduino.cc/en/Tutorial/SoftwareSerialExample
@@ -60,8 +62,8 @@ int last_click_value = 0;      // store the last state of the clicker to ensure 
 int last_sound_value = 0;      // store the last state of the sound to ensure the sound toggled on and off
 
 // AT commands to stop echo, set transmit power to 20 (maximum), and set the public network
-#define GenericATcommand_count 5
-const String GenericATcommands[GenericATcommand_count] = {"ATE0", "ATV0", "AT+TXP=20","AT+PN=1","AT+FSB=1"};
+#define GenericATcommand_count 9
+const String GenericATcommands[GenericATcommand_count] = {"ATE0", "ATV0", "AT+TXDR=9" ,"AT+TXP=20","AT+PN=1","AT+FSB=1", "AT+NJM=1", "AT+JD=5", "AT"};
 
 
 void setup() {
@@ -139,7 +141,7 @@ void setup() {
     }
     
     // try to join the network three times
-    successful_attempt = 1;  // use this as a counter and a flag
+    successful_attempt = 1;  // use this as a counter and a flag when successful_attempt == 100
     while ( (successful_attempt < lora_join_threshold) && (successful_attempt != 100) ) {
       Serial1.println("AT+JOIN"); 
       delay(1000 * successful_attempt); // make the delay longer with each attempt to join network  
@@ -202,20 +204,19 @@ void loop() {
   stored_click_value = 0;                
   stored_sound_value = 0;                
   stored_light_value = 0;       
-  Serial.println("reset values & counters");    
-       
+        
   } // end send payload
 
- 
 } // end loop()
    
 
 // Determine whether mDot response is ok/success (TRUE) or error/unknown (FALSE)
 bool Validate (String response) {
+    //Serial.println(response);  // This line is a debugging tool to print to the Serial Monitor responses from the mDot
     if ( Contains(response, "OK") )  { return true; } // response =  OK 
     else if ( Contains(response, "Set Network") ) { return true; } // response = Set Network Key 
     else if ( Contains(response, "Success")) { return true; } // response = Successfully joined network       
-    else {return false; };    
+    else { return false; };    
 } // end Validate()
 
 
@@ -273,12 +274,15 @@ void sensor_input_value() {
   
   // creating a string with the data payload, per https://www.arduino.cc/en/Tutorial/StringAdditionOperator
   // we're wrapping the data in (), [], and {} to use the REGEXEXTRACT() function in gdocs.
-  // Note that if your LoRa signal is weak, then your payload size might be limited to 11 bytes, the minimal payload.
-  // http://www.multitech.net/developer/software/lora/introduction-to-lora/
-  String stringone = "clicks(";
-  String stringtwo = ")sounds[";
-  String stringthree = "]avg_light{";
+  // "cliq" refers to the count of button clicks; "bang" refers to the count of loud sounds; "lite" refers to the average light level
+  // This payload structure has a maximum size of 53 bytes, corresponding to spreading factor = 9 and data rate = 1 (SF=9; DR=1)
+  // To improve operation, you can change use AT+TXDR to the reduce the payload size to 11 bytes (SF=10; DR=0) http://www.multitech.com/manuals/s000643_1_1.pdf
+  String stringone = "cliq(";
+  String stringtwo = ")bang[";
+  String stringthree = "]lite{";
   String stringfour = "}";
   LoRa_payload = stringone + stored_click_value + stringtwo + stored_sound_value + stringthree + stored_light_value + stringfour;
 
 } // end sensor_input_value()
+
+
