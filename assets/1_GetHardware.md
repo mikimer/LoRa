@@ -1,4 +1,4 @@
-# 1. Get the hardware
+# 1. Get the hardware TEST
 You'll need to either apply for a hardware kit from the IoT studio or purchase the equipment yourself. 
 
 ## Apply for support from the IoT Studio
