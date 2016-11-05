@@ -1,4 +1,4 @@
-# 1. Get the hardware TEST
+# 1. Get the hardware
 You'll need to either apply for a hardware kit from the IoT studio or purchase the equipment yourself. 
 
 ## Apply for support from the IoT Studio
@@ -6,7 +6,7 @@ The IoT Studio is supporting the developer community through its engagement prog
 
 
 ## Bill of Materials (BOM)
-You need the basic equipment for the project and a set of sensors, either by LittleBits or by Adafruit.  You'll need one (1) of each item below, unless otherwise noted. The prices are estimates.  _Note that the XBee shield is only used as a physical interface between the mDot and the Arduino. This project does not use XBee communications._
+You need the basic equipment for the project and a set of sensors, either by LittleBits or by Adafruit. You'll also need the networking equipment, unless you're sure that you have coverage in Senet's LoRa network. You'll need one (1) of each item below, unless otherwise noted. The prices are estimates.  _Note that the XBee shield is only used as a physical interface between the mDot and the Arduino. This project does not use XBee communications._
 
 ###Basic equipment  
 About $200  
@@ -23,6 +23,9 @@ You'll need these components regardless of which type of sensors you choose, Lit
 
 ![](BOM1.png)
 
+###Networking equipment  
+About $800  
+You'll need this equipment
 
 ###LittleBits sensors 
 About $100  
